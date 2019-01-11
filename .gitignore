@@ -1,0 +1,10 @@
+# python
+*.pyc
+
+# scala
+target/
+project/target/
+
+# ide, editor
+.idea/
+.vscode/
