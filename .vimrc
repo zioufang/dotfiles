@@ -36,10 +36,10 @@ set wildignore+=.pyc            " ignore files when opening based on glob patter
 try
     colorscheme desert
 catch
-entry
+endtry
 
 set encoding=utf-8
-set backgroud=dark
+set background=dark
 set number
 set ruler                       " show cursor position
 set showmatch                   " highlight maching braces

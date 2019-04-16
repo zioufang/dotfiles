@@ -1,27 +1,41 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# check dir for the mk functions
+function checkdir {
+    if [ -n "$1" ]; then
+        if [ ! -d "$1" ]; then
+            return 0
+        else
+            echo "project already exists"
+        fi
+    else
+        echo "need an project name"
+    fi
+    return 1    
+}
 
 # create dir strucutre for python
-function mkpy() {
-    if [ -n "$1" ]; then
+function mkpy {
+    checkdir $1
+    if [ $? = 0 ]; then
         mkdir -p "./$1/$1"
         touch "./$1/README.md"
         touch "./$1/requirements.txt"
         touch "./$1/.gitignore"
-        touch "./$1/$1/__init__.py"
+        touch "./$1/$1/__init__.py"        
     fi
-    echo "need an arg"
-    return 1
+    return 0
 }
 
 # create dir strucutre for spark scala
-function mkspark() {
-    if [ -n "$1" ]; then
+function mkspark {
+    checkdir $1
+    if [ $? = 0 ]; then
         mkdir -p "./$1"
         touch "./$1/README.md"
         touch "./$1/.gitignore"
         # build.sbt for spark
-        echo '\
-import scala.sys.process._
+        echo 'import scala.sys.process._
 
 name := <TODO>
 
@@ -54,17 +68,17 @@ deploy := {
 }
 ' > "./$1/build.sbt"
 
-    # sbt-assembly plugin
-    mkdir -p "./$1/project"
-    echo  '\
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.9")
-' > "./$1/project/assembly.sbt"
+        # sbt-assembly plugin
+        mkdir -p "./$1/project"
+        echo  '\
+    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.9")
+    ' > "./$1/project/assembly.sbt"
 
-    # source code structure
-    mkdir -p "./$1/src/main/resources"
-    mkdir -p "./$1/src/main/scala"
-    mkdir -p "./$1/src/test"
+        # source code structure
+        mkdir -p "./$1/src/main/resources"
+        mkdir -p "./$1/src/main/scala"
+        mkdir -p "./$1/src/test"
     fi
-    echo "need an arg"
-    return 1    
+    
+    return 0
 }

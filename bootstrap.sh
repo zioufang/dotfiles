@@ -1,16 +1,17 @@
-~!/usr/bin/env bash
+#!/bin/bash
 
 git pull origin master;
 
-function dotsync() {
+function dotsync {
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "README.md" \
         --exclude ".git/" \
+        --exclude "bin/" \
         -avh --no-perms . ~;
 
     # add stuff to .bashrc
-    echo '\
+    echo '
 source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_paths

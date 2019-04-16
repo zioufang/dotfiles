@@ -21,16 +21,16 @@
         # amend the last commit without changing the commit message
         amend = commit -a --amend --no-edit
         
-        # overwrite current branch from remote
-        overwrite = '!f() {
-                declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-                read -p "this will overwrite $currentBranch branch (y/n) " -n 1; \
-                echo ""; \
+        # 'force pull' overwrite current branch from remote
+        pullf = "!f() { \
+                declare currentBranch=$(git symbolic-ref --short HEAD); \
+                read -p \"this will overwrite $currentBranch branch (y/n) \" -n 1; \
+                echo ''; \
                 if [[ $REPLY =~ ^[Yy]$ ]]; then \
                     git fetch --all; \
                     git reset --hard origin/$currentBranch; \
                 fi; \
-            }; f'
+            }; f"
 
         # find commits by commit message
         findm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
@@ -41,7 +41,7 @@
 
         # Merge GitHub pull request on top of the current branch or,
         # if a branch name is specified, on top of the specified branch
-        mpr = '!f() { \
+        mpr = "!f() { \
             declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
             declare branch=\"${2:-$currentBranch}\"; \
             if [ $(printf \"%s\" \"$1\" | grep "^[0-9]\\+$" > /dev/null; printf $?) -eq 0 ]; then \
@@ -53,4 +53,4 @@
                 git branch -D pr/$1 && \
                 git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
             fi \
-        }; f'
+        }; f"
