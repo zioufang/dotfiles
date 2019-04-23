@@ -8,6 +8,7 @@ function dotsync {
         --exclude "README.md" \
         --exclude ".git/" \
         --exclude "bin/" \
+        --exclude "vscode/" \
         -avh --no-perms . ~;
 
     # add stuff to .bashrc

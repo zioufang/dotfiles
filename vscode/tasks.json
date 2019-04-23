@@ -1,0 +1,31 @@
+/*
+1. This goes to ~/.vscode
+2. ln -s ~/.vscode for every new project to symlink
+3. add .vscode (without the /) to .gitignore
+*/
+{
+    "version": "2.0.0",
+    "tasks": [
+        // open cloudformation link in firefox
+        // works only in linux
+        {
+            "label": "CFN Search: Property",
+            "type": "shell",
+            "command": "array=(`echo ${selectedText} | tr '[:upper:]' '[:lower:]' | sed 's/::/\\n/g'`) && firefox \"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-${array[1]}-${array[2]}.html\"",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "never"
+            }
+        },
+        //works only in linux
+        {
+            "label": "CFN Search: Resource",
+            "type": "shell",
+            "command": "array=(`echo ${selectedText} | tr '[:upper:]' '[:lower:]' | sed 's/::/\\n/g'`) && firefox \"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-${array[1]}-${array[2]}.html\"",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "never"
+            }
+        },        
+    ]
+}
