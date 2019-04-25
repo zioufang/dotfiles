@@ -1,8 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 git pull origin master;
 
 function dotsync {
+    # add .bash_* to .bashrc in a new instance
+    [ ! -f ~/.bash_aliases] && echo 'source ~/.bash_aliases' >> ~/.bashrc;
+    [ ! -f ~/.bash_configs] && echo 'source ~/.bash_configs' >> ~/.bashrc;
+    [ ! -f ~/.bash_functions] && echo 'source ~/.bash_functions' >> ~/.bashrc;
+
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "README.md" \
@@ -11,16 +16,7 @@ function dotsync {
         --exclude "vscode/" \
         -avh --no-perms . ~;
 
-    # add stuff to .bashrc
-    echo '
-source ~/.bash_aliases
-source ~/.bash_functions
-source ~/.bash_paths
-' >> ~/.bashrc
-
-    # run .bashrc in bash_profile
-    echo 'source ~/.bashrc' >> ~/.bash_profile
-    source ~/.bash_profile
+    source ~/.bashrc;
 }
 
 if [ "$1"=="-f" ]; then
