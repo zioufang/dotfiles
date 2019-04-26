@@ -2,12 +2,12 @@
 
 git pull origin master;
 
-function dotsync {
-    # add .bash_* to .bashrc in a new instance
-    [ ! -f ~/.bash_aliases] && echo 'source ~/.bash_aliases' >> ~/.bashrc;
-    [ ! -f ~/.bash_configs] && echo 'source ~/.bash_configs' >> ~/.bashrc;
-    [ ! -f ~/.bash_functions] && echo 'source ~/.bash_functions' >> ~/.bashrc;
+# source file $1 to file $2, if $1 doesn't already exist in $2
+function echo_source {
+    ! grep -q "$1" .bashrc && echo "source $1" >> $2
+}
 
+function dotsync {
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "README.md" \
@@ -15,6 +15,13 @@ function dotsync {
         --exclude "bin/" \
         --exclude "vscode/" \
         -avh --no-perms . ~;
+    
+    # add bash scripts to .bashrc in a new instance
+    echo_source "~/bash/bash_aliases.sh" "~/.bashrc"
+    echo_source "~/bash/bash_configs.sh" "~/.bashrc"
+    echo_source "~/bash/bash_functions.sh" "~/.bashrc"
+    
+    echo_source "~/.bashrc" "~/.bash_profile"
 
     source ~/.bashrc;
 }

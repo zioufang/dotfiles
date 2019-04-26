@@ -1,0 +1,9 @@
+{
+    "editor.tabSize": 4,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 30000,
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.minimap.enabled": false
+}

@@ -23,6 +23,7 @@ parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
 }
 
+# https://bash.cyberciti.biz/guide/Changing_bash_prompt
 # \u@\h \[\033[32m\] - user@host name and its displaying color
 # \W\[\033[33m\] - current working directory and its displaying color, use \w for full path
 # \$(parse_git_branch)\[\033[00m\] - git branch name and its displaying color
