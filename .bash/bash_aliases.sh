@@ -18,6 +18,7 @@ alias df="df -h"            # show disk space in mb instead of kb
 alias wget="wget -c"        # enable resume downloads
 alias ll="LC_COLLATE=C ls -lh --group-directories-first"     # readable ls, dotfiles first
 alias mkd="mkdir -pv"
+alias s!!="sudo !!"         # run sudo on the previous command
 
 # get external ip
 alias getip="curl ipinfo.io/ip"
