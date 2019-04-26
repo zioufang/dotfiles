@@ -16,8 +16,9 @@ function dotsync {
         -avh --no-perms . ~;
 
     # add bash scripts to .bashrc in a new instance
-    echo_source "~/.bash/bash_aliases.sh" ~/.bashrc;
+    # configs before aliases to make default tmux start work
     echo_source "~/.bash/bash_configs.sh" ~/.bashrc;
+    echo_source "~/.bash/bash_aliases.sh" ~/.bashrc;
     echo_source "~/.bash/bash_functions.sh" ~/.bashrc;
     
     echo_source "~/.bashrc" ~/.bash_profile;

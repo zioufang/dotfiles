@@ -17,8 +17,10 @@ alias tbz='tar -jxvf'
 alias df="df -h"            # show disk space in mb instead of kb
 alias wget="wget -c"        # enable resume downloads
 alias ll="LC_COLLATE=C ls -lh --group-directories-first"     # readable ls, dotfiles first
+alias ld="ll | grep '^d'"   # ls dir only
 alias mkd="mkdir -pv"
 alias s!!="sudo !!"         # run sudo on the previous command
+function ssht { /usr/bin/ssh -t $@ "tmux attach || tmux new"; } # immediate tmux after ssh
 
 # get external ip
 alias getip="curl ipinfo.io/ip"
