@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
 
-git pull origin master;
+
+    git pull origin master;
 
 # source file $1 to file $2, if $1 doesn't already exist in $2
 function echo_source {
@@ -11,25 +11,23 @@ function dotsync {
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "bootstrap.zsh" \
-        --exclude ".zshrc" \
+        --exclude ".bash" \
         --exclude "README.md" \
-        --exclude ".zsh/" \
         --exclude ".git/" \
         --exclude "vscode/" \
         -avh --no-perms . ~;
 
-    # add bash scripts to .bashrc in a new instance
-    # configs before aliases to make default tmux start work
-    echo_source "~/.bash/configs.sh" ~/.bashrc;
-    echo_source "~/.shell/paths.sh" ~/.bashrc;
-    echo_source "~/.shell/aliases.sh" ~/.bashrc;
-    echo_source "~/.shell/functions.sh" ~/.bashrc;
 
-    echo_source "~/.bashrc" ~/.bash_profile;
+    bash .zsh/customs.sh
 
-    source ~/.bashrc;
+    echo_source "~/.shell/aliases.sh" ~/.zshrc;
+    echo_source "~/.shell/functions.sh" ~/.zshrc;
 
-    echo "bash dotfiles activated"
+    echo_source "~/.zshrc" ~/.zprofile;
+    
+    source ~/.zshrc;
+
+    echo "zsh dotfiles activated"
 }
 
 if [ "$1"=="-f" ]; then
@@ -41,4 +39,3 @@ else
         dotsync;
     fi;
 fi;
-

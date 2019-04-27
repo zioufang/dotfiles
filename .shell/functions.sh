@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # check dir for the mk functions
 function checkdir {
     if [ -n "$1" ]; then
