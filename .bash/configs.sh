@@ -14,6 +14,9 @@ parse_git_branch() {
 # \$(parse_git_branch)\[\033[00m\] - git branch name and its displaying color
 export PS1="[\u \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]]$ "
 
+# change ls dir color to purple
+export LS_COLORS=$LS_COLORS:'di=0;35:'
+
 # THIS NEEDS to be before any alias to work
 # run tmux as default if
 # 1 tmux exists on the system
