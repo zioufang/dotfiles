@@ -19,6 +19,7 @@ alias ld="ll | grep '^d'"   # ls dir only
 alias mkd="mkdir -pv"
 alias s!="sudo !!"         # run sudo on the previous command
 function ssht { /usr/bin/ssh -t $@ "tmux attach || tmux new"; } # immediate tmux after ssh
+function c { if [[ $# -eq 1 ]]; then code "$1"; else code .; fi }
 
 # get external ip
 alias getip="curl ipinfo.io/ip"
