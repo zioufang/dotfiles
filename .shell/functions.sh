@@ -1,3 +1,27 @@
+# flask local test
+function flaskdebug { FLASK_APP=$1 FLASK_DEBUG=1 python -m flask run }
+
+# vscode
+function c { if [[ $# -eq 1 ]]; then code "$1"; else code .; fi }
+
+# enter docker bash
+function dbash { docker exec -it $1 bash }
+
+# immediate tmux after ssh
+function ssht { /usr/bin/ssh -t $@ "tmux attach || tmux new"; } 
+
+# pascal, camel & snake case conversion
+# 1. (^|_) at the start of the string or after an underscore - first group
+# 2. ([a-z]) single lower case letter - second group
+# 3. \U\2 uppercasing second group
+function snake_pascal {
+    echo "$1" | sed -r 's/(^|_)([a-z])/\U\2/g' 
+}
+
+function tosnake {
+     echo "$1" | sed -r 's/([A-Z])/_\L\1/g' | sed 's/^_//'
+}
+
 # check dir for the mk functions
 function checkdir {
     if [ -n "$1" ]; then
