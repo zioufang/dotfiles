@@ -5,5 +5,11 @@
     "editor.wordWrap": "on",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    //prettier - code formatter
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    //indent-rainbow
+    "indentRainbow.includedLanguages": ["python", "yaml"]
 }

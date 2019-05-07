@@ -17,7 +17,7 @@ ZSH_THEME=common
 
 plugins=(
     zsh-syntax-highlighting
-    zsh-autosuggestions
+    docker
 )
 
 source $ZSH/oh-my-zsh.sh
