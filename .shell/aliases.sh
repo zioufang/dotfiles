@@ -39,10 +39,3 @@ alias psmem="ps auxf | body sort -nr -k 4 | head"
 
 # search terminal history
 alias hg="history | grep"
-
-# DOCKER
-# docker full prune
-alias dprune="docker system prune --volumes -f"
-
-# print the latest created container and then enter its bash
-alias dbashl="docker ps -l && docker exec -it $(docker ps -l -q) bash"
