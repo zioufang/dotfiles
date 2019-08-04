@@ -11,20 +11,10 @@ function dotsync {
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "bootstrap.zsh" \
-        --exclude "clean.sh" \
-        --exclude ".zshrc" \
         --exclude "README.md" \
-        --exclude ".zsh/" \
+        --exclude ".config/zsh/" \
         --exclude ".git/" \
-        --exclude "vscode/" \
         -avh --no-perms . ~;
-
-    # add bash scripts to .bashrc in a new instance
-    # configs before aliases to make default tmux start work
-    echo_source "~/.bash/configs.sh" ~/.bashrc;
-    echo_source "~/.shell/paths.sh" ~/.bashrc;
-    echo_source "~/.shell/aliases.sh" ~/.bashrc;
-    echo_source "~/.shell/functions.sh" ~/.bashrc;
 
     echo_source "~/.bashrc" ~/.bash_profile;
 

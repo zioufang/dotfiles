@@ -27,15 +27,13 @@ source $ZSH/oh-my-zsh.sh
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "bootstrap.zsh" \
-        --exclude "clean.sh" \
-        --exclude ".bash" \
+        --exclude ".config/bash/" \
         --exclude "README.md" \
         --exclude ".git/" \
-        --exclude "vscode/" \
         -avh --no-perms . ~;
 
     echo_source "~/.shell/aliases.sh" ~/.zshrc;
-    echo_source "~/.shell/functions.sh" ~/.zshrc;
+    #echo_source "~/.shell/funcs.sh" ~/.zshrc;
     
 
 
