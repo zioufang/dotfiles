@@ -6,7 +6,7 @@
 "" GENERAL SETTING
 """""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
-
+set t_Co=256
 set autoread                    " set to auto read when a file is changed from outside
 set hidden                      " hide buffer, easy to switch files with unsaved changes
 set history=100
@@ -109,28 +109,3 @@ inoremap {<cr> {<cr>}<ESC>kA<CR><Tab>      " Automatically add closing
 
 " allow saving a sudo file if forgot to open as sudo
 cmap w!! w !sudo tee % >/dev/null
-            
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"" PLUGIN with vim-plug
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" install plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all'}
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'terryma/vim-multiple-cursors'
-Plug 'itchyny/lightline.vim'
-Plug 'derekwyatt/vim-scala'
-Plug 'ekalinin/Dockerfile.vim'
-
-call plug#end()
-
