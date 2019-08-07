@@ -8,6 +8,8 @@ function echo_source {
 }
 
 function dotsync {
+    mv .bashrc .bashrc.old
+    
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "bootstrap.zsh" \

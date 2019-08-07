@@ -18,8 +18,8 @@ export PS1="[\u \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]]$ "
 export LS_COLORS=$LS_COLORS:'di=0;35:'
 
 source ~/.config/shell/aliases.sh
-#source ~/.config/shell/funcs.sh
+source ~/.config/shell/funcs.sh
 
 export TERM=xterm # for remote session on urxvt
-export TERMINAL=urxvt
+export TERMINAL=rxvt-unicode
 export EDITOR=nvim
