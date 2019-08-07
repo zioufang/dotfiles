@@ -27,6 +27,10 @@ source $ZSH/oh-my-zsh.sh
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "bootstrap.zsh" \
+<<<<<<< HEAD
+=======
+        --exclude ".config/bash/" \
+>>>>>>> 800e503fe21a13f0eaaadca3147db34e189f17f5
         --exclude "README.md" \
         --exclude ".git/" \
         -avh --no-perms . ~;
