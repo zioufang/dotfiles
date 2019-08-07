@@ -1,0 +1,17 @@
+general {
+        output_format = "i3bar"
+        colors = false
+        markup = pango
+        interval = 30
+        color_good = '#2f343f'
+		color_degraded = '#ebcb8b'
+		color_bad = '#ba5e57'
+}
+
+
+order += "tztime local"
+
+tztime local {
+		format = "<span background='#81a1c1'> %time </span>"
+		format_time = "%a %-d %b %H:%M"
+}
