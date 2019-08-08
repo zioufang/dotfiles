@@ -9,6 +9,7 @@ set $mod Mod4
 font pango:monospace 8
 
 # autostart
+exec --no-startup-id feh --bg-scale ~/Downloads/j7RcsRQ-dark-space-wallpaper.jpg
 exec --no-startup-id compton -b
 exec --no-startup-id i3-sensible-terminal
 
@@ -158,7 +159,7 @@ for_window [instance="dropdown_*"] move scratchpad
 for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_term"] resize set 600 100
-for_window [instance="dropdown_term"] border pixel 3
+for_window [instance="dropdown_term"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
 bindsym $mod+Tab exec --no-startup-id "bash /home/zio/code/dotfiles/.scripts/i3cmds/spawn_dropdown term"

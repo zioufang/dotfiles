@@ -8,7 +8,7 @@ sudo apt-get install -y i3 i3status
 # rofi:			program launcher (replacement for more lightweight `dmenu`)
 # lxappearance:	gtk settings (e.g. themes)
 
-sudo apt-get install -y compton rxvt-unicode xsel rofi lxappearance rxvt-unicode-256color neovim
+sudo apt-get install -y compton rxvt-unicode xsel feh rofi lxappearance rxvt-unicode-256color neovim
 
 sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
 
