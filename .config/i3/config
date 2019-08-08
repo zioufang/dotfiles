@@ -124,7 +124,7 @@ bindsym $mod+Shift+0	move container to workspace $ws10; workspace $ws10
 
 # move workspace back and forth
 workspace_auto_back_and_forth yes
-bindsym $mod+z workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -139,20 +139,11 @@ bindsym $mod+Shift+i	exec --no-startup-id "bash ~/.scripts/i3cmds/i3resize up"
 bindsym $mod+Shift+o	exec --no-startup-id "bash ~/.scripts/i3cmds/i3resize right"
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 4
-#assign [class=URxvt] $ws1
+for_window [class=".*"] border pixel 5
 assign [class=Firefox] $ws2
 assign [class=Code] $ws3
 
 for_window [class=URxvt|Firefox|Code] focus
-
-
-# #---Dropdown window---# #
-#exec i3-sensible-terminal -name dropdown_term
-#for_window [instance="dropdown_term"] floating enable, move scratchpad
-#for_window [instance="dropdown_term"] resize set 625 450
-#for_window [instance="dropdown_term"] border pixel 3
-#bindsym $mod+Tab [instance="dropdown_term"] scratchpad show
 
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.
@@ -164,7 +155,7 @@ for_window [instance="dropdown_term"] resize set 600 100
 for_window [instance="dropdown_term"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
-bindsym $mod+Tab exec --no-startup-id "bash /home/zio/code/dotfiles/.scripts/i3cmds/spawn_dropdown term"
+bindsym $mod+z exec --no-startup-id "bash ~/.scripts/i3cmds/spawn_dropdown term"
 
 # panel
 bar {
