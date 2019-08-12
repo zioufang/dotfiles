@@ -9,9 +9,20 @@ set $sup Mod4
 # is used in the bar {} block below.
 font pango:monospace 8
 
+for_window [class=".*"] border pixel 1
+gaps inner 15
+gaps outer 15
+
+bindsym $mod+m  gaps inner current minus 5
+bindsym $mod+n  gaps inner current plus 5
+
+bindsym $mod+Shift+m  gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+n  gaps inner current set 15; gaps outer current set 15
+
+
 # autostart
 exec --no-startup-id feh --bg-scale ~/Downloads/j7RcsRQ-dark-space-wallpaper.jpg
-exec --no-startup-id compton -b
+exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
@@ -139,7 +150,6 @@ bindsym $mod+Shift+i	exec --no-startup-id "bash ~/.scripts/i3cmds/i3resize up"
 bindsym $mod+Shift+o	exec --no-startup-id "bash ~/.scripts/i3cmds/i3resize right"
 
 # window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 5
 assign [class=Firefox] $ws2
 assign [class=Code] $ws3
 
