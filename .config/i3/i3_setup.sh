@@ -35,6 +35,9 @@ sudo apt-get install -y compton rxvt-unicode xsel feh rofi lxappearance rxvt-uni
 
 sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
 
+# ranger
+sudo apt-get install ranger w3m-img
+
 
 
 

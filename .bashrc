@@ -20,6 +20,4 @@ export LS_COLORS=$LS_COLORS:'di=0;35:'
 source ~/.config/shell/aliases.sh
 source ~/.config/shell/funcs.sh
 
-export TERM=xterm # for remote session on urxvt
-export TERMINAL=rxvt-unicode
-export EDITOR=nvim
+export TERM=xterm # for remote session without urxvt
