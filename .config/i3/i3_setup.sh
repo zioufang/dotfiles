@@ -31,13 +31,10 @@ sudo apt-get install -y i3status i3lock i3block
 # rofi:			program launcher (replacement for more lightweight `dmenu`)
 # lxappearance:	gtk settings (e.g. themes)
 
-sudo apt-get install -y compton rxvt-unicode xsel feh rofi lxappearance rxvt-unicode-256color neovim
+sudo apt-get install -y compton rxvt-unicode xsel feh rofi dmenu lxappearance rxvt-unicode-256color neovim thunar
 
 sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
 
 # ranger
 sudo apt-get install ranger w3m-img
-
-
-
-
+ranger --copy-config=all
