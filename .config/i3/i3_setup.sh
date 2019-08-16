@@ -31,7 +31,7 @@ sudo apt-get install -y i3status i3lock i3block
 # rofi:			program launcher (replacement for more lightweight `dmenu`)
 # lxappearance:	gtk settings (e.g. themes)
 
-sudo apt-get install -y compton rxvt-unicode xsel feh rofi dmenu lxappearance rxvt-unicode-256color neovim thunar redshift ffmpeg
+sudo apt-get install -y compton rxvt-unicode xsel feh rofi dmenu lxappearance rxvt-unicode-256color neovim thunar dunst redshift ffmpeg fonts-font-awesome
 
 sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
 

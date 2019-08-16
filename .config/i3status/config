@@ -2,16 +2,64 @@ general {
         output_format = "i3bar"
         colors = false
         markup = pango
-        interval = 30
+        interval = 5
         color_good = '#2f343f'
 		color_degraded = '#ebcb8b'
 		color_bad = '#ba5e57'
 }
 
 
+order += "volume master"
+order += "battery 1"
+order += "wireless wlp62s0"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+# memory module needs i3status > 2.13
+order += "memory"
+order += "read_file meminfo"
+order += "disk /"
 order += "tztime local"
 
+volume master {
+	format = "<span background='#9FA8DA'>  %volume  </span>" 
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+wireless wlp62s0 {
+    format_up = "<span background='#9FA8DA'>  %quality </span>"
+	format_down = " ☡ WiFi "
+}
+
+battery 1 {
+        format = "<span background='#9FA8DA'> %status %percentage </span>"
+        format_down = "No battery"
+        status_chr = "⚡"
+        status_bat = ""
+        status_unk = ""
+        status_full = ""
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+cpu_usage {
+	format = "<span background='#81a1c1'>  %usage </span>"
+}
+
+cpu_temperature 0 {
+        format = "<span background='#81a1c1'>  %degrees°C </span>"
+}
+
+memory {
+    format = "<span background='#81a1c1'>  %percentage_used </span>"
+}
+
+disk "/" {
+	format = "<span background='#81a1c1'>  %avail </span>" 
+}
+
 tztime local {
-		format = "<span background='#81a1c1'> %time </span>"
+		format = "<span background='#ebcb8b'> %time </span>"
 		format_time = "%a %-d %b %H:%M"
 }

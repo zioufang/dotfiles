@@ -175,10 +175,10 @@ for_window [instance="dropdown_*"] move position center
 bindsym $sup+z exec --no-startup-id "bash ~/.scripts/i3cmds/spawn_dropdown term"
 
 # autostart
+exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000 &
 exec --no-startup-id exec feh --randomize --bg-scale ~/Downloads/wallpapers/*
 exec $term
 exec --no-startup-id exec compton -b --config ~/.config/compton.conf
-exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000
 # `pkill -USR1 redshift` to toggle redshift
 
 # panel
