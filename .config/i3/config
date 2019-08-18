@@ -27,18 +27,26 @@ bindsym $mod+Shift+n  gaps inner current set 15
 ####
 # KEYBINDS
 ####
+# system
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
 # start dmenu (a program launcher)
 bindsym $sup+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
 bindsym $sup+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
 
 # start different apps with super key
-bindsym $sup+Return exec $term
+bindsym $mod+Return exec $term
 bindsym $sup+w exec $BROWSER
 bindsym $sup+f exec $term -name shortcut_ranger -e ranger;
 
 # kill focused window
 bindsym $mod+q kill
-bindsym $mod+Shift+q bash ~/.config/i3lock/blur.sh
+bindsym $mod+Shift+q exec ~/.config/i3lock/blur.sh
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -172,13 +180,13 @@ for_window [instance="dropdown_term"] resize set 600 100
 for_window [instance="dropdown_term"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
-bindsym $sup+z exec --no-startup-id "bash ~/.scripts/i3cmds/spawn_dropdown term"
+bindsym $mod+z exec --no-startup-id "bash ~/.scripts/i3cmds/spawn_dropdown term"
 
 # autostart
-exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000 &
 exec --no-startup-id exec feh --randomize --bg-scale ~/Downloads/wallpapers/*
 exec $term
 exec --no-startup-id exec compton -b --config ~/.config/compton.conf
+exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000
 # `pkill -USR1 redshift` to toggle redshift
 
 # panel
@@ -188,7 +196,7 @@ bar {
                 statusline #2f343f
                 separator #4b5262
         }
-	font pango:mono 10
+	font pango:mono 10, FontAwesome 10
 	position top
 	mode dock
 	modifier None
