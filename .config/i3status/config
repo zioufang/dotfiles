@@ -12,6 +12,7 @@ general {
 order += "volume master"
 order += "battery 1"
 order += "wireless wlp62s0"
+order += "read_file primegpu"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 # memory module needs i3status > 2.13
@@ -30,6 +31,12 @@ volume master {
 wireless wlp62s0 {
     format_up = "<span background='#9FA8DA'>  %quality </span>"
 	format_down = " ☡ WiFi "
+}
+
+read_file primegpu {
+	format = "<span background='#9FA8DA'> %content </span>"
+	path = "/home/zio/.primegpu"
+	max_characters = 6
 }
 
 battery 1 {

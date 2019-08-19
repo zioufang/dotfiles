@@ -32,7 +32,8 @@ sudo apt-get install -y i3status i3lock i3block
 # lxappearance:	gtk settings (e.g. themes)
 
 sudo apt-get install -y compton rxvt-unicode xsel feh rofi dmenu lxappearance rxvt-unicode-256color \
-	neovim thunar dunst redshift ffmpeg fonts-font-awesome xbacklight
+	neovim thunar dunst redshift ffmpeg fonts-font-awesome xbacklight xfce4-power-manager \
+	mpd mpc ncmpcpp  # music 
 
 sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
 

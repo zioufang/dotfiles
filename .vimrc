@@ -27,8 +27,9 @@ set noerrorbells                " don't beep
 set novisualbell                " don't beep
 
 set wildignore+=.pyc            " ignore files when opening based on glob pattern
+set wildmode=longest,list,full  " enable autocompletion
 
-
+set number relativenumber
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "" DISPLAY SETTING
@@ -40,7 +41,6 @@ endtry
 
 set encoding=utf-8
 set background=dark
-set number
 set ruler                       " show cursor position
 set showmatch                   " highlight maching braces
 set noshowmode                    " show insert/replace/visual mode
@@ -57,6 +57,7 @@ set sidescrolloff=5
 set laststatus=2                " alwasy show tatus line
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 
+set splitbelow splitright " split default to below and right e.g. vsp
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -109,3 +110,9 @@ inoremap {<cr> {<cr>}<ESC>kA<CR><Tab>      " Automatically add closing
 
 " allow saving a sudo file if forgot to open as sudo
 cmap w!! w !sudo tee % >/dev/null
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" AUTO CMD
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufWritePre * %s/\s\+$//e   "auto deletes all trailing whitespaces on save
