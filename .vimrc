@@ -34,10 +34,6 @@ set number relativenumber
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "" DISPLAY SETTING
 """""""""""""""""""""""""""""""""""""""""""""""""""
-try
-    colorscheme desert
-catch
-endtry
 
 set encoding=utf-8
 set background=dark
@@ -84,7 +80,6 @@ set ignorecase                  " ignore case
 set smartcase                   " ...unless capital letters are used
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "" KEY MAPPING
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,8 +89,8 @@ nnoremap <F2> :exec &mouse!=""? "set mouse=" : "set mouse=a"<CR>
 nnoremap <F3> :set invwrap wrap?<CR>  " toggle word wrap
 nnoremap <F4> :set invhls hls?<CR>    " toggle search highlight
 noremap <C-h> <C-W>h                  " moving to the left window
-noremap <C-l> <C-W>l                  " moving to the right window      
-                
+noremap <C-l> <C-W>l                  " moving to the right window
+
 " indent/dedent what just pasted
 nnoremap <leader>< V`]<
 nnoremap <leader>> V`]>
@@ -104,7 +99,7 @@ nnoremap <leader>> V`]>
 nnoremap <leader>,t :silent s/\<\(\w\)\(\S*\)/\u\1\L\2/g<cr>
 
 map <C-c> "*y                         " copy to system clipboard (use register *)
-nnoremap cp yap<S-}>p                 " copy the current paragraph 
+nnoremap cp yap<S-}>p                 " copy the current paragraph
 
 inoremap {<cr> {<cr>}<ESC>kA<CR><Tab>      " Automatically add closing
 
@@ -116,3 +111,35 @@ cmap w!! w !sudo tee % >/dev/null
 "" AUTO CMD
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre * %s/\s\+$//e   "auto deletes all trailing whitespaces on save
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins with vim-plug
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  " autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
+
+" install plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'yggdroot/indentline'
+Plug 'honza/vim-snippets'
+Plug 'justinmk/vim-sneak'
+Plug 'luochen1990/rainbow'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+colorscheme gruvbox
