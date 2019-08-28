@@ -5,8 +5,8 @@
 # export BROWSER=firefox
 # export EDITOR=nvim
 
-set $mod Mod1
-set $sup Mod4
+set $mod Mod4
+#set $alt Mod4
 
 set $term --no-startup-id $TERMINAL
 # Font for window titles. Will also be used by the bar unless a different font
@@ -36,13 +36,13 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # start dmenu (a program launcher)
-bindsym $sup+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym $sup+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
 
 # start different apps with super key
 bindsym $mod+Return exec $term
-bindsym $sup+w exec $BROWSER
-bindsym $sup+f exec $term -name shortcut_ranger -e ranger;
+bindsym $mod+w exec $BROWSER
+bindsym $mod+Shift+f exec $term -name shortcut_ranger -e ranger;
 
 # kill focused window
 bindsym $mod+q kill
@@ -100,12 +100,12 @@ set $ws1 "1:HOM"
 set $ws2 "2:WEB"
 set $ws3 "3:DEV"
 set $ws4 "4: (╯°□°)╯︵ ┻━┻"
-set $ws5 "5: (-_･)σ ----･" 
+set $ws5 "5: (-_･)σ ----･"
 set $ws6 "6: ლ(ಠ_ಠლ)"
 set $ws7 "7: (∩｀-´)⊃━☆ﾟ.*･｡ﾟ"
 set $ws8 "8: ԅ(≖‿≖ԅ)"
 set $ws9 "9: (~‾▿‾)~"
-set $ws10 "10: ฅʕ•̫͡•ʔฅ" 
+set $ws10 "10: ฅʕ•̫͡•ʔฅ"
 # o(╥﹏╥)o
 # ┐(￣ヮ￣)┌
 
