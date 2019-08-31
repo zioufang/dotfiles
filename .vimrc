@@ -34,6 +34,7 @@ set number relativenumber
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "" DISPLAY SETTING
 """""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme desert
 
 set encoding=utf-8
 set background=dark
@@ -75,7 +76,6 @@ set autoindent
 
 " search setting
 set hlsearch                    " highlight search results
-set incsearch                   " do incremental search
 set ignorecase                  " ignore case
 set smartcase                   " ...unless capital letters are used
 
@@ -83,7 +83,6 @@ set smartcase                   " ...unless capital letters are used
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "" KEY MAPPING
 """""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-t> :NERDTreeToggle<CR>
 nnoremap <Tab><Tab> :vsplit<CR>       " split current file to a new window
 nnoremap <F2> :exec &mouse!=""? "set mouse=" : "set mouse=a"<CR>
 nnoremap <F3> :set invwrap wrap?<CR>  " toggle word wrap
@@ -112,34 +111,3 @@ cmap w!! w !sudo tee % >/dev/null
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre * %s/\s\+$//e   "auto deletes all trailing whitespaces on save
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins with vim-plug
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  " autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
-endif
-
-" install plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
-Plug 'yggdroot/indentline'
-Plug 'honza/vim-snippets'
-Plug 'justinmk/vim-sneak'
-Plug 'luochen1990/rainbow'
-Plug 'morhetz/gruvbox'
-
-call plug#end()
-
-colorscheme gruvbox
