@@ -1,3 +1,7 @@
 export TERMINAL=rxvt-unicode
 export EDITOR=nvim
 export BROWSER=firefox
+
+# map caps to ctrl for vim
+setxkbmap -option 'caps:ctrl_modifier'
+

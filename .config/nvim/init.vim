@@ -10,10 +10,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
-Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -22,24 +19,34 @@ Plug 'justinmk/vim-sneak'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-scripts/indentpython.vim'             " better indent
+Plug 'vim-scripts/indentpython.vim'             " better indent for python
+Plug 'godlygeek/tabular'
+Plug 'szw/vim-maximizer'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 colorscheme gruvbox
 
 "" fzf
 " install fd-find and ripgrep
-noremap <leader>ff :Files ~/projects<Cr>
-noremap <leader>fg :GFiles<Cr>
-noremap <leader>fb :Buffers<Cr>
-noremap <leader>fr :Rg<Cr>
+noremap <leader>f :Files ~/projects<Cr>
+noremap <leader>g :GFiles<Cr>
+noremap <leader>b :Buffers<Cr>
+noremap <leader>r :Rg<Cr>
+
+"" ale
+" pip install pyls
+"
+
+"" gitgutter
+map <F2> :GitGutterToggle<Cr>
+let g:gitgutter_map_keys = 0
+let g:gitgutter_enabled = 0
 
 "" nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <F10> :NERDTreeToggle<CR>
 let g:NERDTreeIgnore = ['^venv$[[dir]]']        " ignore folder named venv
-
-"" syntastic
 
 "" indentline
 " :IndentLinesToggle
@@ -52,6 +59,9 @@ let g:sneak#label = 1                           " EasyMotion behaviour
 "" airline
 let g:airline_section_c = 'b%n %<%F%*%m%*'      " buffer number, full path and modifier
 let g:airline_section_z = 'c:%v L:%L'
+
+"" maximizer
+let g:maximizer_default_mapping_key = '<F3>'
 
 "" jedi
 "use Ctrl+N & CTRL+P to navigate completion suggestion
@@ -90,8 +100,6 @@ noremap <C-K> <C-W><C-K>
 noremap <C-L> <C-W><C-L>
 noremap <C-H> <C-W><C-H>
 
-noremap <C-Down> <Nop> 
-
 noremap <C-Left> :vertical resize +5<Cr>
 noremap <C-Right> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
@@ -105,18 +113,17 @@ noremap <leader>ve :e ~/.config/nvim/init.vim<Cr>
 
 nnoremap Q @q
 
-" move line up and down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-
 "" movements in insert mode
-" Ctrl+O = insert >> normal
-inoremap <C-H> <C-O>I
-inoremap <C-L> <C-O>A
+inoremap <A-j> <C-O>j
+inoremap <A-k> <C-O>k
+inoremap <A-l> <C-O>l
+inoremap <A-h> <C-O>h
+inoremap <A-w> <C-O>w
+inoremap <A-e> <Esc>ea
+inoremap <A-b> <C-O>b
+inoremap <A-g> <Esc>gea
+inoremap <A-L> <C-O>$
+inoremap <A-H> <C-O>^
 
 inoremap <C-D> <Del>
 
@@ -155,3 +162,4 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
+
