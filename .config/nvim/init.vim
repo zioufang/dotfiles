@@ -37,7 +37,8 @@ noremap <leader>r :Rg<Cr>
 
 "" ale
 " pip install pyls
-"
+let g:ale_linters = { 'python': ['pyls']}
+let g:ale_completion_enabled = 1
 
 "" gitgutter
 map <F2> :GitGutterToggle<Cr>
@@ -111,6 +112,9 @@ noremap <C-X> :bp\|bd #<Cr>
 noremap <leader>vs :so ~/.config/nvim/init.vim<Cr>
 noremap <leader>ve :e ~/.config/nvim/init.vim<Cr>
 
+noremap <leader>cd :cd %:p:h<Cr>
+
+nnoremap Y y$
 nnoremap Q @q
 
 "" movements in insert mode
@@ -144,6 +148,10 @@ tnoremap <C-J> <C-\><C-N><C-W><C-J>
 tnoremap <C-K> <C-\><C-N><C-W><C-K>
 tnoremap <C-L> <C-\><C-N><C-W><C-L>
 tnoremap <C-H> <C-\><C-N><C-W><C-H>
+
+" run paragraph in terminal below, and cursor at the next paragraph
+nnoremap <leader>r yap<C-W>jpi<Cr><C-\><C-N><C-W>k]]
+
 
 """ Python autocommands
 au BufNewFile,BufRead *.py
