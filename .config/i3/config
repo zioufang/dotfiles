@@ -185,7 +185,6 @@ bindsym $mod+z exec --no-startup-id "bash ~/.scripts/i3cmds/spawn_dropdown term"
 
 # autostart
 exec --no-startup-id exec feh --randomize --bg-scale ~/Downloads/wallpapers/*
-exec $term
 exec --no-startup-id exec compton -b --config ~/.config/compton.conf
 exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000
 # `pkill -USR1 redshift` to toggle redshift
@@ -193,9 +192,10 @@ exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000
 # panel
 bar {
         colors {
-                background #2f343f
-                statusline #2f343f
-                separator #4b5262
+                background #282828
+                statusline #282828
+                separator #689d6a
+		focused_workspace #282828 #458588 #282828
         }
 	font pango:mono 10, FontAwesome 10
 	position top
