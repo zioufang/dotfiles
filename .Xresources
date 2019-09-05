@@ -53,10 +53,13 @@
 URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
 URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
 URxvt.scrollBar: false
-URxvt.urlLauncher:		firefox
-URxvt.underlineURLs:	true
 
-URxvt.perl-ext-common: default,resize-font
+URxvt.perl-ext-common: default,resize-font,url-select
+
+URxvt.colorUL: #4682B4
+URxvt.url-select.launcher: firefox
+URxvt.url-select.underline: true
+URxvt.keysym.C-Delete: perl:url-select:select_next
 
 ! URxvt sent the same sequence as xterm
 URxvt.keysym.C-Up:     \033[1;5A

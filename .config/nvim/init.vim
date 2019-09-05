@@ -107,9 +107,12 @@ noremap <C-Right> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
 
+nmap <F4> :set hls!<Cr>
+" hit '/' highlights then enter search mode
+nnoremap / :set hls<Cr>/
+
 " bring back the prev buffer, close the current one and keep the split panes
 noremap <C-X> :bp\|bd #<Cr>
-
 
 noremap <leader>cd :cd %:p:h<Cr>
 
@@ -142,13 +145,14 @@ inoremap `` ``<Left>
 vnoremap <Tab>   ><Esc>gv
 vnoremap <S-Tab> <<Esc>gv
 
-"" custom commands
+""" CUSTOM COMMANDS
 :command! Vs so ~/.config/nvim/init.vim
 :command! Ve e ~/.config/nvim/init.vim
 :command! Vo e #<1                          " edit the latest oldfiles
 
-"" terminal
-nnoremap <F2> :split<Space><Bar><Space>term<Cr>i
+""" TERMINAL
+" split terminal below, shrink by 20 then enter insert mode
+nnoremap <F2> :split<Space><Bar><Space>term<Cr>20<C-W>-i
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-J> <C-\><C-N><C-W><C-J>
 tnoremap <C-K> <C-\><C-N><C-W><C-K>
