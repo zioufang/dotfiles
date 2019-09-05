@@ -1,5 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -24,6 +23,7 @@ Plug 'godlygeek/tabular'
 Plug 'szw/vim-maximizer'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'ervandew/supertab'
 call plug#end()
 
 colorscheme gruvbox
@@ -41,12 +41,12 @@ let g:ale_linters = { 'python': ['pyls']}
 let g:ale_completion_enabled = 1
 
 "" gitgutter
-map <F2> :GitGutterToggle<Cr>
+map <F3> :GitGutterToggle<Cr>
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0
 
 "" nerdtree
-map <F10> :NERDTreeToggle<CR>
+map <F4> :NERDTreeToggle<CR>
 let g:NERDTreeIgnore = ['^venv$[[dir]]']        " ignore folder named venv
 
 "" indentline
@@ -90,6 +90,7 @@ set list                            " used to enable listchars below
 set listchars=tab:\ \ ,trail:•,extends:>,precedes:<
 set nojoinspaces                    " no extra space after '.' when joining lines
 set wildignore+=.pyc |
+set wildmode=longest,list,full      " better autocomplete in command mode
 
 """ KEY MAPPINGS
 map <Space> <leader>
@@ -109,11 +110,11 @@ noremap <C-Down> :resize -5<Cr>
 " bring back the prev buffer, close the current one and keep the split panes
 noremap <C-X> :bp\|bd #<Cr>
 
-noremap <leader>vs :so ~/.config/nvim/init.vim<Cr>
-noremap <leader>ve :e ~/.config/nvim/init.vim<Cr>
 
 noremap <leader>cd :cd %:p:h<Cr>
 
+nnoremap H ^
+nnoremap L $
 nnoremap Y y$
 nnoremap Q @q
 
@@ -141,8 +142,13 @@ inoremap `` ``<Left>
 vnoremap <Tab>   ><Esc>gv
 vnoremap <S-Tab> <<Esc>gv
 
+"" custom commands
+:command! Vs so ~/.config/nvim/init.vim
+:command! Ve e ~/.config/nvim/init.vim
+:command! Vo e #<1                          " edit the latest oldfiles
+
 "" terminal
-nnoremap <F1> :split<Space><Bar><Space>term<Cr>i
+nnoremap <F2> :split<Space><Bar><Space>term<Cr>i
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-J> <C-\><C-N><C-W><C-J>
 tnoremap <C-K> <C-\><C-N><C-W><C-K>
