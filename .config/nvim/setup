@@ -1,0 +1,14 @@
+## for undo
+mkdir -p ~/.config/nvim/undodir
+
+## add this to .bashrc for git to work in vim term
+export GIT_TERMINAL_PROMPT=1
+
+## for fzf
+# file finder
+https://github.com/sharkdp/fd
+# ripgrep
+https://github.com/BurntSushi/ripgrep
+# ctags
+https://github.com/universal-ctags/ctags
+

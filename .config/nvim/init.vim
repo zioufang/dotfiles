@@ -1,4 +1,4 @@
-
+""" PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -14,6 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'			" better newrw
 Plug 'justinmk/vim-sneak'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
@@ -21,8 +22,6 @@ Plug 'yggdroot/indentline'
 Plug 'vim-scripts/indentpython.vim'             " better indent for python
 Plug 'godlygeek/tabular'
 Plug 'szw/vim-maximizer'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
 call plug#end()
 
@@ -33,7 +32,7 @@ colorscheme gruvbox
 noremap <leader>f :Files ~/projects<Cr>
 noremap <leader>g :GFiles<Cr>
 noremap <leader>b :Buffers<Cr>
-noremap <leader>r :Rg<Cr>
+noremap <leader>l :Lines<Cr>
 
 "" ale
 " pip install pyls
@@ -44,10 +43,6 @@ let g:ale_completion_enabled = 1
 map <F3> :GitGutterToggle<Cr>
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0
-
-"" nerdtree
-map <F4> :NERDTreeToggle<CR>
-let g:NERDTreeIgnore = ['^venv$[[dir]]']        " ignore folder named venv
 
 "" indentline
 " :IndentLinesToggle
@@ -62,7 +57,7 @@ let g:airline_section_c = 'b%n %<%F%*%m%*'      " buffer number, full path and m
 let g:airline_section_z = 'c:%v L:%L'
 
 "" maximizer
-let g:maximizer_default_mapping_key = '<F3>'
+let g:maximizer_default_mapping_key = '<F11>'
 
 "" jedi
 "use Ctrl+N & CTRL+P to navigate completion suggestion
@@ -73,13 +68,44 @@ let g:jedi#documentation_command = "<leader>pd"
 let g:jedi#usages_command = "<leader>pu"
 let g:jedi#rename_command = "<leader>pr"
 
+"" supertab
+let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 """ GENERAL
 filetype plugin indent on
+set scroll=15
 set hidden                          " easy to switch buffers/files with unsaved changes
 set lazyredraw                      " lazyredraw, for macro performance
-set scroll=15
+set undodir=~/.config/nvim/undodir
+set undofile
+
+""" NETRW
+set wildignore+=.pyc,.git,venv,.ipynb_checkpoints,__pycache__ 	" used to hide files for vim-vinegar
+" better preview, with file explorer to the left with 20% width
+let g:netrw_preview=1
+let g:netrw_alto=0
+let g:netrw_winsize=20
+
+" toggle netrw
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i 
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Vexplore
+    endif
+endfunction
+noremap <leader>n :call ToggleNetrw()<CR>
 
 """ EDITOR
 set background=dark
@@ -89,8 +115,11 @@ set noshowmode                      " disable the redundant show mode on the las
 set list                            " used to enable listchars below
 set listchars=tab:\ \ ,trail:•,extends:>,precedes:<
 set nojoinspaces                    " no extra space after '.' when joining lines
-set wildignore+=.pyc |
 set wildmode=longest,list,full      " better autocomplete in command mode
+
+""" LEADERS
+noremap <leader>p "+p
+noremap <leader>y "+y
 
 """ KEY MAPPINGS
 map <Space> <leader>
@@ -116,8 +145,6 @@ noremap <C-X> :bp\|bd #<Cr>
 
 noremap <leader>cd :cd %:p:h<Cr>
 
-nnoremap H ^
-nnoremap L $
 nnoremap Y y$
 nnoremap Q @q
 
@@ -135,13 +162,6 @@ inoremap <A-H> <C-O>^
 
 inoremap <C-D> <Del>
 
-inoremap () ()<Left>
-inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap `` ``<Left>
-
 vnoremap <Tab>   ><Esc>gv
 vnoremap <S-Tab> <<Esc>gv
 
@@ -151,8 +171,8 @@ vnoremap <S-Tab> <<Esc>gv
 :command! Vo e #<1                          " edit the latest oldfiles
 
 """ TERMINAL
-" split terminal below, shrink by 20 then enter insert mode
-nnoremap <F2> :split<Space><Bar><Space>term<Cr>20<C-W>-i
+" split terminal below in current file dir, shrink by 20 then enter insert mode
+nnoremap <F2> :cd %:p:h<Cr>:split<Space><Bar><Space>term<Cr>20<C-W>-i
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-J> <C-\><C-N><C-W><C-J>
 tnoremap <C-K> <C-\><C-N><C-W><C-K>
