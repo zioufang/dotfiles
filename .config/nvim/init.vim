@@ -34,6 +34,9 @@ noremap <leader>g :GFiles<Cr>
 noremap <leader>b :Buffers<Cr>
 noremap <leader>l :Lines<Cr>
 
+let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
+
 "" ale
 " pip install pyls
 let g:ale_linters = { 'python': ['pyls']}
@@ -77,6 +80,8 @@ let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
 filetype plugin indent on
 set scroll=15
 set hidden                          " easy to switch buffers/files with unsaved changes
+set ignorecase						" ignorecase while searching, use \C in the end to enforce case-sensitivity
+set smartcase						" if pattern contains uppsecase, search is case-sensitve
 set lazyredraw                      " lazyredraw, for macro performance
 set undodir=~/.config/nvim/undodir
 set undofile
@@ -84,9 +89,9 @@ set undofile
 """ NETRW
 set wildignore+=.pyc,.git,venv,.ipynb_checkpoints,__pycache__ 	" used to hide files for vim-vinegar
 " better preview, with file explorer to the left with 20% width
-let g:netrw_preview=1
-let g:netrw_alto=0
-let g:netrw_winsize=20
+let g:netrw_preview = 1
+let g:netrw_alto = 0
+let g:netrw_winsize = 20
 
 " toggle netrw
 let g:NetrwIsOpen=0
@@ -116,10 +121,23 @@ set list                            " used to enable listchars below
 set listchars=tab:\ \ ,trail:•,extends:>,precedes:<
 set nojoinspaces                    " no extra space after '.' when joining lines
 set wildmode=longest,list,full      " better autocomplete in command mode
+set diffopt=vertical				" git diff windows split to the side
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
 
 """ LEADERS
 noremap <leader>p "+p
 noremap <leader>y "+y
+
+"" session management
+" named terminal buffer is not retained so remove the default terminal before
+" it is saved
+noremap <leader>sm :bd! default<Cr>:mksession! ~/.config/nvim/sessions/0_latest.vim<Cr>
+noremap <leader>ss :so ~/.config/nvim/sessions/0_latest.vim<Cr>
+noremap <leader>sk :mksession! ~/.config/nvim/sessions/
+noremap <leader>sl :so ~/.config/nvim/sessions/
 
 """ KEY MAPPINGS
 map <Space> <leader>
@@ -162,16 +180,14 @@ inoremap <A-H> <C-O>^
 
 inoremap <C-D> <Del>
 
-vnoremap <Tab>   ><Esc>gv
-vnoremap <S-Tab> <<Esc>gv
+vnoremap > ><Esc>gv
+vnoremap < <<Esc>gv
 
 """ CUSTOM COMMANDS
 :command! Vs so ~/.config/nvim/init.vim
 :command! Ve e ~/.config/nvim/init.vim
-:command! Vo e #<1                          " edit the latest oldfiles
 
 """ TERMINAL
-" split terminal below in current file dir, shrink by 20 then enter insert mode
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-J> <C-\><C-N><C-W><C-J>
 tnoremap <C-K> <C-\><C-N><C-W><C-K>
@@ -193,7 +209,7 @@ function! ToggleTerm(termname, git)
 		" if is a git repo, then use project root folder
 		" else use original vim path
 		if a:git > 0
-			:exe "cd `git rev-parse --show-toplevel`"
+			:exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
 		endif
 		:exe "split"
 		:exe "resize 15"
@@ -204,7 +220,7 @@ function! ToggleTerm(termname, git)
 endfunction
 
 " run paragraph in terminal below, and cursor at the next paragraph
-nnoremap <leader>r yap<C-W>jpi<Cr><C-\><C-N><C-W>k]]
+nnoremap <leader>r yap<C-W>jpi<Cr><C-\><C-N><C-W>k}j
 
 
 """ Python autocommands
