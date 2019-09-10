@@ -40,7 +40,7 @@ let g:ale_linters = { 'python': ['pyls']}
 let g:ale_completion_enabled = 1
 
 "" gitgutter
-map <F3> :GitGutterToggle<Cr>
+map <F2> :GitGutterToggle<Cr>
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0
 
@@ -136,7 +136,7 @@ noremap <C-Right> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
 
-nmap <F4> :set hls!<Cr>
+nmap <F3> :set hls!<Cr>
 " hit '/' highlights then enter search mode
 nnoremap / :set hls<Cr>/
 
@@ -172,12 +172,36 @@ vnoremap <S-Tab> <<Esc>gv
 
 """ TERMINAL
 " split terminal below in current file dir, shrink by 20 then enter insert mode
-nnoremap <F2> :cd %:p:h<Cr>:split<Space><Bar><Space>term<Cr>20<C-W>-i
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-J> <C-\><C-N><C-W><C-J>
 tnoremap <C-K> <C-\><C-N><C-W><C-K>
 tnoremap <C-L> <C-\><C-N><C-W><C-L>
 tnoremap <C-H> <C-\><C-N><C-W><C-H>
+
+nnoremap <leader>t :call ToggleTerm("default", 1)<Cr>
+function! ToggleTerm(termname, git)
+	let pane = bufwinnr(a:termname)
+	let buf = bufexists(a:termname)
+	if pane > 0
+		:exe pane . "wincmd c"
+	elseif buf > 0
+		:exe "split"
+		:exe "resize 15"
+		:exe "buffer " . a:termname
+		:exe "normal! i"
+	else
+		" if is a git repo, then use project root folder
+		" else use original vim path
+		if a:git > 0
+			:exe "cd `git rev-parse --show-toplevel`"
+		endif
+		:exe "split"
+		:exe "resize 15"
+		:terminal
+		:exe "f " a:termname
+		:exe "normal! i"
+	endif
+endfunction
 
 " run paragraph in terminal below, and cursor at the next paragraph
 nnoremap <leader>r yap<C-W>jpi<Cr><C-\><C-N><C-W>k]]
