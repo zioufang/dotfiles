@@ -23,6 +23,7 @@ Plug 'vim-scripts/indentpython.vim'             " better indent for python
 Plug 'godlygeek/tabular'
 Plug 'szw/vim-maximizer'
 Plug 'ervandew/supertab'
+Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 call plug#end()
 
 colorscheme gruvbox
@@ -73,6 +74,35 @@ let g:jedi#rename_command = "<leader>pr"
 
 "" supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
+
+"" slime, 
+let g:slime_target = "neovim"
+let g:slime_python_ipython = 1
+
+nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
+function! ToggleRepl(repl)
+	let pane = bufwinnr(a:repl)
+	let buf = bufexists(a:repl)
+	if pane > 0
+		exe pane . "wincmd c"
+	elseif buf > 0
+		split
+		resize 20
+		exe "buffer " . a:repl
+		let l:repl_job_id = b:terminal_job_id
+		" Go back to the previous window and set jobid
+		exe 'normal!' . "\<C-W>p"
+		let b:slime_config = {'jobid': l:repl_job_id}
+	else
+		exe "split | term " . a:repl
+		resize 20
+		exe "f " a:repl
+		let l:repl_job_id = b:terminal_job_id
+		" Go back to the previous window and set jobid
+		exe 'normal!' . "\<C-W>p"
+		let b:slime_config = {'jobid': l:repl_job_id}
+	endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -180,8 +210,8 @@ inoremap <A-H> <C-O>^
 
 inoremap <C-D> <Del>
 
-vnoremap > ><Esc>gv
-vnoremap < <<Esc>gv
+vnoremap > ^o^><Esc>gv
+vnoremap < 0o0<<Esc>gv
 
 """ CUSTOM COMMANDS
 :command! Vs so ~/.config/nvim/init.vim
@@ -199,28 +229,25 @@ function! ToggleTerm(termname, git)
 	let pane = bufwinnr(a:termname)
 	let buf = bufexists(a:termname)
 	if pane > 0
-		:exe pane . "wincmd c"
+		exe pane . "wincmd c"
 	elseif buf > 0
-		:exe "split"
-		:exe "resize 15"
-		:exe "buffer " . a:termname
-		:exe "normal! i"
+		exe "split"
+		exe "resize 15"
+		exe "buffer " . a:termname
+		exe "normal! i"
 	else
 		" if is a git repo, then use project root folder
 		" else use original vim path
 		if a:git > 0
-			:exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
+			exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
 		endif
-		:exe "split"
-		:exe "resize 15"
+		exe "split"
+		exe "resize 15"
 		:terminal
-		:exe "f " a:termname
-		:exe "normal! i"
+		exe "f " a:termname
+		exe "normal! i"
 	endif
 endfunction
-
-" run paragraph in terminal below, and cursor at the next paragraph
-nnoremap <leader>r yap<C-W>jpi<Cr><C-\><C-N><C-W>k}j
 
 
 """ Python autocommands
