@@ -1,3 +1,21 @@
+""" MAPPINGS
+"" Leaders
+" f	  : FZF Files
+" g   : FZF GFiles
+" b   : FZF Buffers
+" s   : Slime Send to Repl
+" r   : Toggle Repl Terminal
+" y   : Yank to system clipboard
+" cd  : cd to current directory
+" t   : Toggle 'default' terminal
+
+"" F# Keys
+" F2  : Toggle netrw
+" F3  : Toggle search highlight
+" F4  : Toggle GitGutter
+" F11 : Toggle Maximize current window
+
+
 """ PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -33,7 +51,6 @@ colorscheme gruvbox
 noremap <leader>f :Files ~/projects<Cr>
 noremap <leader>g :GFiles<Cr>
 noremap <leader>b :Buffers<Cr>
-noremap <leader>l :Lines<Cr>
 
 let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
@@ -44,7 +61,7 @@ let g:ale_linters = { 'python': ['pyls']}
 let g:ale_completion_enabled = 1
 
 "" gitgutter
-map <F2> :GitGutterToggle<Cr>
+map <F4> :GitGutterToggle<Cr>
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0
 
@@ -63,15 +80,6 @@ let g:airline_section_z = 'c:%v L:%L'
 "" maximizer
 let g:maximizer_default_mapping_key = '<F11>'
 
-"" jedi
-"use Ctrl+N & CTRL+P to navigate completion suggestion
-let g:jedi#use_splits_not_buffers = "right"
-let g:jedi#max_doc_height = 60
-let g:jedi#goto_command = "<leader>pg"
-let g:jedi#documentation_command = "<leader>pd"
-let g:jedi#usages_command = "<leader>pu"
-let g:jedi#rename_command = "<leader>pr"
-
 "" supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
 
@@ -79,7 +87,14 @@ let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
 let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
+" send visual selection, jump to end of the previous visual selection then move
+" to the next nonblank line
+xmap <leader>s <Plug>SlimeRegionSend`>:call search('^.\+')<Cr>
+" send, jump to the end of paragraph then move to the next nonblank line
+nmap <leader>s <Plug>SlimeParagraphSend}:call search('^.\+')<Cr>
+
 nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
+
 function! ToggleRepl(repl)
 	let pane = bufwinnr(a:repl)
 	let buf = bufexists(a:repl)
@@ -94,8 +109,13 @@ function! ToggleRepl(repl)
 		exe 'normal!' . "\<C-W>p"
 		let b:slime_config = {'jobid': l:repl_job_id}
 	else
-		exe "split | term " . a:repl
-		resize 20
+		try 
+		    exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
+		    exe "split | term source venv/bin/activate && " . a:repl
+		catch
+            exe "split | term " . a:repl
+        endtry
+        resize 20
 		exe "f " a:repl
 		let l:repl_job_id = b:terminal_job_id
 		" Go back to the previous window and set jobid
@@ -106,6 +126,7 @@ endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """ GENERAL
 filetype plugin indent on
 set scroll=15
@@ -114,7 +135,8 @@ set ignorecase						" ignorecase while searching, use \C in the end to enforce c
 set smartcase						" if pattern contains uppsecase, search is case-sensitve
 set lazyredraw                      " lazyredraw, for macro performance
 set undodir=~/.config/nvim/undodir
-set undofile
+"set undofile
+
 
 """ NETRW
 set wildignore+=.pyc,.git,venv,.ipynb_checkpoints,__pycache__ 	" used to hide files for vim-vinegar
@@ -140,7 +162,8 @@ function! ToggleNetrw()
         silent Vexplore
     endif
 endfunction
-noremap <leader>n :call ToggleNetrw()<CR>
+noremap <F2> :call ToggleNetrw()<CR>
+
 
 """ EDITOR
 set background=dark
@@ -157,17 +180,11 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 
-""" LEADERS
-noremap <leader>p "+p
-noremap <leader>y "+y
 
-"" session management
-" named terminal buffer is not retained so remove the default terminal before
-" it is saved
-noremap <leader>sm :bd! default<Cr>:mksession! ~/.config/nvim/sessions/0_latest.vim<Cr>
-noremap <leader>ss :so ~/.config/nvim/sessions/0_latest.vim<Cr>
-noremap <leader>sk :mksession! ~/.config/nvim/sessions/
-noremap <leader>sl :so ~/.config/nvim/sessions/
+""" LEADERS
+noremap <leader>y "+y
+noremap <leader>cd :cd %:p:h<Cr>
+
 
 """ KEY MAPPINGS
 map <Space> <leader>
@@ -191,15 +208,13 @@ nnoremap / :set hls<Cr>/
 " bring back the prev buffer, close the current one and keep the split panes
 noremap <C-X> :bp\|bd #<Cr>
 
-noremap <leader>cd :cd %:p:h<Cr>
-
 nnoremap Y y$
 nnoremap Q @q
 
 "" movements in insert mode
 inoremap <A-j> <C-O>j
 inoremap <A-k> <C-O>k
-inoremap <A-l> <C-O>l
+inoremap <A-l> <C-O>a
 inoremap <A-h> <C-O>h
 inoremap <A-w> <C-O>w
 inoremap <A-e> <Esc>ea
@@ -217,6 +232,12 @@ vnoremap < 0o0<<Esc>gv
 :command! Vs so ~/.config/nvim/init.vim
 :command! Ve e ~/.config/nvim/init.vim
 
+"" session management
+" named terminal buffer is not retained so remove them before it is saved
+:command! Sm bd! default<Cr>:mksession! ~/.config/nvim/sessions/0_latest.vim
+:command! Ss so ~/.config/nvim/sessions/0_latest.vim
+
+
 """ TERMINAL
 tnoremap <Esc> <C-\><C-N>
 tnoremap <C-J> <C-\><C-N><C-W><C-J>
@@ -224,8 +245,8 @@ tnoremap <C-K> <C-\><C-N><C-W><C-K>
 tnoremap <C-L> <C-\><C-N><C-W><C-L>
 tnoremap <C-H> <C-\><C-N><C-W><C-H>
 
-nnoremap <leader>t :call ToggleTerm("default", 1)<Cr>
-function! ToggleTerm(termname, git)
+nnoremap <leader>t :call ToggleTerm("default")<Cr>
+function! ToggleTerm(termname)
 	let pane = bufwinnr(a:termname)
 	let buf = bufexists(a:termname)
 	if pane > 0
@@ -238,9 +259,11 @@ function! ToggleTerm(termname, git)
 	else
 		" if is a git repo, then use project root folder
 		" else use original vim path
-		if a:git > 0
+		try	
 			exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
-		endif
+		catch
+			echo "This is NOT a git repo"
+		endtry
 		exe "split"
 		exe "resize 15"
 		:terminal
