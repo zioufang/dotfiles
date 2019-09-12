@@ -1,9 +1,10 @@
 """ MAPPINGS
 "" Leaders
-" f	  : FZF Files
+" f   : FZF Files
 " g   : FZF GFiles
 " b   : FZF Buffers
-" s   : Slime Send to Repl
+" s   : Slime Send Paragraph/Region to Repl
+" l   : SLime send current line to Repl
 " r   : Toggle Repl Terminal
 " y   : Yank to system clipboard
 " cd  : cd to current directory
@@ -88,10 +89,12 @@ let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
 " send visual selection, jump to end of the previous visual selection then move
-" to the next nonblank line
-xmap <leader>s <Plug>SlimeRegionSend`>:call search('^.\+')<Cr>
+" to the next nonblank line before the last line of the file
+xmap <leader>s <Plug>SlimeRegionSend`>:call search('^.\+', '', line('$'))<Cr>
 " send, jump to the end of paragraph then move to the next nonblank line
-nmap <leader>s <Plug>SlimeParagraphSend}:call search('^.\+')<Cr>
+" before the last line file
+nmap <leader>s <Plug>SlimeParagraphSend}:call search('^.\+', '', line('$'))<Cr>
+nmap <leader>l <Plug>SlimeLineSend<Cr>
 
 nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
 
@@ -121,6 +124,11 @@ function! ToggleRepl(repl)
 		" Go back to the previous window and set jobid
 		exe 'normal!' . "\<C-W>p"
 		let b:slime_config = {'jobid': l:repl_job_id}
+		" if repl is ipython3 then enable autoload
+		if a:repl == "ipython3"
+			call chansend(l:repl_job_id, "%load_ext autoreload\<Cr>")
+			call chansend(l:repl_job_id, "%autoreload 2\<Cr>")
+		endif
 	endif
 endfunction
 
@@ -179,7 +187,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-
+set formatoptions-=tc               " disable auto wrap while typing
 
 """ LEADERS
 noremap <leader>y "+y

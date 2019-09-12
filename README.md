@@ -1,8 +1,13 @@
-Sync the dotfiles:  
-bash:  
-`bootstrap.sh [-f]`  
+# Dotfiles
+My minimalist software development setup  
+Sync the dotfiles, `-f` can be added in the end to overwrite:  
+`chmod 755 bootstrap.sh && ./bootstrap.sh`  
 
-zsh:  
-`bash bootstrap.zsh`  
+## The Setup
+**i3-gaps**  
+**neovim**  
+**bash**  
+**urxvt**  
+**tmux**  
 
-Auto completion sourced from bash-it  
+
