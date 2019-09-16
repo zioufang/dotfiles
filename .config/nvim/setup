@@ -1,10 +1,6 @@
 ## for undo
 mkdir -p ~/.config/nvim/undodir
 
-## for session management
-mkdir -p ~/.config/nvim/sessions
-touch ~/.config/nvim/sessions/0_latest.vim
-
 ## add this to .bashrc for git to work in vim term
 export GIT_TERMINAL_PROMPT=1
 

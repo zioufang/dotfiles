@@ -1,4 +1,3 @@
-
 "" Leaders
 " f   : FZF Files
 " g   : FZF GFiles
@@ -18,6 +17,10 @@
 " F4  : Toggle GitGutter
 " F11 : Toggle Maximize current window
 
+"" Movements
+" ]h  : GitGutter next hunk
+" [h  : GitGutter prev hunk
+
 
 """ PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -28,14 +31,14 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'						" can be used for session management
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'			" better newrw
+Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'justinmk/vim-sneak'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
@@ -83,6 +86,8 @@ noremap <leader>pr :call jedi#rename()<Cr>
 map <F4> :GitGutterToggle<Cr>
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 "" indentline
 " :IndentLinesToggle
@@ -207,6 +212,7 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set formatoptions-=tc               " disable auto wrap while typing
+set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
 
 """ LEADERS
 noremap <leader>y "+y
@@ -263,11 +269,6 @@ vnoremap < 0o0<<Esc>gv
 """ CUSTOM COMMANDS
 :command! Vs so ~/.config/nvim/init.vim
 :command! Ve e ~/.config/nvim/init.vim
-
-"" session management
-" named terminal buffer is not retained so remove them before it is saved
-:command! Sm bd! default<Cr>:mksession! ~/.config/nvim/sessions/0_latest.vim
-:command! Ss so ~/.config/nvim/sessions/0_latest.vim
 
 
 """ TERMINAL
