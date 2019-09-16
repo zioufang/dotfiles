@@ -16,13 +16,17 @@ font pango:monospace 8
 ####
 # GAPS
 ####
+set $gap_size 8
 smart_gaps on
-gaps inner 15
-# bindsym $mod+m  gaps inner current minus 5
-# bindsym $mod+n  gaps inner current plus 5
+gaps inner $gap_size
 
-bindsym $mod+Shift+m  gaps inner current set 0
-bindsym $mod+Shift+n  gaps inner current set 15
+# toggle inner gaps
+bindsym $mod+Shift+g exec --no-startup-id "if [ `i3-msg -t get_tree | grep -Po \
+    '.*\\"gaps\\":{\\"inner\\":\K(-|)[0-9]+(?=.*\\"focused\\":true)'` -eq 0 ]; then \
+        i3-msg gaps inner current set 0; \
+    else \
+        i3-msg gaps inner current set $gap_size; \
+    fi"
 
 ####
 # KEYBINDS
