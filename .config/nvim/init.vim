@@ -9,6 +9,8 @@
 " y   : Yank to system clipboard
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
+" pg  : Jedi go to python definition
+" pr  : Jedi rename python variable/function
 
 "" F# Keys
 " F2  : Toggle netrw
@@ -26,9 +28,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -41,8 +43,13 @@ Plug 'yggdroot/indentline'
 Plug 'vim-scripts/indentpython.vim'             " better indent for python
 Plug 'godlygeek/tabular'
 Plug 'szw/vim-maximizer'
-Plug 'ervandew/supertab'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
+
+Plug 'dense-analysis/ale'
+"Plug 'ervandew/supertab'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -57,9 +64,21 @@ let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
 
 "" ale
-" pip install pyls
-let g:ale_linters = { 'python': ['pyls']}
-let g:ale_completion_enabled = 1
+let g:ale_linters = { 'python': ['flake8']}
+let g:ale_completion_enabled = 0
+let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
+
+"" deoplete
+let g:deoplete#enable_at_startup = 1
+" tab for completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-y>" : "\<TAB>"
+
+"" jedi
+let g:jedi#auto_initialization = 0
+let g:jedi#completions_enabled = 0
+"let g:jedi#use_splits_not_buffers = "right"
+noremap <leader>pg :call jedi#goto()<Cr>
+noremap <leader>pr :call jedi#rename()<Cr>
 
 "" gitgutter
 map <F4> :GitGutterToggle<Cr>
@@ -77,6 +96,7 @@ let g:sneak#label = 1                           " EasyMotion behaviour
 "" airline
 let g:airline_section_c = 'b%n %<%F%*%m%*'      " buffer number, full path and modifier
 let g:airline_section_z = 'c:%v L:%L'
+let g:airline#extensions#ale#enabled = 1
 
 "" maximizer
 let g:maximizer_default_mapping_key = '<F11>'
@@ -84,7 +104,7 @@ let g:maximizer_default_mapping_key = '<F11>'
 "" supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
 
-"" slime, 
+"" slime,
 let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
@@ -112,7 +132,7 @@ function! ToggleRepl(repl)
 		exe 'normal!' . "\<C-W>p"
 		let b:slime_config = {'jobid': l:repl_job_id}
 	else
-		try 
+		try
 		    exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
 		    exe "split | term source venv/bin/activate && " . a:repl
 		catch
@@ -160,7 +180,7 @@ function! ToggleNetrw()
         let i = bufnr("$")
         while (i >= 1)
             if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i 
+                silent exe "bwipeout " . i
             endif
             let i-=1
         endwhile
@@ -210,6 +230,7 @@ noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
 
 nmap <F3> :set hls!<Cr>
+inoremap <F3> <Esc>:set hls!<Cr>i
 " hit '/' highlights then enter search mode
 nnoremap / :set hls<Cr>/
 
@@ -267,7 +288,7 @@ function! ToggleTerm(termname)
 	else
 		" if is a git repo, then use project root folder
 		" else use original vim path
-		try	
+		try
 			exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
 		catch
 			echo "This is NOT a git repo"
