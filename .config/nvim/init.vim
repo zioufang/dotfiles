@@ -6,6 +6,7 @@
 " l   : SLime send current line to Repl
 " r   : Toggle Repl Terminal
 " y   : Yank to system clipboard
+" d   : DogeGenerate
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
 " pg  : Jedi go to python definition
@@ -47,6 +48,7 @@ Plug 'vim-scripts/indentpython.vim'             " better indent for python
 Plug 'godlygeek/tabular'
 Plug 'szw/vim-maximizer'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
+Plug 'kkoomen/vim-doge'							" better doc
 
 Plug 'dense-analysis/ale'
 "Plug 'ervandew/supertab'
@@ -81,6 +83,9 @@ let g:jedi#completions_enabled = 0
 "let g:jedi#use_splits_not_buffers = "right"
 noremap <leader>pg :call jedi#goto()<Cr>
 noremap <leader>pr :call jedi#rename()<Cr>
+
+"" doge
+let g:doge_doc_standard_python = 'google'
 
 "" gitgutter
 map <F4> :GitGutterToggle<Cr>
