@@ -21,7 +21,8 @@
 "" Movements
 " ]h  : GitGutter next hunk
 " [h  : GitGutter prev hunk
-
+" ]l  : Ale next lint warning/error
+" [l  : Ale prev lint warning/error
 
 """ PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -32,29 +33,33 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'mhinz/vim-startify'						" can be used for session management
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'justinmk/vim-sneak'
-Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
-Plug 'yggdroot/indentline'
-Plug 'vim-scripts/indentpython.vim'             " better indent for python
-Plug 'godlygeek/tabular'
-Plug 'szw/vim-maximizer'
-Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
-Plug 'kkoomen/vim-doge'							" better doc
 
+" IDE
+Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'dense-analysis/ale'
-"Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
+Plug 'airblade/vim-gitgutter'
+
+" non essential
+Plug 'mhinz/vim-startify'						" can be used for session management
+Plug 'vim-scripts/indentpython.vim'             " better indent for python
+Plug 'kkoomen/vim-doge'							" documentation generator
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'                       " Gstatus, Gblame & Gdiffsplit
+Plug 'szw/vim-maximizer'
+Plug 'godlygeek/tabular'                        " :Tabularize /delimiter
+Plug 'vim-airline/vim-airline'
+Plug 'yggdroot/indentline'
+
 call plug#end()
 
 colorscheme gruvbox
@@ -68,11 +73,17 @@ noremap <leader>b :Buffers<Cr>
 let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
 
+"" sneak
+let g:sneak#label = 1                           " EasyMotion behaviour
+
 "" ale
 let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml']}
 let g:ale_linters = { 'python': ['flake8'] }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
+
+map <silent> ]l <Plug>(ale_next_wrap)
+map <silent> [l <Plug>(ale_previous_wrap)
 
 "" deoplete
 let g:deoplete#enable_at_startup = 1
@@ -98,9 +109,6 @@ nmap [h <Plug>(GitGutterPrevHunk)
 " :IndentLinesToggle
 let g:indentLine_color_term = 239
 let g:indentLine_char = '┆'
-
-"" sneak
-let g:sneak#label = 1                           " EasyMotion behaviour
 
 "" airline
 let g:airline_section_c = 'b%n %<%F%*%m%*'      " buffer number, full path and modifier
@@ -216,8 +224,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
+set expandtab
+set fileformat=unix
 set formatoptions-=tc               " disable auto wrap while typing
 set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
+
 
 """ LEADERS
 noremap <leader>y "+y
@@ -271,6 +282,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-y>" : "\<TAB>"
 vnoremap > ^o^><Esc>gv
 vnoremap < 0o0<<Esc>gv
 
+
 """ CUSTOM COMMANDS
 :command! Vs so ~/.config/nvim/init.vim
 :command! Ve e ~/.config/nvim/init.vim
@@ -316,15 +328,13 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
+    \ set textwidth=80 |
     \ set foldmethod=indent |
     \ set foldlevel=99 |
 
+
 """ Web Dev autocommands
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |

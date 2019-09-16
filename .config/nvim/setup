@@ -1,3 +1,10 @@
+## install neovim
+# download tar.gz
+tar xvzf nvim-linux
+cd nvim-linux
+cp bin/nvim /usr/bin
+cp -r share/nvim/ /usr/share/nvim
+
 ## for undo
 mkdir -p ~/.config/nvim/undodir
 
