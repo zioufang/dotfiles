@@ -1,4 +1,4 @@
-""" MAPPINGS
+
 "" Leaders
 " f   : FZF Files
 " g   : FZF GFiles
@@ -64,14 +64,13 @@ let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
 
 "" ale
-let g:ale_linters = { 'python': ['flake8']}
+let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml']}
+let g:ale_linters = { 'python': ['flake8'] }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
 
 "" deoplete
 let g:deoplete#enable_at_startup = 1
-" tab for completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-y>" : "\<TAB>"
 
 "" jedi
 let g:jedi#auto_initialization = 0
@@ -229,8 +228,9 @@ noremap <C-Right> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
 
+" toggle search highlight
 nmap <F3> :set hls!<Cr>
-inoremap <F3> <Esc>:set hls!<Cr>i
+inoremap <F3> <C-O>:set hls!<Cr>
 " hit '/' highlights then enter search mode
 nnoremap / :set hls<Cr>/
 
@@ -253,6 +253,9 @@ inoremap <A-L> <C-O>$
 inoremap <A-H> <C-O>^
 
 inoremap <C-D> <Del>
+
+" tab for completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-y>" : "\<TAB>"
 
 vnoremap > ^o^><Esc>gv
 vnoremap < 0o0<<Esc>gv
