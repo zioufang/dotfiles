@@ -332,6 +332,10 @@ au BufNewFile,BufRead *.py
     \ set foldmethod=indent |
     \ set foldlevel=99 |
 
+au BufNewFile,BufRead *.yaml,*.yml
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
 
 """ Web Dev autocommands
 au BufNewFile,BufRead *.js,*.html,*.css

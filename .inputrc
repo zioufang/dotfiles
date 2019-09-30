@@ -18,8 +18,16 @@ set completion-ignore-case on
 # Readline used by Bash 4.)
 set skip-completed-text on
 
-# alt+left/right to skip forward and back vi style
+# zsh like autocompletion
+# TAB to cycle through matches
+# Shift+Tab for the normal completion
+set show-all-if-ambiguous on
+TAB:menu-complete
+"\e[Z": complete
+
+# ctrl+left/right to skip forward and back vi style
 # cat then press the keys to see the key bind format
 # escape will display as ^[, which is \e
-"\e[1;3C": vi-fWord
-"\e[1;3D": vi-bWord
+"\e[1;5C": vi-fWord
+"\e[1;5D": vi-bWord
+
