@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# if mute
+switch=$(amixer sget Master | awk -F"[][]" '/dB/ {print $6}')
+[ "$switch" = "off" ] && echo "" && exit
+
+vol=$(amixer sget Master | awk -F"[][]" '/dB/ {print $2}')
+echo " $vol"

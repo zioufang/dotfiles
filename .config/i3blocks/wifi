@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+ssid=$(iwconfig 2>/dev/null | grep ESSID | cut -f2 -d\")
+
+case $BLOCK_BUTTON in
+	1) $TERMINAL -e nmtui ;;
+	3) pgrep -x dunst >/dev/null && notify-send "$ssid"
+;;
+esac
+
+wifiicon=$(cat /proc/net/wireless | awk '/^wl/ {print int($3/70*100) "%"}')
+echo " $wifiicon"

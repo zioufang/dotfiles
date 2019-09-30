@@ -1,7 +1,34 @@
 command=~/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
+color=#999999
 
 [battery]
-command=battery BAT1
+instance=BAT1
 interval=5
+
+[volume]
+interval=once
+signal=10
+
+[wifi]
+interval=10
+
+#cpu temperature
+[cpu]
+command=sensors | awk '/Core 0/ {print "🖥 "$3}' | tr -d '+' | sed 's/\.0//'
+interval=30
+
+#available ram
+[memory]
+command=free -h | awk '/^Mem:/ {print " " $7}'
+interval=30
+
+# available disk in home
+[disk]
+command=echo " "$(df -h --output=avail ~ | sed -n '1!p' | tr -d ' ')
+interval=600
+
+[clock]
+interval=30
+color=#d79921

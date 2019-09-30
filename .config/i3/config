@@ -32,9 +32,9 @@ bindsym $mod+Shift+g exec --no-startup-id "if [ `i3-msg -t get_tree | grep -Po \
 # KEYBINDS
 ####
 # system
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle && pkill -RTMIN+10 i3blocks
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
@@ -183,6 +183,7 @@ assign [class=Code] $ws3
 
 for_window [class=URxvt|Firefox|Code] focus
 for_window [instance="float_term"] floating enable stick enable resize set 1000 600
+for_window [title="nmtui"] floating enable stick enable
 
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.
@@ -201,18 +202,19 @@ exec --no-startup-id exec feh --randomize --bg-scale ~/Downloads/wallpapers/*
 exec --no-startup-id exec compton -b --config ~/.config/compton.conf
 exec --no-startup-id exec redshift -g 0.9 -m randr -t 4500:3000
 # `pkill -USR1 redshift` to toggle redshift
+exec --no-startup-id exec killall dunst 2>/dev/null && dunst
 
 # panel
 bar {
         colors {
                 background #282828
                 statusline #282828
-                separator #689d6a
+                separator #a89984
 		focused_workspace #282828 #458588 #282828
         }
 	font pango:mono 10, FontAwesome 10
 	position top
 	mode dock
 	modifier None
-	status_command i3status
+	status_command i3blocks
 }

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+current_date=$(date '+%a %b-%d')
+
+case $BLOCK_BUTTON in
+    3) pgrep -x dunst >/dev/null && notify-send "$current_date"
+esac
+
+echo "<b> "$(date '+%H:%M')"</b>        "
