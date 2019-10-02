@@ -1,12 +1,11 @@
 #!/usr/bin/env sh
-# Give a battery name (e.g. BAT0) as an argument.
 
 BAT="${BLOCK_INSTANCE:-BAT0}" 
 capacity=$(cat /sys/class/power_supply/"$BAT"/capacity) || exit
 status=$(cat /sys/class/power_supply/"$BAT"/status)
 
 case $BLOCK_BUTTON in
-    3) pgrep -x dunst >/dev/null && notify-send "$status"
+    1) pgrep -x dunst >/dev/null && notify-send "$status"
 esac
 
 if [ "$capacity" -le 25 ]; then

@@ -38,7 +38,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " IDE
 Plug 'tpope/vim-vinegar'						" better newrw
@@ -62,7 +63,7 @@ Plug 'yggdroot/indentline'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme gruvbox-material
 
 "" fzf
 " install fd-find and ripgrep

@@ -3,9 +3,8 @@
 ssid=$(iwconfig 2>/dev/null | grep ESSID | cut -f2 -d\")
 
 case $BLOCK_BUTTON in
-	1) $TERMINAL -e nmtui ;;
-	3) pgrep -x dunst >/dev/null && notify-send "$ssid"
-;;
+	1) pgrep -x dunst >/dev/null && notify-send "$ssid";;
+	3) $TERMINAL -e nmtui ;;
 esac
 
 wifiicon=$(cat /proc/net/wireless | awk '/^wl/ {print int($3/70*100) "%"}')
