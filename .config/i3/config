@@ -171,6 +171,7 @@ bindsym $mod+Shift+o	exec --no-startup-id "bash ~/.scripts/i3cmds/i3resize right
 # fibonacci split for terminal
 default_orientation vertical
 for_window [class=URxvt] split toggle
+for_window [class=St] split toggle
 
 # swap container
 bindsym $mod+m mark --add swap;

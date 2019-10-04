@@ -16,6 +16,7 @@
 " F2  : Toggle netrw
 " F3  : Toggle search highlight
 " F4  : Toggle GitGutter
+" F5  : Toggle Ale gutter
 " F11 : Toggle Maximize current window
 
 "" Movements
@@ -63,6 +64,8 @@ Plug 'yggdroot/indentline'
 
 call plug#end()
 
+" true color
+set termguicolors
 colorscheme gruvbox-material
 
 "" fzf
@@ -82,7 +85,7 @@ let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml']}
 let g:ale_linters = { 'python': ['flake8'] }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
-
+map <F5> :ALEToggle<Cr>
 map <silent> ]l <Plug>(ale_next_wrap)
 map <silent> [l <Plug>(ale_previous_wrap)
 
@@ -176,6 +179,7 @@ endfunction
 """ GENERAL
 filetype plugin indent on
 set scroll=15
+set scrollback=3
 set hidden                          " easy to switch buffers/files with unsaved changes
 set ignorecase						" ignorecase while searching, use \C in the end to enforce case-sensitivity
 set smartcase						" if pattern contains uppsecase, search is case-sensitve

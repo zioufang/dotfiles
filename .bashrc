@@ -20,6 +20,8 @@ export LS_COLORS=$LS_COLORS:'di=0;35:'
 source ~/.config/shell/aliases.sh
 source ~/.config/shell/funcs.sh
 
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 export GIT_TERMINAL_PROMPT=1
 export FZF_DEFAULT_COMMAND='fd --type f'
 export TERM=xterm # for remote session without urxvt
