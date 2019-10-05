@@ -1,0 +1,8 @@
+/* ibeam cursor size in termite */
+vte-terminal, VteTerminal {
+  -GtkWidget-cursor-aspect-ratio: 0.15;
+}
+
+.termite {
+  padding: 8px;
+}

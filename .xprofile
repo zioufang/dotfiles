@@ -1,4 +1,4 @@
-export TERMINAL=rxvt-unicode
+export TERMINAL=termite
 export EDITOR=nvim
 export BROWSER=firefox
 

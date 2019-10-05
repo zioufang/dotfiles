@@ -35,8 +35,37 @@ sudo apt-get install -y compton rxvt-unicode xsel feh rofi dmenu lxappearance rx
 	neovim thunar dunst redshift ffmpeg fonts-font-awesome xbacklight xfce4-power-manager lm-sensors \
 	mpd mpc ncmpcpp  # music 
 
-sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
+# sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
+
+# termite
+sudo apt install build-essential
+sudo apt-get install -y git g++ libgtk-3-dev gtk-doc-tools gnutls-bin valac intltool libpcre2-dev libglib3.0-cil-dev libgnutls28-dev libgirepository1.0-dev libxml2-utils gperf
+
+git clone https://github.com/thestinger/vte-ng.git
+echo export LIBRARY_PATH="/usr/include/gtk-3.0:$LIBRARY_PATH"
+cd vte-ng
+./autogen.sh
+make && sudo make install
+
+git clone --recursive https://github.com/thestinger/termite.git
+cd termite
+make
+sudo make install
+sudo ldconfig
+sudo mkdir -p /lib/terminfo/x
+sudo ln -s /usr/local/share/terminfo/x/xterm-termite /lib/terminfo/x/xterm-termite
+
 
 # ranger
 sudo apt-get install ranger w3m-img
 ranger --copy-config=all
+
+
+# pip might stuck on collecting package_name for a long time
+# disable ip6 for pip to work properly
+# add the following to `/etc/sysctl.conf`
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+# save then run
+sudo sysctl -p

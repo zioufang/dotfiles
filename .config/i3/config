@@ -152,6 +152,15 @@ bindsym $mod+Shift+8	move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9	move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10; workspace $ws10
 
+# class                 border  backgr. text    indicator child_border
+client.focused          #7dbba8 #285577 #ffffff #ebcb8b   #7191b1
+client.focused_inactive #222222 #222222 #222222 #222222   #222222
+client.unfocused        #222222 #222222 #222222 #222222   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #222222
+
 # move workspace back and forth
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
@@ -171,7 +180,7 @@ bindsym $mod+Shift+o	exec --no-startup-id "bash ~/.scripts/i3cmds/i3resize right
 # fibonacci split for terminal
 default_orientation vertical
 for_window [class=URxvt] split toggle
-for_window [class=St] split toggle
+for_window [class=Termite] split toggle
 
 # swap container
 bindsym $mod+m mark --add swap;
