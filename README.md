@@ -6,11 +6,12 @@ Sync the dotfiles, `-f` can be added in the end to overwrite:
 ## The Setup
 **neovim**  
 **i3-gaps**  
-**i3lock**  
-**i3blocks**  
-**dunst**  
-**ranger**  
-**bash**  
-**urxvt**  
-**tmux**  
+i3lock  
+i3blocks  
+dunst  
+ranger  
+bash  
+kitty  
+urxvt  
+tmux  
 

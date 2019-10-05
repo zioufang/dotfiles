@@ -16,5 +16,5 @@ then
 else
 	echo "Window not detected... spawning."
     # TODO doesn't work with st
-	i3 "exec --no-startup-id rxvt-unicode -name dropdown_$script"
+	i3 "exec --no-startup-id $TERMINAL -name dropdown_$script"
 fi

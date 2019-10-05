@@ -1,4 +1,4 @@
-export TERMINAL=termite
+export TERMINAL=kitty
 export EDITOR=nvim
 export BROWSER=firefox
 
