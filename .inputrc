@@ -31,3 +31,4 @@ TAB:menu-complete
 "\e[1;5C": vi-fWord
 "\e[1;5D": vi-bWord
 
+set enable-keypad on
