@@ -2,6 +2,6 @@ export TERMINAL=kitty
 export EDITOR=nvim
 export BROWSER=firefox
 
-# map caps to ctrl for vim
-setxkbmap -option 'caps:ctrl_modifier'
+setxkbmap -option ctrl:nocaps
+xcape -e 'Control_L=Escape'
 
