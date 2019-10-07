@@ -15,6 +15,6 @@ then
 	i3 "[instance=\"dropdown_$script\"] scratchpad show; [instance=\"dropdown_$script\"] move position center"
 else
 	echo "Window not detected... spawning."
-    # TODO doesn't work with st
-	i3 "exec --no-startup-id $TERMINAL -name dropdown_$script"
+    # TODO seems to only work with urxvt (rxvt-unicode in debian based)
+	i3 "exec --no-startup-id urxvt -name dropdown_$script"
 fi
