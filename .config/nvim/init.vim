@@ -17,6 +17,7 @@
 " F3  : Toggle search highlight
 " F4  : Toggle GitGutter
 " F5  : Toggle Ale gutter
+" F6  : Toggle Indentline
 " F11 : Toggle Maximize current window
 
 "" Movements
@@ -110,7 +111,8 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 "" indentline
-" :IndentLinesToggle
+map <F6> :IndentLinesToggle<Cr>
+let g:indentLine_enabled = 0
 let g:indentLine_color_term = 239
 let g:indentLine_char = '┆'
 
@@ -181,8 +183,11 @@ filetype plugin indent on
 set scroll=15
 set scrollback=3
 set hidden                          " easy to switch buffers/files with unsaved changes
-set ignorecase						" ignorecase while searching, use \C in the end to enforce case-sensitivity
 set smartcase						" if pattern contains uppsecase, search is case-sensitve
+" ignorecase while searching, use \C in the end to enforce case-sensitivity
+" noignorecase in insert for autocompletion
+au InsertEnter * set noignorecase
+au InsertLeave * set ignorecase
 set lazyredraw                      " lazyredraw, for macro performance
 set undodir=~/.config/nvim/undodir
 "set undofile
