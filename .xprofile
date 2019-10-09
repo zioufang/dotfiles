@@ -1,7 +1,9 @@
-export TERMINAL=kitty
+export TERMINAL=st
 export EDITOR=nvim
 export BROWSER=firefox
 
 setxkbmap -option ctrl:nocaps
-xcape -e 'Control_L=Escape'
+
+# tap caps as ctrl using xcape
+# xcape -e 'Control_L=Escape'
 

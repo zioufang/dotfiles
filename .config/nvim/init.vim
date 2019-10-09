@@ -17,7 +17,8 @@
 " F3  : Toggle search highlight
 " F4  : Toggle GitGutter
 " F5  : Toggle Ale gutter
-" F6  : Toggle Indentline
+" F6  : MarkdownPreview
+" F7  : Toggle Indentline
 " F11 : Toggle Maximize current window
 
 "" Movements
@@ -51,6 +52,7 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'airblade/vim-gitgutter'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " non essential
 Plug 'mhinz/vim-startify'						" can be used for session management
@@ -100,6 +102,10 @@ let g:jedi#completions_enabled = 0
 noremap <leader>pg :call jedi#goto()<Cr>
 noremap <leader>pr :call jedi#rename()<Cr>
 
+"" markdown preview
+let g:mkdp_browser = 'firefox'
+nmap <F6> <Plug>MarkdownPreview
+
 "" doge
 let g:doge_doc_standard_python = 'google'
 
@@ -111,7 +117,7 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 "" indentline
-map <F6> :IndentLinesToggle<Cr>
+map <F7> :IndentLinesToggle<Cr>
 let g:indentLine_enabled = 0
 let g:indentLine_color_term = 239
 let g:indentLine_char = '┆'
