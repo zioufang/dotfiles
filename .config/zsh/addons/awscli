@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+dir=$(dirname $(which aws_completer))
+export PATH=$dir:$PATH
+source $dir/aws_zsh_completer.sh
