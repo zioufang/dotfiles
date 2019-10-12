@@ -2,7 +2,8 @@
         editor = vim
         excludesfile = ~/.gitignore
 [user]
-        name = Ziou Fang
+        name  = zioufang
+        email = zioufang@gmail.com
 [help]
         autocorrect = 1
 [alias]
