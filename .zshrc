@@ -1,6 +1,11 @@
+fpath=("$HOME/.config/zsh/themes" "$fpath[@]")
+
 autoload -Uz compinit promptinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 compinit
 promptinit
+_comp_options+=(globdots)
 
 # ln -s ~/projects/dotfiles/.config/zsh/common.zsh-theme /usr/share/zsh/functions/Prompts/prompt_common_setup
 prompt common
@@ -19,14 +24,35 @@ setopt inc_append_history
 setopt interactivecomments
 setopt share_history
 
+# vi mode
 bindkey -v
+export KEYTIMEOUT=1
+
+# ci"
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+done
+
+# ci{, ci(, di{ etc..
+autoload -U select-bracketed
+zle -N select-bracketed
+for m in visual viopp; do
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $m $c select-bracketed
+  done
+done
 
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '\e.' insert-last-word
 
-source ~/.config/shell/aliases.sh
-source ~/.config/shell/funcs.sh
+# edit line in vim with ctrl+e
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 export DIRSTACKSIZE=5
 alias d='dirs -v' \
@@ -36,7 +62,7 @@ alias d='dirs -v' \
     3='cd ~3' \
     4='cd ~4'
 
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/go/bin
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export GIT_TERMINAL_PROMPT=1
@@ -67,3 +93,9 @@ zle-line-finish() {
 }
 zle -N zle-line-finish
 
+# sourcing
+source ~/.config/shell/aliases.sh
+source ~/.config/shell/funcs.sh
+
+# addon scripts
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
