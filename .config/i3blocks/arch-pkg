@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+PACMAN_COUNT=$(pacman -Qu | wc -l)
+YAY_COUNT=$(yay -Qu --aur | wc -l)
+TOTAL_COUNT=$(($PACMAN_COUNT+$YAY_COUNT))
+
+if [ "$TOTAL_COUNT" -eq "0" ]; then
+    echo "<span color='#98971a'></span>"
+else
+    echo "<span color='#ebdbb2'> "$PACMAN_COUNT"  "$YAY_COUNT"</span>"
+fi

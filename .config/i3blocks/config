@@ -3,6 +3,9 @@ separator_block_width=15
 markup=pango
 color=#999999
 
+[arch-pkg]
+interval=once
+
 [battery]
 instance=BAT1
 interval=5

@@ -9,6 +9,7 @@ function echo_source {
 
 function dotsync {
     mv ~/.bashrc ~/.bashrc.old
+    mv ~/.zshrc ~/.zshrc.old 2>/dev/null
     
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
@@ -21,8 +22,9 @@ function dotsync {
     echo_source "~/.bashrc" ~/.bash_profile;
 
     source ~/.bashrc;
+    source ~/.zshrc 2>/dev/nulll;
 
-    echo "bash dotfiles activated"
+    echo "dotfiles activated"
 }
 
 if [ "$1"=="-f" ]; then
