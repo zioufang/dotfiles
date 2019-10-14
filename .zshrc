@@ -10,6 +10,9 @@ _comp_options+=(globdots)
 # ln -s ~/projects/dotfiles/.config/zsh/common.zsh-theme /usr/share/zsh/functions/Prompts/prompt_common_setup
 prompt common
 
+setopt autocd
+setopt autopushd
+setopt pushdignoredups
 setopt prompt_subst
 setopt always_to_end
 setopt append_history
@@ -49,10 +52,14 @@ done
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '\e.' insert-last-word
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
-# edit line in vim with ctrl+e
+# edit line in vim with ctrl+v
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^v' edit-command-line
+
+alias p="sudo pacman"
 
 export DIRSTACKSIZE=5
 alias d='dirs -v' \
@@ -63,6 +70,7 @@ alias d='dirs -v' \
     4='cd ~4'
 
 export PATH=$PATH:~/.local/bin:~/go/bin
+export HISTFILE=~/.cache/zsh/history
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export GIT_TERMINAL_PROMPT=1

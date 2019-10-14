@@ -19,7 +19,7 @@ interval=10
 
 #cpu temperature
 [cpu]
-command=sensors | awk '/Core 0/ {print "🖥 "$3}' | tr -d '+' | sed 's/\.0//'
+command=sensors | awk '/Core 0/ {print " "$3}' | tr -d '+' | sed 's/\.0//'
 interval=30
 
 #available ram
@@ -31,6 +31,10 @@ interval=30
 [disk]
 command=echo " "$(df -h --output=avail ~ | sed -n '1!p' | tr -d ' ')
 interval=600
+
+[gpu]
+interval=once
+command=optimus-manager --print-mode | sed '/^$/d' | cut -d':' -f2 | sed -e 's/^[[:space:]]//'
 
 [clock]
 interval=30

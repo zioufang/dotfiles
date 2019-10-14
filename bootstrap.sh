@@ -8,21 +8,20 @@ function echo_source {
 }
 
 function dotsync {
-    mv ~/.bashrc ~/.bashrc.old
+    mv ~/.bashrc ~/.bashrc.old 2>/dev/null
     mv ~/.zshrc ~/.zshrc.old 2>/dev/null
     
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "bootstrap.zsh" \
         --exclude "README.md" \
-        --exclude ".config/zsh/" \
         --exclude ".git/" \
         -avh --no-perms . ~;
 
     echo_source "~/.bashrc" ~/.bash_profile;
 
     source ~/.bashrc;
-    source ~/.zshrc 2>/dev/nulll;
+    source ~/.zshrc 2>/dev/null;
 
     echo "dotfiles activated"
 }

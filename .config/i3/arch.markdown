@@ -1,9 +1,9 @@
 ### install packages
 ```
-pacman -S i3-gaps i3lock i3blocks rxvt-unicode neovim \
+pacman -S i3-gaps i3lock i3blocks zsh rxvt-unicode neovim \
     compton feh rofi dmenu xsel dunst redshift ranger thunar  \
-    ffmpeg ttf-fonts-awesome ripgrep fd \
-    nodejs python
+    ffmpeg ttf-font-awesome ripgrep fd wireless_tools \
+    nodejs python python-pip
 
 pip3 install pynvim flake8 cfn-lint --user
 ```
