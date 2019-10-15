@@ -13,7 +13,6 @@ function dotsync {
     
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
-        --exclude "bootstrap.zsh" \
         --exclude "README.md" \
         --exclude ".git/" \
         -avh --no-perms . ~;

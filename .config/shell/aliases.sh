@@ -2,7 +2,8 @@
 alias ..="cd .." \
     ...="cd ../.." \
     ....="cd ../../.." \
-    a="sudo apt-get" \
+    a="apt-get" \
+    p="pacman" \
     g=git \
     vim=nvim \
     mkdir="mkdir -pv" \

@@ -7,7 +7,6 @@ compinit
 promptinit
 _comp_options+=(globdots)
 
-# ln -s ~/projects/dotfiles/.config/zsh/common.zsh-theme /usr/share/zsh/functions/Prompts/prompt_common_setup
 prompt common
 
 setopt autocd
@@ -59,15 +58,14 @@ bindkey "^[[B" history-beginning-search-forward
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^v' edit-command-line
 
-alias p="sudo pacman"
-
 export DIRSTACKSIZE=5
 alias d='dirs -v' \
     0='cd ~0' \
     1='cd ~1' \
     2='cd ~2' \
     3='cd ~3' \
-    4='cd ~4'
+    4='cd ~4' \
+    sc="for file in ~/.config/zsh/completions/*; do source $file; done"
 
 export PATH=$PATH:~/.local/bin:~/go/bin
 export HISTFILE=~/.cache/zsh/history
