@@ -1,11 +1,13 @@
 ### install packages
 ```
-pacman -S i3-gaps i3lock i3blocks zsh rxvt-unicode neovim \
+pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config rxvt-unicode neovim \
     compton feh rofi dmenu xsel dunst redshift ranger thunar  \
-    ffmpeg ttf-font-awesome ripgrep fd wireless_tools \
+    ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw \
     nodejs python python-pip
 
 pip3 install pynvim flake8 cfn-lint --user
+
+sudo ufw enable
 ```
 ### suckless st
 ```
