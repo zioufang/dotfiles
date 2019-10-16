@@ -1,0 +1,29 @@
+browser ~/.scripts/qutehandler
+show-read-feeds no
+show-read-articles no
+refresh-on-startup yes
+reload-threads 4
+show-keymap-hint no
+feedlist-format "%4i %11u %t"
+articlelist-format "%4i %D  %?T?|%-17T|?%t"
+datetime-format %b%d
+
+bind-key j down
+bind-key k up
+bind-key d pagedown
+bind-key u pageup
+bind-key G end
+bind-key g home
+bind-key SPACE toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key l next-feed articlelist
+bind-key h prev-feed articlelist
+macro o open-in-browser ; toggle-article-read "read"
+
+color listnormal white default dim
+color listfocus black yellow standout dim
+color listnormal_unread blue default
+color listfocus_unread yellow default bold
+color info magenta black bold
+color article cyan default
