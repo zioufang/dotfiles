@@ -50,6 +50,8 @@ bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun 
 # start different apps with super key
 bindsym $mod+Return exec $main_term
 bindsym $mod+w exec $BROWSER
+bindsym $mod+Shift+w exec qutebrowser
+bindsym $mod+r exec --no-startup-id "rm -rf ~/.local/share/qutebrowser/webengine/Cookies* && qutebrowser :restart"  # clear cookis and restart session
 bindsym $mod+v exec $term -e nvim
 bindsym $mod+Shift+f exec $term -name float_term -e ranger;
 bindsym $mod+Shift+b exec $term -name float_term -e bash ~/.scripts/fzfcmds/gotobm.sh;
