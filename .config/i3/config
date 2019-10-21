@@ -5,6 +5,7 @@
 # export BROWSER=firefox
 # export EDITOR=nvim
 
+exec --no-startup-id xrandr --auto --output HDMI-0 --right-of eDP-1-1
 set $mod Mod4
 #set $alt Mod4
 
