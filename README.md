@@ -14,4 +14,5 @@ bash
 kitty  
 urxvt  
 tmux  
-
+qutebrowser  
+newsboat  
