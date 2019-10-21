@@ -4,6 +4,7 @@ show-read-articles no
 refresh-on-startup yes
 reload-threads 4
 show-keymap-hint no
+mark-as-read-on-hover yes
 feedlist-format "%4i %11u %t"
 articlelist-format "%4i %D  %?T?|%-17T|?%t"
 datetime-format %b%d
@@ -23,7 +24,7 @@ macro o open-in-browser ; toggle-article-read "read"
 
 color listnormal white default dim
 color listfocus black yellow standout dim
-color listnormal_unread blue default
+color listnormal_unread green default
 color listfocus_unread yellow default bold
 color info magenta black bold
 color article cyan default
