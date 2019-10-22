@@ -1,16 +1,18 @@
 "" Leaders
+" q   : :q<Cr>
 " f   : FZF Files
 " g   : FZF GFiles
 " b   : FZF Buffers
 " s   : Slime Send Paragraph/Region to Repl
 " l   : SLime send current line to Repl
-" r   : Toggle Repl Terminal
+" r   : IF 'python' Toggle ipython3 Terminal
+"     : IF 'go' then go-run
 " y   : Yank to system clipboard
-" d   : DogeGenerate
+" p   : Paste from system clipboard
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
-" pg  : Jedi go to python definition
-" pr  : Jedi rename python variable/function
+" d   : IF 'python' Jedi go to definition
+"     : IF 'go' vim-go to definition vertical split
 
 "" F# Keys
 " F2  : Toggle netrw
@@ -19,6 +21,7 @@
 " F5  : Toggle Ale gutter
 " F6  : MarkdownPreview
 " F7  : Toggle Indentline
+" F10 : Check syntax group name
 " F11 : Toggle Maximize current window
 
 "" Movements
@@ -41,7 +44,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
+Plug 'fatih/molokai'
 Plug 'sainnhe/gruvbox-material'
 
 " IDE
@@ -50,6 +54,8 @@ Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'airblade/vim-gitgutter'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -99,8 +105,24 @@ let g:deoplete#enable_at_startup = 1
 let g:jedi#auto_initialization = 0
 let g:jedi#completions_enabled = 0
 "let g:jedi#use_splits_not_buffers = "right"
-noremap <leader>pg :call jedi#goto()<Cr>
-noremap <leader>pr :call jedi#rename()<Cr>
+au FileType python noremap <leader>d :call jedi#goto()<Cr>
+
+"" go
+let g:go_fmt_command = "goimports"
+let g:go_term_mode = "split"
+let g:go_term_height = 15
+let g:go_highlight_extra_types = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+highlight link goFunctionCall goBuiltins
+highlight link goType Aqua
+highlight link goExtraType goType
+highlight link goOperator Orange
+autocmd ColorScheme * highlight link goBuiltins Blue
+autocmd ColorScheme * highlight link goDeclType goDeclaration
+
+au FileType go nmap <leader>r <Plug>(go-run)<C-j>
+au FileType go nmap <leader>d <Plug>(go-def-vertical)
 
 "" markdown preview
 let g:mkdp_browser = 'firefox'
@@ -145,7 +167,7 @@ xmap <leader>s <Plug>SlimeRegionSend`>:call search('^.\+', '', line('$'))<Cr>
 nmap <leader>s <Plug>SlimeParagraphSend}:call search('^.\+', '', line('$'))<Cr>
 nmap <leader>l <Plug>SlimeLineSend<Cr>
 
-nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
+au FileType python nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
 
 function! ToggleRepl(repl)
 	let pane = bufwinnr(a:repl)
@@ -248,6 +270,8 @@ set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
 
 """ LEADERS
 noremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>q :q<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 
 
@@ -338,6 +362,15 @@ function! ToggleTerm(termname)
 	endif
 endfunction
 
+" check syntax group name under cursor
+map <F10> :call SynStack()<Cr>
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 
 """ Python autocommands
 au BufNewFile,BufRead *.py
@@ -352,6 +385,8 @@ au BufNewFile,BufRead *.yaml,*.yml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
+
+au FileType go inoremap { {<Cr>}<C-o>O
 
 """ Web Dev autocommands
 au BufNewFile,BufRead *.js,*.html,*.css
