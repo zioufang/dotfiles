@@ -64,8 +64,7 @@ alias d='dirs -v' \
     1='cd ~1' \
     2='cd ~2' \
     3='cd ~3' \
-    4='cd ~4' \
-    sc="for file in ~/.config/zsh/completions/*; do source $file; done"
+    4='cd ~4'
 
 export PATH=$PATH:~/.local/bin:~/go/bin
 export HISTFILE=~/.cache/zsh/history
@@ -105,3 +104,5 @@ source ~/.config/shell/funcs.sh
 
 # addon scripts
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/autojump/autojump.zsh
+for file in ~/.config/zsh/completions/*; do source $file; done
