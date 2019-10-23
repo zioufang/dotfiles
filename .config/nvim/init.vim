@@ -100,6 +100,9 @@ map <silent> [l <Plug>(ale_previous_wrap)
 
 "" deoplete
 let g:deoplete#enable_at_startup = 1
+" disable the annoying around [A] and buffer [B] sources
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources._ = ['buffer', 'around']
 
 "" jedi
 let g:jedi#auto_initialization = 0
