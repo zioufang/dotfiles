@@ -15,6 +15,7 @@ function dotsync {
     rsync --exclude "bootstrap.sh" \
         --exclude "README.md" \
         --exclude ".git/" \
+        --exclude "archived/" \
         -avh --no-perms . ~;
 
     echo_source "~/.bashrc" ~/.bash_profile;

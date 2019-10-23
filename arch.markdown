@@ -1,6 +1,6 @@
 ### install packages
 ```
-pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim \
+pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim termite \
     compton feh rofi dmenu xsel dunst redshift ranger thunar qutebrowser newsboat \
     ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw \
     nodejs python python-pip go docker kubectl \
@@ -9,11 +9,6 @@ pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim \
 pip install pynvim flake8 cfn-lint ipython3 --user
 
 sudo ufw enable
-```
-### suckless st
-```
-git clone https://github.com/zioufang/st.git
-cd st && sudo make install
 ```
 ### dotfile
 ```

@@ -11,8 +11,7 @@ i3blocks
 dunst  
 ranger  
 bash  
-kitty  
-urxvt  
+termite  
 tmux  
 qutebrowser  
 newsboat  
