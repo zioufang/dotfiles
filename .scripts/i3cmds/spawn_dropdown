@@ -16,5 +16,5 @@ then
 else
 	echo "Window not detected... spawning."
     # TODO seems to only work with urxvt (rxvt-unicode in debian based)
-	i3 "exec --no-startup-id urxvt -name dropdown_$script"
+	i3 "exec --no-startup-id $TERMINAL --name=dropdown_$script"
 fi

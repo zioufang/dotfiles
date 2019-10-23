@@ -1,6 +1,6 @@
 ### install packages
 ```
-pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config rxvt-unicode neovim \
+pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim \
     compton feh rofi dmenu xsel dunst redshift ranger thunar qutebrowser newsboat \
     ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw \
     nodejs python python-pip go docker kubectl \

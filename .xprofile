@@ -1,4 +1,4 @@
-export TERMINAL=st
+export TERMINAL=termite
 export EDITOR=nvim
 export BROWSER=firefox
 
