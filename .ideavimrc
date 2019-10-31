@@ -1,0 +1,40 @@
+set surround
+set commentary
+
+set scroll=15
+set smartcase						" if pattern contains uppsecase, search is case-sensitve
+
+map <Space> <leader>
+noremap <leader>q :q<Cr>
+
+noremap ; :
+
+" toggle search highlight
+nmap <F3> :set hls!<Cr>
+inoremap <F3> <C-O>:set hls!<Cr>
+" hit '/' highlights then enter search mode
+nnoremap / :set hls<Cr>/
+
+noremap <C-J> <C-W><C-J>
+noremap <C-K> <C-W><C-K>
+noremap <C-L> <C-W><C-L>
+noremap <C-H> <C-W><C-H>
+nnoremap Y y$
+nnoremap Q @q
+
+" movements in insert mode
+inoremap <A-j> <C-O>j
+inoremap <A-k> <C-O>k
+inoremap <A-l> <C-O>a
+inoremap <A-h> <C-O>h
+inoremap <A-w> <C-O>w
+inoremap <A-e> <Esc>ea
+inoremap <A-b> <C-O>b
+inoremap <A-g> <Esc>gea
+inoremap <A-L> <C-O>$
+inoremap <A-H> <C-O>^
+
+inoremap <C-D> <Del>
+
+vnoremap > ^o^><Esc>gv
+vnoremap < 0o0<<Esc>gv

@@ -91,7 +91,7 @@ let g:sneak#label = 1                           " EasyMotion behaviour
 
 "" ale
 let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml']}
-let g:ale_linters = { 'python': ['flake8'] }
+let g:ale_linters = { 'python': ['flake8'], 'go': ['golint'] }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
 map <F5> :ALEToggle<Cr>
@@ -113,7 +113,7 @@ au FileType python noremap <leader>d :call jedi#goto()<Cr>
 "" go
 let g:go_fmt_command = "goimports"
 let g:go_term_mode = "split"
-let g:go_term_height = 15
+let g:go_term_height = 5
 let g:go_highlight_extra_types = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
@@ -280,7 +280,6 @@ noremap <leader>cd :cd %:p:h<Cr>
 
 """ KEY MAPPINGS
 map <Space> <leader>
-inoremap jk <Esc>
 noremap ; :
 
 noremap <C-J> <C-W><C-J>
