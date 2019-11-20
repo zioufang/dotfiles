@@ -35,6 +35,3 @@ inoremap <A-L> <C-O>$
 inoremap <A-H> <C-O>^
 
 inoremap <C-D> <Del>
-
-vnoremap > ^o^><Esc>gv
-vnoremap < 0o0<<Esc>gv
