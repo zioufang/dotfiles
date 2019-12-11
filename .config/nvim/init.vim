@@ -22,7 +22,7 @@
 " F6  : MarkdownPreview
 " F7  : Toggle Indentline
 " F10 : Check syntax group name
-" F11 : Toggle Maximize current window
+" F12 : Toggle Maximize current window
 
 "" Movements
 " ]h  : GitGutter next hunk
@@ -59,8 +59,8 @@ Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'airblade/vim-gitgutter'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hashivim/vim-terraform'
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " non essential
 Plug 'mhinz/vim-startify'						" can be used for session management
@@ -93,7 +93,7 @@ let g:sneak#label = 1                           " EasyMotion behaviour
 
 "" ale
 let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml']}
-let g:ale_linters = { 'python': ['flake8'], 'go': ['golint'] }
+let g:ale_linters = { 'python': ['flake8'], 'go': ['golint'], 'terraform': ['tflint'] }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
 map <F5> :ALEToggle<Cr>
@@ -101,10 +101,14 @@ map <silent> ]l <Plug>(ale_next_wrap)
 map <silent> [l <Plug>(ale_previous_wrap)
 
 "" deoplete
-let g:deoplete#enable_at_startup = 1
+" terraform
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
 " disable the annoying around [A] and buffer [B] sources
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources._ = ['buffer', 'around']
+let g:deoplete#enable_at_startup = 1
+call deoplete#initialize()
 
 "" jedi
 let g:jedi#auto_initialization = 0
@@ -117,21 +121,21 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 "" go
-let g:go_fmt_command = "goimports"
-let g:go_term_mode = "split"
-let g:go_term_height = 5
-let g:go_highlight_extra_types = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-highlight link goFunctionCall goBuiltins
-highlight link goType Aqua
-highlight link goExtraType goType
-highlight link goOperator Orange
-autocmd ColorScheme * highlight link goBuiltins Blue
-autocmd ColorScheme * highlight link goDeclType goDeclaration
+" let g:go_fmt_command = "goimports"
+" let g:go_term_mode = "split"
+" let g:go_term_height = 5
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_operators = 1
+" highlight link goFunctionCall goBuiltins
+" highlight link goType Aqua
+" highlight link goExtraType goType
+" highlight link goOperator Orange
+" autocmd ColorScheme * highlight link goBuiltins Blue
+" autocmd ColorScheme * highlight link goDeclType goDeclaration
 
-au FileType go nmap <leader>r <Plug>(go-run)<C-j>
-au FileType go nmap <leader>d <Plug>(go-def-vertical)
+" au FileType go nmap <leader>r <Plug>(go-run)<C-j>
+" au FileType go nmap <leader>d <Plug>(go-def-vertical)
 
 "" markdown preview
 let g:mkdp_browser = 'firefox'
@@ -159,7 +163,7 @@ let g:airline_section_z = 'c:%v L:%L'
 let g:airline#extensions#ale#enabled = 1
 
 "" maximizer
-let g:maximizer_default_mapping_key = '<F11>'
+let g:maximizer_default_mapping_key = '<F12>'
 
 "" supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
