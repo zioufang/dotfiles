@@ -51,8 +51,10 @@ done
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '\e.' insert-last-word
-bindkey '\eOA' history-beginning-search-backward
-bindkey '\eOB' history-beginning-search-forward
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '\eOA' history-beginning-search-backward-end
+bindkey '\eOB' history-beginning-search-forward-end
 
 # edit line in vim with ctrl+v
 autoload edit-command-line; zle -N edit-command-line

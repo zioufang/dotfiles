@@ -18,3 +18,15 @@ cd dotfile && ./bootstrap.sh
 ln -sf ~/projects/dotfiles/.config/i3/config ~/.config/i3/config
 ln -sf ~/projects/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 ```
+### apache-spark specific
+install stable python for apache spark
+```
+PYTHON_VERSION=3.7.5
+wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
+tar -xf Python-${PYTHON_VERSION}
+cd Python-${PYTHON_VERSION}
+./configure --prefix=/opt/python/${PYTHON_VERSION}
+make
+sudo make install
+echo "export PYSPARK_PYTHON=/opt/python/${PYTHON_VERSION}" >> ~/.zshrc
+```
