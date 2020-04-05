@@ -1,7 +1,6 @@
 "" Leaders
 " q   : :q<Cr>
 " f   : FZF Files
-" g   : FZF GFiles
 " b   : FZF Buffers
 " s   : Slime Send Paragraph/Region to Repl
 " l   : SLime send current line to Repl
@@ -67,7 +66,8 @@ Plug 'mhinz/vim-startify'						" can be used for session management
 Plug 'vim-scripts/indentpython.vim'             " better indent for python
 Plug 'kkoomen/vim-doge'							" documentation generator
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'                       " Gstatus, Gblame & Gdiffsplit
+Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
 Plug 'godlygeek/tabular'                        " :Tabularize /delimiter
 Plug 'vim-airline/vim-airline'
@@ -82,7 +82,6 @@ colorscheme gruvbox-material
 "" fzf
 " install fd-find and ripgrep
 noremap <leader>f :Files ~/projects<Cr>
-noremap <leader>g :GFiles<Cr>
 noremap <leader>b :Buffers<Cr>
 
 let g:fzf_layout = { 'down': '~20%' }
@@ -92,7 +91,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with
 let g:sneak#label = 1                           " EasyMotion behaviour
 
 "" ale
-let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml']}
+let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml', 'j2']}
 let g:ale_linters = { 'python': ['flake8'], 'go': ['golint'], 'terraform': ['tflint'] }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
@@ -143,6 +142,7 @@ nmap <F6> <Plug>MarkdownPreview
 
 "" doge
 let g:doge_doc_standard_python = 'google'
+noremap <leader>g :DogeGenerate<Cr>
 
 "" gitgutter
 map <F4> :GitGutterToggle<Cr>
@@ -240,6 +240,7 @@ set wildignore+=.pyc,.git,venv,.ipynb_checkpoints,__pycache__ 	" used to hide fi
 let g:netrw_preview = 1
 let g:netrw_alto = 0
 let g:netrw_winsize = 20
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'        " enable line number
 
 " toggle netrw
 let g:NetrwIsOpen=0
@@ -285,12 +286,12 @@ set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>q :q<Cr>
+noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 
 
 """ KEY MAPPINGS
 map <Space> <leader>
-noremap ; :
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -374,15 +375,18 @@ function! ToggleTerm(termname)
 	endif
 endfunction
 
-" check syntax group name under cursor
-map <F10> :call SynStack()<Cr>
-function! SynStack()
-  if !exists("*synstack")
-    return
+""" remove trailing ws on save
+function! TrimWhitespace()
+  " trailing whitespaces have meaning in markdown so don't try there
+  let blacklist = ['markdown', 'rst', 'md']
+  if index(blacklist, &filetype) < 0
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
   endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+endfunction
 
+autocmd BufWritePre * call TrimWhitespace()
 
 """ Python autocommands
 au BufNewFile,BufRead *.py
@@ -393,7 +397,8 @@ au BufNewFile,BufRead *.py
     \ set foldmethod=indent |
     \ set foldlevel=99 |
 
-au BufNewFile,BufRead *.yaml,*.yml
+au BufNewFile,BufRead *.yaml,*.yml,*.j2
+    \ set syntax=yaml |
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |

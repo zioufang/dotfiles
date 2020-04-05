@@ -10,21 +10,24 @@
         # list aliases
         aliases = config --get-regexp alias
 
+        # status
+        s = status
+
         # add and commit
         ac = !git add . && git commit -am
 
         # commit and push
-        cp = "!f() { git commit -am \"$@\" && git push; }; f"
+        cp = "!f() { git add . && git commit -am \"$@\" && git push; }; f"
 
         # undo last commit
         undo = reset --soft HEAD~1
-        
+
         # view log graph
         graph = log --pretty=oneline --graph --abbrev-commit # add '-n <number>' to view the latest <number> commits
 
         # amend the last commit without changing the commit message
-        amend = commit -a --amend --no-edit
-        
+        amend = !git add . && git commit -a --amend --no-edit
+
         # 'force pull' overwrite current branch from remote
         pullf = "!f() { \
                 declare currentBranch=$(git symbolic-ref --short HEAD); \
