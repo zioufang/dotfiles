@@ -11,7 +11,10 @@
         aliases = config --get-regexp alias
 
         # status
-        s = status
+        s = status -s
+
+        # checkout
+        c = checkout
 
         # add and commit
         ac = !git add . && git commit -am
