@@ -112,7 +112,6 @@ call deoplete#initialize()
 let g:jedi#auto_initialization = 0
 let g:jedi#completions_enabled = 0
 "let g:jedi#use_splits_not_buffers = "right"
-au FileType python noremap <leader>d :call jedi#goto()<Cr>
 
 "" terraform
 let g:terraform_align=1
@@ -162,8 +161,6 @@ xmap <leader>s <Plug>SlimeRegionSend`>:call search('^.\+', '', line('$'))<Cr>
 " before the last line file
 nmap <leader>s <Plug>SlimeParagraphSend}:call search('^.\+', '', line('$'))<Cr>
 nmap <leader>l <Plug>SlimeLineSend<Cr>
-
-au FileType python nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
 
 function! ToggleRepl(repl)
 	let pane = bufwinnr(a:repl)
