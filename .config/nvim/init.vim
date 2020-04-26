@@ -118,22 +118,6 @@ au FileType python noremap <leader>d :call jedi#goto()<Cr>
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
-"" go
-" let g:go_fmt_command = "goimports"
-" let g:go_term_mode = "split"
-" let g:go_term_height = 5
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_highlight_operators = 1
-" highlight link goFunctionCall goBuiltins
-" highlight link goType Aqua
-" highlight link goExtraType goType
-" highlight link goOperator Orange
-" autocmd ColorScheme * highlight link goBuiltins Blue
-" autocmd ColorScheme * highlight link goDeclType goDeclaration
-
-" au FileType go nmap <leader>r <Plug>(go-run)<C-j>
-" au FileType go nmap <leader>d <Plug>(go-def-vertical)
 
 "" markdown preview
 let g:mkdp_browser = 'firefox'
@@ -402,8 +386,6 @@ au BufNewFile,BufRead *.yaml,*.yml,*.j2
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-
-au FileType go inoremap { {<Cr>}<C-o>O
 
 """ Web Dev autocommands
 au BufNewFile,BufRead *.js,*.html,*.css
