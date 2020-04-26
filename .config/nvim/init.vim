@@ -103,10 +103,9 @@ map <silent> [l <Plug>(ale_previous_wrap)
 " terraform
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-" disable the annoying around [A] and buffer [B] sources
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources._ = ['buffer', 'around']
 let g:deoplete#enable_at_startup = 1
+" disable the annoying around [A] and buffer [B] sources
+call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer']})
 call deoplete#initialize()
 
 "" jedi
@@ -198,7 +197,8 @@ function! ToggleRepl(repl)
 	else
 		try
 		    exe ":cd %:h | exe 'cd ' . fnameescape(get(systemlist('git rev-parse --show-toplevel'), 0))"
-		    exe "split | term source venv/bin/activate && " . a:repl
+		    " exe "split | term source venv/bin/activate && " . a:repl
+            exe "split | term " . a:repl
 		catch
             exe "split | term " . a:repl
         endtry
