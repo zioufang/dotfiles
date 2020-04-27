@@ -1,6 +1,6 @@
 "" Leaders
 " q   : :q<Cr>
-" f   : FZF Files
+" f   : FZF Rg
 " b   : FZF Buffers
 " s   : Slime Send Paragraph/Region to Repl
 " l   : SLime send current line to Repl
@@ -81,7 +81,7 @@ colorscheme gruvbox-material
 
 "" fzf
 " install fd-find and ripgrep
-noremap <leader>f :Files ~/projects<Cr>
+noremap <leader>f :Rg<Cr>
 noremap <leader>b :Buffers<Cr>
 
 let g:fzf_layout = { 'down': '~20%' }
