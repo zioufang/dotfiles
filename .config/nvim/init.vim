@@ -1,6 +1,7 @@
 "" Leaders
 " q   : :q<Cr>
-" f   : FZF Rg
+" f   : FZF Files
+" g   : FZF Rg
 " b   : FZF Buffers
 " s   : Slime Send Paragraph/Region to Repl
 " l   : SLime send current line to Repl
@@ -10,7 +11,7 @@
 " p   : Paste from system clipboard
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
-" d   : IF 'python' Jedi go to definition
+" d   : DogeGenerate
 "     : IF 'go' vim-go to definition vertical split
 
 "" F# Keys
@@ -81,7 +82,8 @@ colorscheme gruvbox-material
 
 "" fzf
 " install fd-find and ripgrep
-noremap <leader>f :Rg<Cr>
+noremap <leader>f :Files<Cr>
+noremap <leader>g :Rg<Cr>
 noremap <leader>b :Buffers<Cr>
 
 let g:fzf_layout = { 'down': '~20%' }
@@ -124,7 +126,7 @@ nmap <F6> <Plug>MarkdownPreview
 
 "" doge
 let g:doge_doc_standard_python = 'google'
-noremap <leader>g :DogeGenerate<Cr>
+noremap <leader>d :DogeGenerate<Cr>
 
 "" gitgutter
 map <F4> :GitGutterToggle<Cr>
