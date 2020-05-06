@@ -6,7 +6,7 @@ pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim termite \
     nodejs python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 
-pip install pynvim flake8 cfn-lint ipython3 --user
+pip install pynvim flake8 cfn-lint ipython3 yapf --user
 yay -S tflint-bin
 
 sudo ufw enable

@@ -1,18 +1,20 @@
 "" Leaders
 " q   : :q<Cr>
 " f   : FZF Files
-" g   : FZF Rg
+" g   : FZF GFiles
+" r   : FZF Rg
 " b   : FZF Buffers
 " s   : Slime Send Paragraph/Region to Repl
 " l   : SLime send current line to Repl
-" r   : IF 'python' Toggle ipython3 Terminal
+" i   : IF 'python' Toggle ipython3 Terminal
 "     : IF 'go' then go-run
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
+" w   : Quick Save
+" q   : Quick quite
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
 " d   : DogeGenerate
-"     : IF 'go' vim-go to definition vertical split
 
 "" F# Keys
 " F2  : Toggle netrw
@@ -83,7 +85,8 @@ colorscheme gruvbox-material
 "" fzf
 " install fd-find and ripgrep
 noremap <leader>f :Files<Cr>
-noremap <leader>g :Rg<Cr>
+noremap <leader>g :GFiles<Cr>
+noremap <leader>r :Rg<Cr>
 noremap <leader>b :Buffers<Cr>
 
 let g:fzf_layout = { 'down': '~20%' }

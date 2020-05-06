@@ -1,4 +1,5 @@
-nnoremap <leader>r :call ToggleRepl("ipython3")<Cr>
+autocmd BufWrite * 0,$!yapf
+nnoremap <leader>i :call ToggleRepl("ipython3")<Cr>
 
 function! ToggleRepl(repl)
 	let pane = bufwinnr(a:repl)
