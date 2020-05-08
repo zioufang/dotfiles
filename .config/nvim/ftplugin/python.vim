@@ -23,7 +23,11 @@ function! ToggleRepl(repl)
                 exe "split | term " . a:repl
             endif
 		catch
-            exe "split | term " . a:repl
+            if isdirectory('venv')
+		        exe "split | term source venv/bin/activate && " . a:repl
+            else
+                exe "split | term " . a:repl
+            endif
         endtry
         resize 20
 		exe "f " a:repl
