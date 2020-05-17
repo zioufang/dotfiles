@@ -1,4 +1,4 @@
-autocmd BufWrite * 0,$!yapf
+autocmd BufWrite *.py 0,$!yapf
 nnoremap <leader>i :call ToggleRepl("ipython3")<Cr>
 
 function! ToggleRepl(repl)
