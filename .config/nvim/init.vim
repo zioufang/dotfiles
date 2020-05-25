@@ -54,15 +54,15 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'davidhalter/jedi-vim'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'hashivim/vim-terraform'
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " non essential
 Plug 'mhinz/vim-startify'						" can be used for session management
