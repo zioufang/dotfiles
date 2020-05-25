@@ -19,7 +19,6 @@
 "" F# Keys
 " F2  : Toggle netrw
 " F3  : Toggle search highlight
-" F4  : Toggle GitGutter
 " F5  : Toggle Ale gutter
 " F6  : MarkdownPreview
 " F7  : Toggle Indentline
@@ -46,8 +45,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
-Plug 'morhetz/gruvbox'
-Plug 'fatih/molokai'
 Plug 'sainnhe/gruvbox-material'
 
 " IDE
@@ -56,20 +53,16 @@ Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
-Plug 'airblade/vim-gitgutter'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " non essential
-Plug 'mhinz/vim-startify'						" can be used for session management
-" Plug 'vim-scripts/indentpython.vim'             " better indent for python
 Plug 'kkoomen/vim-doge'							" documentation generator
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
-Plug 'godlygeek/tabular'                        " :Tabularize /delimiter
 Plug 'vim-airline/vim-airline'
 Plug 'yggdroot/indentline'
 
@@ -98,8 +91,9 @@ let g:ale_linters = { 'python': ['flake8'], 'go': ['golint'], 'terraform': ['tfl
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
 map <F5> :ALEToggle<Cr>
-map <silent> ]l <Plug>(ale_next_wrap)
-map <silent> [l <Plug>(ale_previous_wrap)
+"" coc key map overwrite this
+" map <silent> ]l <Plug>(ale_next_wrap)
+" map <silent> [l <Plug>(ale_previous_wrap)
 
 "" coc
 " TextEdit might fail if hidden is not set.
@@ -154,9 +148,9 @@ else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate diagnostics/linting
+nmap <silent> [l <Plug>(coc-diagnostic-prev)
+nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -191,19 +185,6 @@ nmap <F6> <Plug>MarkdownPreview
 "" doge
 let g:doge_doc_standard_python = 'google'
 noremap <leader>d :DogeGenerate<Cr>
-
-"" gitgutter
-map <F4> :GitGutterToggle<Cr>
-let g:gitgutter_map_keys = 0
-let g:gitgutter_enabled = 0
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-
-"" indentline
-map <F7> :IndentLinesToggle<Cr>
-let g:indentLine_enabled = 0
-let g:indentLine_color_term = 239
-let g:indentLine_char = '┆'
 
 "" airline
 let g:airline_section_c = 'b%n %<%F%*%m%*'      " buffer number, full path and modifier
