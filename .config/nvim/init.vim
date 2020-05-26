@@ -54,6 +54,7 @@ Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
+Plug 'psf/black', { 'for': 'python', 'tag': '19.10b0' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
