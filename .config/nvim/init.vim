@@ -16,6 +16,7 @@
 " t   : Toggle 'default' terminal
 " d   : DogeGenerate
 " v   : vsplit
+" u   : undo
 
 "" F# Keys
 " F2  : Toggle netrw
@@ -156,7 +157,8 @@ nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<Cr>
+" nmap <silent> gr <Plug>(coc-references)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -194,6 +196,7 @@ let g:maximizer_default_mapping_key = '<F12>'
 "" indentline
 let g:indentLine_enabled = 0
 au BufNewFile,BufRead *.yaml,*.yml,*.j2 let g:indentLine_enabled = 1
+nmap <F7> :IndentlinesToggle
 
 "" slime,
 let g:slime_target = "neovim"
@@ -282,6 +285,7 @@ noremap <leader>q :q<Cr>
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 noremap <leader>v <C-W><C-V>
+noremap <leader>u :undo<Cr>
 
 
 """ KEY MAPPINGS
