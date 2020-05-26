@@ -15,6 +15,7 @@
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
 " d   : DogeGenerate
+" v   : vsplit
 
 "" F# Keys
 " F2  : Toggle netrw
@@ -55,7 +56,7 @@ Plug 'dense-analysis/ale'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 " non essential
 Plug 'kkoomen/vim-doge'							" documentation generator
@@ -158,9 +159,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -194,8 +192,9 @@ let g:airline#extensions#ale#enabled = 1
 "" maximizer
 let g:maximizer_default_mapping_key = '<F12>'
 
-"" supertab
-let g:SuperTabNoCompleteAfter = ['^', ',', ';', '\s', '"', "'"]
+"" indentline
+let g:indentLine_enabled = 0
+au BufNewFile,BufRead *.yaml,*.yml,*.j2 let g:indentLine_enabled = 1
 
 "" slime,
 let g:slime_target = "neovim"
@@ -235,8 +234,10 @@ let g:netrw_alto = 0
 let g:netrw_winsize = 20
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'        " enable line number
 
+" use p to preview
 " toggle netrw
 let g:NetrwIsOpen=0
+au FileType netrw let g:NetrwIsOpen=1
 function! ToggleNetrw()
     if g:NetrwIsOpen
         let i = bufnr("$")
@@ -281,6 +282,7 @@ noremap <leader>p "+p
 noremap <leader>q :q<Cr>
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
+noremap <leader>v <C-W><C-V>
 
 
 """ KEY MAPPINGS
