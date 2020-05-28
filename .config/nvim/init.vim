@@ -121,15 +121,6 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -202,7 +193,7 @@ let g:maximizer_default_mapping_key = '<F12>'
 "" indentline
 let g:indentLine_enabled = 0
 au BufNewFile,BufRead *.yaml,*.yml,*.j2 let g:indentLine_enabled = 1
-nmap <F7> :IndentlinesToggle
+nmap <F7> :IndentlinesToggle<Cr>
 
 "" slime,
 let g:slime_target = "neovim"
@@ -223,6 +214,7 @@ nmap <leader>l <Plug>SlimeLineSend<Cr>
 filetype plugin indent on
 set scroll=15
 set scrollback=100000
+set signcolumn=auto
 set hidden                          " easy to switch buffers/files with unsaved changes
 set smartcase						" if pattern contains uppsecase, search is case-sensitve
 " ignorecase while searching, use \C in the end to enforce case-sensitivity
