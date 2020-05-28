@@ -7,3 +7,6 @@ setxkbmap -option ctrl:nocaps
 # tap caps as ctrl using xcape
 # xcape -e 'Control_L=Escape'
 
+# sync google drive on startup
+# need to run `rclone config` first and create ~/gdrive
+# rclone copy --copy-links ~/gdrive gdrive:sync

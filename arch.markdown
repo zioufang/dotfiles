@@ -1,8 +1,8 @@
 ### install packages
 ```
 pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim kitty \
-    picom feh rofi dmenu xsel dunst redshift ranger thunar qutebrowser newsboat \
-    ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw \
+    picom feh rofi dmenu xsel dunst redshift ranger thunar qutebrowser \
+    ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 
@@ -29,4 +29,18 @@ cd Python-${PYTHON_VERSION}
 make
 sudo make install
 echo "export PYSPARK_PYTHON=/opt/python/${PYTHON_VERSION}" >> ~/.zshrc
+```
+
+### sync with gdrive
+```
+# !!!!
+# !!!! COPY zsh history from G-Drive FIRST !!!!
+# !!!!
+# sync zsh history
+mkdir -p ~/gdrive/zsh
+rclone config
+ln -s ~/.cache/zsh/history ~/gdrive/zsh
+
+# runs copy at startup in .xprofile
+# rclone copy --copy-links ~/gdrive gdrive:sync
 ```
