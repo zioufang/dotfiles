@@ -32,6 +32,8 @@ https://github.com/universal-ctags/ctags
  :CocInstall coc-python
 go: (install gopls if not already)
 terraform (install terraform-lsp)
+dockerfile (dockerfile-language-server-nodejs)
+bash (bash-language-server)
 
 
 

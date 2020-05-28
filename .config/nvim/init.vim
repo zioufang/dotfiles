@@ -90,7 +90,12 @@ let g:sneak#label = 1                           " EasyMotion behaviour
 
 "" ale
 let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml', 'j2']}
-let g:ale_linters = { 'python': ['flake8'], 'go': ['golint'], 'terraform': ['tflint'] }
+let g:ale_linters = {
+    \ 'python': ['flake8'],
+    \ 'go': ['golint'],
+    \ 'terraform': ['tflint'],
+    \ 'sh': ['language_server'],
+    \ }
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
 map <F5> :ALEToggle<Cr>
@@ -159,6 +164,7 @@ nmap <silent> ]l <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<Cr>
 " nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -221,6 +227,7 @@ set hidden                          " easy to switch buffers/files with unsaved 
 set smartcase						" if pattern contains uppsecase, search is case-sensitve
 " ignorecase while searching, use \C in the end to enforce case-sensitivity
 " noignorecase in insert for autocompletion
+set ignorecase
 au InsertEnter * set noignorecase
 au InsertLeave * set ignorecase
 set lazyredraw                      " lazyredraw, for macro performance
