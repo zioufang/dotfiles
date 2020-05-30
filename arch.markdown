@@ -1,12 +1,12 @@
 ### install packages
 ```
-pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim kitty \
+pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim alacritty termite \
     picom feh rofi dmenu xsel dunst redshift ranger thunar qutebrowser \
     ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 
-pip install pynvim flake8 cfn-lint ipython3 yapf --user
+pip install pynvim flake8 cfn-lint ipython3 black --user
 yay -S tflint-bin
 
 sudo ufw enable
