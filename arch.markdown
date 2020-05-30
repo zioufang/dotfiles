@@ -1,10 +1,13 @@
 ### install packages
 ```
-pacman -S i3-gaps i3lock i3blocks zsh grml-zsh-config neovim alacritty termite \
-    picom feh rofi dmenu xsel dunst redshift ranger thunar qutebrowser \
+pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
+    picom feh rofi dmenu xsel dunst redshift thunar qutebrowser \
     ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
+
+# i3 packages
+# i3-gaps i3lock i3blocks 
 
 pip install pynvim flake8 cfn-lint ipython3 black --user
 yay -S tflint-bin

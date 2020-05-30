@@ -1,0 +1,71 @@
+#
+# APPS
+#
+
+# terminal emulator
+super + Return
+	$TERMINAL
+
+super + shift + Return
+    termite
+
+# browser
+super + w
+    $BROWSER
+
+# program launcher
+super + d
+	exec rofi -lines 8 -padding 8 -width 16 -location 0 -show drun -sidebar-mode -columns 1 -font 'Noto Sans 10'
+
+#
+# BSPWM HOTKEYS
+#
+
+# make sxhkd reload its configuration files:
+super + shift + c
+	pkill -USR1 -x sxhkd
+
+# quit bspwm
+super + shift + Escape
+    prompt "Are you sure you would like to quit this Xsession" "bspc quit"
+
+# restart bspwm
+super + shift + r
+	bspc wm -r
+
+#
+# NODE
+#
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# swap the current node and the biggest local node
+super + m
+	bspc node -s biggest.local
+
+# send the newest marked node to the newest preselected node
+super + shift + m
+	bspc node -s prev.local
+
+# toggle fullscreen
+super + f
+    bspc node -t \~fullscreen
+
+# focus the node in the given direction
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
+
+# focus the last node/desktop
+super + Tab
+	bspc desktop -f last
+
+# focus or send to the given desktop
+super + {1-9,0}
+	bspc desktop -f ^{1-9,10}
+
+# send node to desktop and focus
+super + shift + {1-9,0}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,0}; bspc node -f ${id}
+

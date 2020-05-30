@@ -1,0 +1,21 @@
+#! /bin/sh
+
+sxhkd &
+
+# autostart
+feh --randomize --bg-scale ~/.config/wallpapers/* &
+redshift -g 0.9 -m randr -t 4500:3000 &
+killall picom 2>dev/null; picom -b &
+killall dunst 2>/dev/null; dunst &
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap           5
+bspc config split_ratio          0.52
+bspc config normal_border_color	"#4c566a"
+bspc config active_border_color	"#1e1e1e"
+bspc config focused_border_color "#406ea5"
+bspc config presel_feedback_color	"#5e81ac"
+
+bspc rule -a Firefox desktop='^2'
