@@ -7,8 +7,10 @@ feh --randomize --bg-scale ~/.config/wallpapers/* &
 redshift -g 0.9 -m randr -t 4500:3000 &
 killall picom 2>dev/null; picom -b &
 killall dunst 2>/dev/null; dunst &
+# change vb-bar for non virtualbox
+killall polybar 2>/dev/null; polybar vb-bar &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor Virtual-1 -d 1 2 3 4 5 6 7
 
 bspc config border_width         2
 bspc config window_gap           5
@@ -17,6 +19,5 @@ bspc config normal_border_color	"#4c566a"
 bspc config active_border_color	"#1e1e1e"
 bspc config focused_border_color "#406ea5"
 bspc config presel_feedback_color	"#5e81ac"
-bspc config click_to_focus none
 
 bspc rule -a Firefox desktop='^2'

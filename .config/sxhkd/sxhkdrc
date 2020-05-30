@@ -27,7 +27,7 @@ super + shift + c
 
 # quit bspwm
 super + shift + Escape
-    prompt "Are you sure you would like to quit this Xsession" "bspc quit"
+    bspc quit
 
 # restart bspwm
 super + shift + r
