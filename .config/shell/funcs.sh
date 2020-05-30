@@ -1,8 +1,20 @@
+# bspc rename current ws
+function ws {
+    ws_current=$(bspc query -D -d focused --names);
+    if [ -n "$1" ]; then
+        ws_name=${ws_current}_$1;
+    else
+        ws_name=`echo $ws_current | cut -c1-1`;
+    fi
+    bspc desktop -n $ws_name
+    echo "changing ws name to $ws_name"
+}
+
 # vscode
 function c { if [[ $# -eq 1 ]]; then code "$1"; else code .; fi }
 
 # immediate tmux after ssh
-function ssht { /usr/bin/ssh -t $@ "tmux attach || tmux new"; } 
+function ssht { /usr/bin/ssh -t $@ "tmux attach || tmux new"; }
 
 # check dir for the mk functions
 function checkdir {
@@ -15,7 +27,7 @@ function checkdir {
     else
         echo "need an project name"
     fi
-    return 1    
+    return 1
 }
 
 # create dir strucutre for python
@@ -26,7 +38,7 @@ function mkpy {
         touch "./$1/README.md"
         touch "./$1/requirements.txt"
         touch "./$1/.gitignore"
-        touch "./$1/$1/__init__.py"        
+        touch "./$1/$1/__init__.py"
     fi
     return 0
 }
@@ -83,6 +95,6 @@ deploy := {
         mkdir -p "./$1/src/main/scala"
         mkdir -p "./$1/src/test"
     fi
-    
+
     return 0
 }

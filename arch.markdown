@@ -10,7 +10,9 @@ pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
 # i3-gaps i3lock i3blocks 
 
 pip install pynvim flake8 cfn-lint ipython3 black --user
-yay -S tflint-bin
+yay -S tflint-bin polybar-git
+
+# need to rename the monitor in polybar from Virtual-1 to the correct one
 
 sudo ufw enable
 ```
