@@ -1,7 +1,7 @@
 #!/bin/bash
 # launch fuzzy matched bookmark in browser
 
-BOOKMARKS=${HOME}/projects/dotfiles/.scripts/fzfcmds/bookmarks
+BOOKMARKS=${HOME}/.scripts/fzfcmds/bookmarks
 FZF_ARGS="--reverse"
 
 # Display the menu and get the selection
@@ -12,6 +12,10 @@ if [ "${SELECTION}" ]; then
 	URL=`grep "${SELECTION}" ${BOOKMARKS} | sed "s/${SELECTION} //"`
 fi
 
+# lnch to launches a process and moves it out of the process group
+# to ensure when term window closes, the spawned child process is moved out
 if [ "${URL}" ]; then
-	${BROWSER} ${URL}
+	~/go/bin/lnch ${BROWSER} ${URL}
 fi
+
+exit

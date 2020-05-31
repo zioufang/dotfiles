@@ -12,6 +12,10 @@ pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
 pip install pynvim flake8 cfn-lint ipython3 black --user
 yay -S tflint-bin polybar-git
 
+# for fzf scripts to work in $term -e mode
+# check go bin path for lnch, default to ~/go/bin/lnch
+go get github.com/zioufang/lnch
+
 # need to rename the monitor in polybar from Virtual-1 to the correct one
 
 sudo ufw enable
