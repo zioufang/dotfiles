@@ -1,7 +1,7 @@
 ### install packages
 ```
 pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
-    picom feh rofi dmenu xsel dunst redshift thunar qutebrowser \
+    picom feh rofi xsel dunst redshift thunar qutebrowser \
     ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts

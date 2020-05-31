@@ -13,5 +13,5 @@ if [ "${SELECTION}" ]; then
 fi
 
 if [ "${URL}" ]; then
-	${BROWSER} ${URL} &
+	${BROWSER} ${URL}
 fi

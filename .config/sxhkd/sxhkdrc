@@ -9,9 +9,19 @@ super + Return
 super + shift + Return
     termite
 
+# dropdown term
+super + z
+    ~/.config/bspwm/ddterm
+
 # browser
 super + w
     $BROWSER
+
+super + shift + w
+    qutebrowser
+
+super + b
+    alacritty --class floatterm -e .scripts/fzfcmds/gotobm.sh
 
 # program launcher
 super + d

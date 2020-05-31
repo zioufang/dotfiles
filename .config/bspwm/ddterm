@@ -1,0 +1,14 @@
+#!/bin/sh
+id=$(xdotool search --classname ddterm)
+
+if [ -z "$id" ]; then
+    alacritty --class ddterm &
+else
+    bspc node "$id" --flag hidden -f
+fi
+
+# create one if it doesn't have one
+# if ! pgrep -U ${USER:-$(whoami)} -f "alacritty --class ddterm" >/dev/null; then
+#     alacritty --class ddterm &
+# fi
+
