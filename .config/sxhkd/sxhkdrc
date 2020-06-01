@@ -20,6 +20,9 @@ super + w
 super + shift + w
     qutebrowser
 
+super + r
+    rm -rf ~/.local/share/qutebrowser/webengine/Cookies* 2>/dev/null && qutebrowser :restart
+# fzf
 super + b
     alacritty --class floatterm -e ~/.scripts/fzfcmds/gotobm.sh
 
@@ -46,8 +49,8 @@ super + shift + Escape
     bspc quit
 
 # restart bspwm
-super + shift + r
-	bspc wm -r
+# super + shift + r
+	# bspc wm -r
 
 #
 # NODE
