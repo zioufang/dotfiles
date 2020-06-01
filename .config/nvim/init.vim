@@ -48,6 +48,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
 Plug 'sainnhe/gruvbox-material'
+Plug 'unblevable/quick-scope'
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -55,7 +56,7 @@ Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
-Plug 'psf/black', { 'for': 'python', 'tag': '19.10b0' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
+Plug 'psf/black', { 'for': 'python' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -73,6 +74,13 @@ call plug#end()
 
 " true color
 set termguicolors
+" for quick-scope, needs to be before colorscheme
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+augroup END
+
 colorscheme gruvbox-material
 
 "" fzf
@@ -87,6 +95,9 @@ let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with
 
 "" sneak
 let g:sneak#label = 1                           " EasyMotion behaviour
+
+"" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 "" ale
 let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml', 'j2']}
@@ -309,21 +320,17 @@ nnoremap / :set hls<Cr>/
 " bring back the prev buffer, close the current one and keep the split panes
 noremap <C-X> :bp\|bd #<Cr>
 
+nnoremap S :%s///gc<Left><Left><Left><Left>
 nnoremap Y y$
 nnoremap Q @q
+nnoremap H ^
+nnoremap L $
+
+" insert blank line, :set paste to disable auto indent
+nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 "" movements in insert mode
-inoremap <A-j> <C-O>j
-inoremap <A-k> <C-O>k
-inoremap <A-l> <C-O>a
-inoremap <A-h> <C-O>h
-inoremap <A-w> <C-O>w
-inoremap <A-e> <Esc>ea
-inoremap <A-b> <C-O>b
-inoremap <A-g> <Esc>gea
-inoremap <A-L> <C-O>$
-inoremap <A-H> <C-O>^
-
 inoremap <C-D> <Del>
 
 " tab for completion
