@@ -9,8 +9,7 @@ alias ..="cd .." \
     mkdir="mkdir -pv" \
     hcat="highlight --out-format=ansi" \
     ls="ls --color=auto" \
-    code="code --disable-gpu" \
-    ws="bspc desktop -n"
+    code="code --disable-gpu"
 
 alias ll="LC_COLLATE=C ls -lh --group-directories-first "     # readable ls, dotfiles first
 alias ld="ll | grep '^d'"   # ls dir only

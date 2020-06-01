@@ -21,10 +21,10 @@ fi
 # bspc rename current ws
 function ws {
     ws_current=$(bspc query -D -d focused --names);
-    if [ -n "$1" ]; then
-        ws_name=${ws_current}_$1;
-    else
+    if [ -z "$1" ]; then
         ws_name=`echo $ws_current | cut -c1-1`;
+    else
+        ws_name=${ws_current}_$1;
     fi
     bspc desktop -n $ws_name
     echo "changing ws name to $ws_name"
