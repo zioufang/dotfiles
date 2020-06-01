@@ -75,6 +75,7 @@ export HISTFILESIZE=10000
 export GIT_TERMINAL_PROMPT=1
 export FZF_DEFAULT_COMMAND='fd --type f'
 export TERM=xterm # for remote session
+export CODE_DIR=/home/zio/projects/ # used for fzf shortcuts
 
 # beam for insert and block for normal
 # smkx to fix keys like backspace/delete for st
