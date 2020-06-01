@@ -1,3 +1,22 @@
+# fzf dir jump
+function jj {
+    prefix=/home/zio/projects/
+    # cd $(autojump -s | grep -v '^0.0' | grep $prefix | sed '1!G;h;$!d' | awk '{print $2}' | sed -e "s|^$prefix||" | fzf --height=20% --reverse | xargs -I % echo ${prefix}%)
+    output=$(autojump -s | grep -v '^0.0' | grep $prefix | sed '1!G;h;$!d' | awk '{print $2}' | sed -e "s|^$prefix||" | fzf --height=30% --reverse)
+    cd $prefix$output
+}
+
+# nvim into dir
+function v {
+if [ -z "$1" ]; then
+    prefix=/home/zio/projects/
+    output=$(autojump -s | grep -v '^0.0' | grep $prefix | sed '1!G;h;$!d' | awk '{print $2}' | sed -e "s|^$prefix||" | fzf --height=30% --reverse)
+    nvim $prefix$output
+else
+    nvim $1
+fi
+}
+
 # bspc rename current ws
 function ws {
     ws_current=$(bspc query -D -d focused --names);

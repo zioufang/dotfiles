@@ -97,7 +97,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with
 let g:sneak#label = 1                           " EasyMotion behaviour
 
 "" quick-scope
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_highlight_on_keys = ['f', 'F']
 
 "" ale
 let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml', 'j2']}
