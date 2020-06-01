@@ -37,6 +37,10 @@ super + d
 super + shift + c
 	pkill -USR1 -x sxhkd
 
+# rotate and even split
+super + s
+    bspc node @parent -R 90 && bspc node @parent/parent -B
+
 # quit bspwm
 super + shift + Escape
     bspc quit
