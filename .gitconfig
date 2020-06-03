@@ -16,6 +16,9 @@
         # checkout
         c = checkout
 
+        # diff
+        d = diff
+
         # add and commit
         ac = !git add . && git commit -am
 

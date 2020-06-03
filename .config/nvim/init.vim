@@ -48,11 +48,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
 Plug 'sainnhe/gruvbox-material'
+Plug 'vifm/vifm.vim'
 Plug 'unblevable/quick-scope'
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-vinegar'						" better newrw
+" Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
@@ -239,34 +240,50 @@ set undodir=~/.config/nvim/undodir
 
 
 """ NETRW
-set wildignore+=.pyc,.git,venv,.ipynb_checkpoints,__pycache__ 	" used to hide files for vim-vinegar
-" better preview, with file explorer to the left with 20% width
-let g:netrw_preview = 1
-let g:netrw_alto = 0
-let g:netrw_winsize = 20
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'        " enable line number
+" " better preview, with file explorer to the left with 20% width
+" set wildignore+=.pyc,.git,venv,.ipynb_checkpoints,__pycache__ 	" used to hide files for vim-vinegar
+" let g:netrw_liststyle=3
+" let g:netrw_preview = 1
+" let g:netrw_alto = 0
+" let g:netrw_winsize = 15
+" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'        " enable line number
 
-" use p to preview
-" toggle netrw
-let g:NetrwIsOpen=0
-au FileType netrw let g:NetrwIsOpen=1
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Vexplore
-    endif
-endfunction
-noremap <F2> :call ToggleNetrw()<CR>
+" " use p to preview
+" " toggle netrw
+" let g:NetrwIsOpen=0
+" function! ToggleNetrw()
+"     if g:NetrwIsOpen
+"         let i = bufnr("$")
+"         while (i >= 1)
+"             if (getbufvar(i, "&filetype") == "netrw")
+"                 silent exe "bwipeout " . i
+"             endif
+"             let i-=1
+"         endwhile
+"         let g:NetrwIsOpen=0
+"     else
+"         let g:NetrwIsOpen=1
+"         silent Vexplore
+"     endif
+" endfunction
+" noremap <F2> :call ToggleNetrw()<CR>
 
+" " keybindings in netrw
+" augroup netrw_mapping
+"     autocmd!
+"     autocmd filetype netrw call NetrwMapping()
+" augroup END
+
+" function! NetrwMapping()
+"     noremap <buffer> <C-L> <C-W><C-L>
+" endfunction
+
+" vifm to replace netrw
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
+let g:vifm_replace_netrw = 1
+
+nnoremap - :EditVifm<Cr>
 
 """ EDITOR
 set background=dark
@@ -310,7 +327,6 @@ noremap <C-Left> :vertical resize +5<Cr>
 noremap <C-Right> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
-
 " toggle search highlight
 nmap <F3> :set hls!<Cr>
 inoremap <F3> <C-O>:set hls!<Cr>
@@ -323,8 +339,8 @@ noremap <C-X> :bp\|bd #<Cr>
 nnoremap S :%s///gc<Left><Left><Left><Left>
 nnoremap Y y$
 nnoremap Q @q
-nnoremap H ^
-nnoremap L $
+nnoremap gh ^
+nnoremap gl $
 
 " insert blank line, :set paste to disable auto indent
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>

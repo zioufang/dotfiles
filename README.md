@@ -5,13 +5,8 @@ Sync the dotfiles, `-f` can be added in the end to overwrite:
 
 ## The Setup
 **neovim**  
-**i3-gaps**  
-i3lock  
-i3blocks  
-dunst  
-ranger  
-bash  
-termite  
-tmux  
+**bspwm**  
+vifm  
+zsh  
+alacritty  
 qutebrowser  
-newsboat  
