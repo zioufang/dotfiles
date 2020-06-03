@@ -20,6 +20,94 @@ set vicmd=nvim
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
+" devicons for vifm
+source ~/.config/vifm/vifm_devicons
+
+" ------------------------------------------------------------------------------
+
+" :mark mark /full/directory/path [filename]
+
+mark c ~/.config
+mark f ~/projects/dotfiles
+mark d ~/Downloads
+
+" ------------------------------------------------------------------------------
+"
+" Custom Keybindings
+" quit
+nnoremap q :q<cr>
+" parent
+nnoremap - h
+" toggle select
+nnoremap <space> t
+" go home
+nnoremap ~ :cd ~<cr>
+" touch file & mkdir
+command! touchvim :touch %a | edit %a
+nnoremap % :touchvim<space>
+command! mkcd :mkdir %a | cd %a
+nnoremap md :mkcd<space>
+"toggle previous current directory
+nnoremap <tab> :cd -<cr>
+" move pane
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+
+" default to visual append
+" use V to go to normal visual mode
+nnoremap v av
+
+" 1/2 pane switch
+nnoremap o <c-w>o
+nnoremap O <c-w>v
+
+" Start shell in current directory
+nnoremap s :shell<cr>
+
+" Display sorting dialog
+nnoremap S :sort<cr>
+
+" Toggle visibility of preview window
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+
+" fzf find
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd | ~/.fzf/bin/fzf --height 10 2>/dev/tty'))
+nnoremap <c-f> :FZFfind<cr>
+
+" Open file in the background using its default program
+nnoremap gb :file &<cr>l
+
+" Interaction with system clipboard
+if has('win')
+    " Yank current directory path to Windows clipboard with forward slashes
+    nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
+    " Yank path to current file to Windows clipboard with forward slashes
+    nnoremap yf :!echo %"c:gs!\!/! %i | clip<cr>
+elseif executable('xclip')
+    " Yank current directory path into the clipboard
+    nnoremap yd :!echo %d | xclip %i<cr>
+    " Yank current file path into the clipboard
+    nnoremap yf :!echo %c:p | xclip %i<cr>
+elseif executable('xsel')
+    " Yank current directory path into primary and selection clipboards
+    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
+                \ echo -n %d | xsel --clipboard --input %i<cr>
+    " Yank current file path into into primary and selection clipboards
+    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
+                \ echo -n %c:p | xsel --clipboard --input %i<cr>
+endif
+
+" Mappings for faster renaming
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw
+
+" Open editor to edit vifmrc and apply settings after returning to vifm
+command! Ve :write | edit $MYVIFMRC | restart<cr>
+
+" ------------------------------------------------------------------------------
+
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
 " solution, it's also much slower when processing large amounts of files and
@@ -116,13 +204,6 @@ endif
 " Set custom status line look
 
 set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
-
-" ------------------------------------------------------------------------------
-
-" :mark mark /full/directory/path [filename]
-
-mark b ~/bin/
-mark h ~/
 
 " ------------------------------------------------------------------------------
 
@@ -396,82 +477,6 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
 
 " ------------------------------------------------------------------------------
-
-" Keybindings
-" quit
-nnoremap q :q<cr>
-" parent
-nnoremap - h
-" toggle select
-nnoremap <space> t
-" go home
-nnoremap ~ :cd ~<cr>
-" touch file & mkdir
-command! touchvim :touch %a | edit %a
-nnoremap % :touchvim<space>
-command! mkcd :mkdir %a | cd %a
-nnoremap md :mkcd<space>
-"toggle previous current directory
-nnoremap <tab> :cd -<cr>
-" move pane
-nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
-
-" default to visual append
-" use V to go to normal visual mode
-nnoremap v av
-
-" 1/2 pane switch
-nnoremap o <c-w>o
-nnoremap O <c-w>v
-
-" Start shell in current directory
-nnoremap s :shell<cr>
-
-" Display sorting dialog
-nnoremap S :sort<cr>
-
-" Toggle visibility of preview window
-nnoremap w :view<cr>
-vnoremap w :view<cr>gv
-
-" fzf find
-command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd | ~/.fzf/bin/fzf --height 10 2>/dev/tty'))
-nnoremap <c-f> :FZFfind<cr>
-
-" Open file in the background using its default program
-nnoremap gb :file &<cr>l
-
-" Interaction with system clipboard
-if has('win')
-    " Yank current directory path to Windows clipboard with forward slashes
-    nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
-    " Yank path to current file to Windows clipboard with forward slashes
-    nnoremap yf :!echo %"c:gs!\!/! %i | clip<cr>
-elseif executable('xclip')
-    " Yank current directory path into the clipboard
-    nnoremap yd :!echo %d | xclip %i<cr>
-    " Yank current file path into the clipboard
-    nnoremap yf :!echo %c:p | xclip %i<cr>
-elseif executable('xsel')
-    " Yank current directory path into primary and selection clipboards
-    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
-                \ echo -n %d | xsel --clipboard --input %i<cr>
-    " Yank current file path into into primary and selection clipboards
-    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
-                \ echo -n %c:p | xsel --clipboard --input %i<cr>
-endif
-
-" Mappings for faster renaming
-nnoremap I cw<c-a>
-nnoremap cc cw<c-u>
-nnoremap A cw
-
-" Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
-
-" Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
 
 " Example of standard two-panel file managers mappings
 "nnoremap <f3> :!less %f<cr>

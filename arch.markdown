@@ -10,7 +10,8 @@ pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
 # i3-gaps i3lock i3blocks 
 
 pip install pynvim flake8 cfn-lint ipython3 black --user
-yay -S tflint-bin polybar-git
+# nerd-fonts patched version is needed for its glyphes for devicon in vifm
+yay -S tflint-bin polybar-git nerd-fonts-jetbrains-mono
 
 # for fzf scripts to work in $term -e mode
 # check go bin path for lnch, default to ~/go/bin/lnch
