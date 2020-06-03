@@ -29,7 +29,7 @@ https://github.com/universal-ctags/ctags
 ## for coc
  install nodejs
  :CocConfig
- :CocInstall coc-python
+ :CocInstall
 go: (install gopls if not already)
 terraform (install terraform-lsp)
 dockerfile (dockerfile-language-server-nodejs)

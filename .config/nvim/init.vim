@@ -116,6 +116,12 @@ map <F5> :ALEToggle<Cr>
 " map <silent> [l <Plug>(ale_previous_wrap)
 
 "" coc
+let g:coc_global_extensions = [
+    \ 'coc-python',
+    \ 'coc-pairs',
+    \ 'coc-json'
+    \ ]
+
 " TextEdit might fail if hidden is not set.
 set hidden
 

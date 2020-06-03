@@ -22,6 +22,8 @@
       "initializationOptions": {}
     }
   },
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "pairs.enableBackspace": true,
   "diagnostic.displayByAle": true,
   "python.jediEnabled": false,
   "suggest.noselect": false,
