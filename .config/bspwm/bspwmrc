@@ -23,4 +23,4 @@ bspc config presel_feedback_color	"#5e81ac"
 # Dropdown term with Alacritty
 bspc rule -a Alacritty:ddterm state=floating sticky=on center=on rectangle=720x294+0+0
 bspc rule -a Alacritty:floatterm state=floating sticky=on center=on rectangle=360x220+0+0
-bspc rule -a Alacritty:vifm state=floating sticky=on center=on rectangle=720x588+0+0
+bspc rule -a Alacritty:vifm state=floating center=on rectangle=720x588+0+0

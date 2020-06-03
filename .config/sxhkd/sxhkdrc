@@ -32,7 +32,8 @@ super + v
 super + d
 	exec rofi -lines 8 -padding 8 -width 16 -location 0 -show drun -sidebar-mode -columns 1 -font 'Noto Sans 10'
 
-super + shift + f
+# file explorer
+super + e
     alacritty --class vifm -e vifm
 #
 # BSPWM HOTKEYS
@@ -73,6 +74,14 @@ super + shift + m
 # toggle fullscreen
 super + f
     bspc node -t \~fullscreen
+
+# toggle floating
+super + shift + f
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
+        bspc node focused -t floating; \
+    else \
+        bspc node focused -t tiled; \
+    fi
 
 # focus the node in the given direction
 super + {Left,Down,Up,Right}
