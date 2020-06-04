@@ -7,8 +7,6 @@ autocmd ColorScheme * highlight link goDeclType goDeclaration
 
 au BufWrite *.go %! goimports
 
-inoremap { {<Cr>}<C-o>O
-
 " vim-go config
 " let g:go_fmt_command = "goimports"
 " let g:go_term_mode = "split"
