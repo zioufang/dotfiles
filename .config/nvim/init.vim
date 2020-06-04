@@ -170,8 +170,7 @@ nmap <silent> [l <Plug>(coc-diagnostic-prev)
 nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<Cr>
+nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<Cr>
 " nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
