@@ -1,9 +1,9 @@
-highlight link goFunctionCall goBuiltins
-highlight link goType Aqua
-highlight link goExtraType goType
-highlight link goOperator Orange
-autocmd ColorScheme * highlight link goBuiltins Blue
-autocmd ColorScheme * highlight link goDeclType goDeclaration
+" highlight link goFunctionCall goBuiltins
+" highlight link goType Aqua
+" highlight link goExtraType goType
+" highlight link goOperator Orange
+" autocmd ColorScheme * highlight link goBuiltins Blue
+" autocmd ColorScheme * highlight link goDeclType goDeclaration
 
 au BufWrite *.go %! goimports
 

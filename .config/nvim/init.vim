@@ -14,9 +14,10 @@
 " q   : Quick quite
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
-" d   : DogeGenerate
+" d   : 'blackhold' delete
 " v   : vsplit
 " u   : undo
+" o   : DogeGenerate
 
 "" F# Keys
 " F3  : Toggle search highlight
@@ -54,7 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
-Plug 'psf/black', { 'for': 'python' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
+Plug 'psf/black', { 'for': 'python', 'tag': '19.10b0' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
@@ -64,7 +65,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'yggdroot/indentline'
 
 call plug#end()
@@ -72,6 +74,7 @@ call plug#end()
 """ LEADERS
 noremap <leader>y "+y
 noremap <leader>p "+p
+noremap <leader>d "_d
 noremap <leader>q :q<Cr>
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
@@ -139,7 +142,7 @@ source $HOME/.config/nvim/plugin_config/sneak.vim
 source $HOME/.config/nvim/plugin_config/terraform.vim
 source $HOME/.config/nvim/plugin_config/markdown-preview.vim
 source $HOME/.config/nvim/plugin_config/doge.vim
-source $HOME/.config/nvim/plugin_config/airline.vim
+source $HOME/.config/nvim/plugin_config/lightline.vim
 source $HOME/.config/nvim/plugin_config/indentline.vim
 source $HOME/.config/nvim/plugin_config/maximizer.vim
 

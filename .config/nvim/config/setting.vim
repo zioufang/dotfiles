@@ -10,13 +10,13 @@ set ignorecase
 au InsertEnter * set noignorecase
 au InsertLeave * set ignorecase
 set lazyredraw                      " lazyredraw, for macro performance
-set undodir=~/.config/nvim/undodir
-"set undofile
+
 
 set background=dark
 set splitbelow splitright
 set number relativenumber
 set noshowmode                      " disable the redundant show mode on the last line
+set noswapfile
 set list                            " used to enable listchars below
 set listchars=tab:\ \ ,trail:•,extends:>,precedes:<
 set nojoinspaces                    " no extra space after '.' when joining lines
@@ -31,4 +31,9 @@ set fileformat=unix
 set formatoptions-=tc               " disable auto wrap while typing
 set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
 
-
+" undo settings
+if !isdirectory($HOME."/.config/nvim/undodir")
+    call mkdir($HOME."/.config/nvim/undodir", "", 0700)
+endif
+set undodir=~/.config/nvim/undodir
+set undofile
