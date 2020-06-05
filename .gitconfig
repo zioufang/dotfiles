@@ -1,11 +1,14 @@
 [core]
-        editor = nvim
+    	editor = nvim
         excludesfile = ~/.gitignore
 [user]
         name  = zioufang
         email = zioufang@gmail.com
 [help]
         autocorrect = 1
+[pull]
+        # use rebase if not specified
+        rebase = true
 [alias]
         # list aliases
         aliases = config --get-regexp alias
@@ -15,8 +18,7 @@
 
         # checkout
         c = checkout
-
-        # diff
+        #
         d = diff
 
         # add and commit
@@ -31,8 +33,14 @@
         # view log graph
         graph = log --pretty=oneline --graph --abbrev-commit # add '-n <number>' to view the latest <number> commits
 
+        # log pretty graph top
+        l = graph -n10
+
         # amend the last commit without changing the commit message
         amend = !git add . && git commit -a --amend --no-edit
+
+        # pull another branch and back
+        pb = "!f() { git checkout $1; git pull --ff-only; git checkout -; }; f"
 
         # 'force pull' overwrite current branch from remote
         pullf = "!f() { \

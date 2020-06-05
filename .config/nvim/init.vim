@@ -18,6 +18,7 @@
 " v   : vsplit
 " u   : undo
 " o   : DogeGenerate
+" h   : GitGutter Ops
 
 "" F# Keys
 " F3  : Toggle search highlight
@@ -54,6 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
+Plug 'airblade/vim-gitgutter'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'psf/black', { 'for': 'python', 'tag': '19.10b0' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -137,6 +139,7 @@ source $HOME/.config/nvim/plugin_config/coc.vim
 source $HOME/.config/nvim/plugin_config/fzf.vim
 source $HOME/.config/nvim/plugin_config/quick-scope.vim
 source $HOME/.config/nvim/plugin_config/ale.vim
+source $HOME/.config/nvim/plugin_config/gitgutter.vim
 source $HOME/.config/nvim/plugin_config/slime.vim
 source $HOME/.config/nvim/plugin_config/sneak.vim
 source $HOME/.config/nvim/plugin_config/terraform.vim

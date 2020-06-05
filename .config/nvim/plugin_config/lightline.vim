@@ -6,6 +6,10 @@ let g:lightline = {
     \   'right': [ ['lineinfo'], ['percent'], ['filetype']
     \            ]
     \ },
+    \ 'inactive': {
+    \   'left': [ [ 'path_n_modified' ] ],
+    \   'right': [ ['lineinfo'] ]
+    \ },
     \ 'component': { 'path_n_modified': '%<%F%*%m%*'},
     \ 'mode_map': {
       \ 'n' : 'N',
