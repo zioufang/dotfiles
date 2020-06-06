@@ -11,7 +11,6 @@
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
 " w   : Quick Save
-" q   : Quick quite
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
 " d   : 'blackhold' delete
@@ -27,7 +26,10 @@
 " F12 : Toggle Maximize current window
 
 ""
-" gd  : Coc go to definition vsplit
+" ZZ  : unforced save
+" gd  : Coc go to definition
+" gs  : Coc go to definition vsplit
+" gr  : Coc go to reference
 " K   : Coc show documentation
 " ]l  : Coc next lint warning/error
 " [l  : Coc prev lint warning/error
@@ -65,6 +67,7 @@ Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'kkoomen/vim-doge'							" documentation generator
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
+Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
 " Plug 'vim-airline/vim-airline'
@@ -73,18 +76,15 @@ Plug 'yggdroot/indentline'
 
 call plug#end()
 
-""" LEADERS
+""" KEY MAPPINGS
+map <Space> <leader>
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>d "_d
-noremap <leader>q :q<Cr>
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 noremap <leader>v <C-W><C-V>
 noremap <leader>u :undo<Cr>
-
-""" KEY MAPPINGS
-map <Space> <leader>
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -95,6 +95,7 @@ noremap <C-Left> :vertical resize +5<Cr>
 noremap <C-Right> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
+
 " toggle search highlight
 nmap <F3> :set hls!<Cr>
 inoremap <F3> <C-O>:set hls!<Cr>
@@ -109,6 +110,7 @@ nnoremap Y y$
 nnoremap Q @q
 nnoremap gh ^
 nnoremap gl $
+nnoremap ZZ :q<Cr>
 
 " insert blank line, :set paste to disable auto indent
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>

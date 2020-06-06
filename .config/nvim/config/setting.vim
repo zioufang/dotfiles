@@ -1,7 +1,10 @@
 filetype plugin indent on
 set scroll=15
 set scrollback=100000
+set scrolloff=3
+set sidescrolloff=5
 set signcolumn=auto
+set history=1000
 set hidden                          " easy to switch buffers/files with unsaved changes
 set smartcase						" if pattern contains uppsecase, search is case-sensitve
 " ignorecase while searching, use \C in the end to enforce case-sensitivity
@@ -10,7 +13,8 @@ set ignorecase
 au InsertEnter * set noignorecase
 au InsertLeave * set ignorecase
 set lazyredraw                      " lazyredraw, for macro performance
-
+set autoread
+set incsearch
 
 set background=dark
 set splitbelow splitright
@@ -29,6 +33,7 @@ set autoindent
 set expandtab
 set fileformat=unix
 set formatoptions-=tc               " disable auto wrap while typing
+set formatoptions+=j                " Delete comment character when joining commented lines
 set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
 
 " undo settings

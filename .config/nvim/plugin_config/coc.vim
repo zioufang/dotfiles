@@ -1,3 +1,13 @@
+" Use `[g` and `]g` to navigate diagnostics/linting
+nmap <silent> [l <Plug>(coc-diagnostic-prev)
+nmap <silent> ]l <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit')<Cr>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-pairs',
@@ -45,15 +55,6 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
-" Use `[g` and `]g` to navigate diagnostics/linting
-nmap <silent> [l <Plug>(coc-diagnostic-prev)
-nmap <silent> ]l <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<Cr>
-" nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
