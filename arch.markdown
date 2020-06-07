@@ -2,7 +2,7 @@
 ```
 pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
     picom feh rofi xsel dunst redshift thunar qutebrowser \
-    ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone \
+    ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone bat \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 

@@ -7,7 +7,7 @@ alias ..="cd .." \
     g=git \
     vim=nvim \
     mkdir="mkdir -pv" \
-    hcat="highlight --out-format=ansi" \
+    cat="bat --style=numbers" \
     ls="ls --color=auto" \
     code="code --disable-gpu"
 

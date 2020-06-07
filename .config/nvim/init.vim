@@ -3,9 +3,9 @@
 " f   : FZF Files
 " g   : FZF GFiles
 " r   : FZF Rg
+" l   : FZF BLines
 " b   : FZF Buffers
-" s   : Slime Send Paragraph/Region to Repl
-" l   : SLime send current line to Repl
+" s   : Slime Ops
 " i   : IF 'python' Toggle ipython3 Terminal
 "     : IF 'go' then go-run
 " y   : Yank to system clipboard
@@ -26,7 +26,7 @@
 " F12 : Toggle Maximize current window
 
 ""
-" ZZ  : unforced save
+" ZZ  : changed to :q without !
 " gd  : Coc go to definition
 " gs  : Coc go to definition vsplit
 " gr  : Coc go to reference
@@ -83,7 +83,6 @@ noremap <leader>p "+p
 noremap <leader>d "_d
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
-noremap <leader>v <C-W><C-V>
 noremap <leader>u :undo<Cr>
 
 noremap <C-J> <C-W><C-J>
@@ -113,8 +112,8 @@ nnoremap gl $
 nnoremap ZZ :q<Cr>
 
 " insert blank line, :set paste to disable auto indent
-nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+nnoremap <silent><A-o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 "" movements in insert mode
 inoremap <C-D> <Del>
