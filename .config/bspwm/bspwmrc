@@ -10,7 +10,7 @@ killall dunst 2>/dev/null; dunst &
 # change vb-bar for non virtualbox
 killall polybar 2>/dev/null; polybar vb-bar &
 
-bspc monitor Virtual-1 -d 1 2 3 4 5 6 7
+bspc monitor Virtual-1 -d 1 2 3 4 5 6 7 8 9 0
 
 bspc config border_width         2
 bspc config window_gap           5
@@ -22,5 +22,9 @@ bspc config presel_feedback_color	"#5e81ac"
 
 # Dropdown term with Alacritty
 bspc rule -a Alacritty:ddterm state=floating sticky=on center=on rectangle=720x294+0+0
+# Floating term
 bspc rule -a Alacritty:floatterm state=floating sticky=on center=on rectangle=360x220+0+0
 bspc rule -a Alacritty:vifm state=floating center=on rectangle=720x588+0+0
+# Joplin
+bspc rule -a Joplin desktop='0'
+bspc rule -a Alacritty:joplin desktop='0'

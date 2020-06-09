@@ -1,6 +1,6 @@
-" Use `[g` and `]g` to navigate diagnostics/linting
-nmap <silent> [l <Plug>(coc-diagnostic-prev)
-nmap <silent> ]l <Plug>(coc-diagnostic-next)
+" Use ALE instead
+" nmap <silent> [l <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)

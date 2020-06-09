@@ -33,6 +33,14 @@ super + d
 # file explorer
 super + e
     alacritty --class vifm -e vifm
+
+# joplin
+super + j
+    bspc desktop -f 0; alacritty --class joplin -e joplin
+
+super + shift + j
+    joplin-desktop
+
 #
 # BSPWM HOTKEYS
 #
@@ -95,5 +103,5 @@ super + {1-9,0}
 
 # send node to desktop and focus
 super + shift + {1-9,0}
-    id=$(bspc query -N -n); bspc node -d ^{1-9,0}; bspc node -f ${id}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}
 

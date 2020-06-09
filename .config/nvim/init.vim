@@ -21,6 +21,7 @@
 
 "" F# Keys
 " F3  : Toggle search highlight
+" F5  : ALE Toggle
 " F6  : MarkdownPreview
 " F7  : Toggle Indentline
 " F12 : Toggle Maximize current window
@@ -33,6 +34,17 @@
 " K   : Coc show documentation
 " ]l  : Coc next lint warning/error
 " [l  : Coc prev lint warning/error
+
+"" abolish coersion
+" snake_case (crs)
+" MixedCase (crm)
+" camelCase (crc)
+" snake_case (crs)
+" UPPER_CASE (cru)
+" dash-case (cr-)
+" dot.case (cr.)
+" space case (cr<space>)
+" Title Case (crt)
 
 """ PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,7 +72,7 @@ Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'psf/black', { 'for': 'python', 'tag': '19.10b0' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 " non essential
@@ -70,7 +82,6 @@ Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
-" Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim'
 Plug 'yggdroot/indentline'
 
