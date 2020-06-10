@@ -24,15 +24,16 @@ super + r
     rm -rf ~/.local/share/qutebrowser/webengine/Cookies* 2>/dev/null && qutebrowser :restart
 # fzf
 super + b
-    alacritty --class floatterm -e ~/.scripts/fzfcmds/gotobm.sh
+    alacritty --class floatterm -e $SHELL -ic "~/.scripts/fzfcmds/gotobm.sh"
 
 # program launcher
 super + d
 	exec rofi -lines 8 -padding 8 -width 16 -location 0 -show drun -sidebar-mode -columns 1 -font 'Noto Sans 10'
 
 # file explorer
+# -ic flag to force reading rc file
 super + e
-    alacritty --class vifm -e vifm
+    alacritty --class vifm -e $SHELL -ic "vifm"
 
 # joplin
 super + j
