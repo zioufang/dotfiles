@@ -9,7 +9,7 @@ pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
 # i3 packages
 # i3-gaps i3lock i3blocks 
 
-pip install pynvim flake8 cfn-lint ipython3 black --user
+pip install pynvim flake8 cfn-lint ipython3 yapf --user
 # nerd-fonts patched version is needed for its glyphes for devicon in vifm
 yay -S joplin tflint-bin polybar-git nerd-fonts-jetbrains-mono
 

@@ -5,7 +5,7 @@
 " autocmd ColorScheme * highlight link goBuiltins Blue
 " autocmd ColorScheme * highlight link goDeclType goDeclaration
 
-au BufWrite *.go %! goimports
+au! BufWritePost *.go call CodeFormat("goimports")
 
 " vim-go config
 " let g:go_fmt_command = "goimports"

@@ -71,7 +71,6 @@ Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
-Plug 'psf/black', { 'for': 'python', 'tag': '19.10b0' }           " To make sure pip and vim has the same black version: pip install --upgrade git+https://github.com/psf/black.git
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
@@ -137,8 +136,31 @@ vnoremap > ^o^><Esc>gv
 vnoremap < 0o0<<Esc>gv
 
 :command! Vs so ~/.config/nvim/init.vim
-:command! Ve e ~/.config/nvim/init.vim
 
+
+" autoformatter that remembers cursor position and autosave the formatted output
+" it does not runs autoformat if there is syntax error (otherwise it will
+" replace the file with the error output)
+" it usually used in conjunction with BufWritePost (not BufWrite due to error
+" checking)
+" Assumptions:
+" 1. it assumes the formatter will return non-zero shell_error if there is syntax
+" error and zero shell_error if there is not (e.g. black --check doesn't work here
+" because it returns 1 if there is a format change)
+" 2. it assumes the formatter will output the formatted code to stdout (e.g.
+" black doesn't work because it replacs the files)
+function! CodeFormat(formatter)
+    let l:current_pos = getpos('.')
+    silent exec '! ' . a:formatter . ' %'
+    if v:shell_error
+        echom "Can't format due to syntax error"
+    else
+        silent exec '%! ' . a:formatter
+        echom "Autoformatted"
+        silent exec "w"
+    endif
+    call setpos('.', l:current_pos)
+endfunction
 
 "" nvim configs
 source $HOME/.config/nvim/config/setting.vim
