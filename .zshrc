@@ -105,7 +105,7 @@ source ~/.config/shell/funcs.sh
 
 # addon scripts
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" --hidden --files \"$HOME/projects\""
+export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hidden --files \"$HOME/projects\""
 
 source /usr/share/autojump/autojump.zsh
 for file in ~/.config/zsh/completions/*; do source $file; done

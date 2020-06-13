@@ -2,12 +2,14 @@
 " q   : :q<Cr>
 " f   : FZF Files
 " g   : FZF GFiles
-" r   : FZF Rg
-" l   : FZF BLines
-" b   : FZF Buffers
+" ?   : FZF Rg
+" /   : FZF BLines
 " s   : Slime Ops
 " i   : IF 'python' Toggle ipython3 Terminal
 "     : IF 'go' then go-run
+" ,   : toggle tabline for bufferline
+" b   : open buffer
+" B   : close buffer
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
 " w   : Quick Save
@@ -82,6 +84,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'yggdroot/indentline'
 
 call plug#end()
@@ -94,6 +97,10 @@ noremap <leader>d "_d
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 noremap <leader>u :undo<Cr>
+" toggle tabline, used for bufferline
+nnoremap <expr><silent> <leader><space> &showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"
+nnoremap <leader>b :b<space>
+nnoremap <leader>B :bd<space>
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
