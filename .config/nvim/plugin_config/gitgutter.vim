@@ -1,4 +1,4 @@
-nmap <leader>hh :GitGutterBufferToggle<Cr>
+nmap <leader>hh :GitGutterToggle<Cr>
 nmap <leader>hj <Plug>(GitGutterNextHunk)
 nmap <leader>hk <Plug>(GitGutterPrevHunk)
 

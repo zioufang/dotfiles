@@ -1,5 +1,4 @@
-"" Leaders
-" q   : :q<Cr>
+" Leaders
 " f   : FZF Files
 " g   : FZF GFiles
 " ?   : FZF Rg
@@ -8,8 +7,6 @@
 " i   : IF 'python' Toggle ipython3 Terminal
 "     : IF 'go' then go-run
 " ,   : toggle tabline for bufferline
-" b   : open buffer
-" B   : close buffer
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
 " w   : Quick Save
@@ -48,47 +45,6 @@
 " space case (cr<space>)
 " Title Case (crt)
 
-""" PLUGIN
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
-endif
-
-call plug#begin('~/.local/share/nvim/plugged')
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
-Plug 'justinmk/vim-sneak'
-Plug 'sainnhe/gruvbox-material'
-Plug 'vifm/vifm.vim'
-Plug 'unblevable/quick-scope'
-
-" IDE
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'tpope/vim-vinegar'						" better newrw
-Plug 'tpope/vim-abolish'                        " for its coersion
-Plug 'dense-analysis/ale'
-Plug 'airblade/vim-gitgutter'
-Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-
-" non essential
-Plug 'kkoomen/vim-doge'							" documentation generator
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
-Plug 'tpope/vim-rhubarb'
-Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'szw/vim-maximizer'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
-Plug 'yggdroot/indentline'
-
-call plug#end()
-
 """ KEY MAPPINGS
 map <Space> <leader>
 noremap <leader>y "+y
@@ -98,9 +54,7 @@ noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 noremap <leader>u :undo<Cr>
 " toggle tabline, used for bufferline
-nnoremap <expr><silent> <leader><space> &showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"
-nnoremap <leader>b :b<space>
-nnoremap <leader>B :bd<space>
+nnoremap <expr><silent> <leader>, &showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -144,7 +98,70 @@ vnoremap < 0o0<<Esc>gv
 
 :command! Vs so ~/.config/nvim/init.vim
 
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.config/nvim/' . a:directory . '/*.vim'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+      execute 'source' config_file
+    endif
+  endfor
+endfunction
 
+"" nvim configs
+call s:SourceConfigFilesIn('config')
+
+"" plugin configs
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
+endif
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'justinmk/vim-sneak'
+Plug 'sainnhe/gruvbox-material'
+Plug 'vifm/vifm.vim'
+Plug 'unblevable/quick-scope'
+
+" IDE
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'tpope/vim-vinegar'						" better newrw
+Plug 'tpope/vim-abolish'                        " for its coersion
+Plug 'dense-analysis/ale'
+Plug 'airblade/vim-gitgutter'
+Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+
+" non essential
+Plug 'kkoomen/vim-doge'							" documentation generator
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
+Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'szw/vim-maximizer'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'yggdroot/indentline'
+
+call plug#end()
+
+call s:SourceConfigFilesIn('plugin_config')
+
+" true color
+set termguicolors
+" run colorscheme last for quick-scope
+colorscheme gruvbox-material
+
+
+
+"""
+""" SHARED FUNCTIONS
+"""
 " autoformatter that remembers cursor position and autosave the formatted output
 " it does not runs autoformat if there is syntax error (otherwise it will
 " replace the file with the error output)
@@ -168,29 +185,3 @@ function! CodeFormat(formatter)
     endif
     call setpos('.', l:current_pos)
 endfunction
-
-"" nvim configs
-source $HOME/.config/nvim/config/setting.vim
-source $HOME/.config/nvim/config/terminal.vim
-source $HOME/.config/nvim/config/autocmd.vim
-
-"" plugin configs
-source $HOME/.config/nvim/plugin_config/vifm.vim
-source $HOME/.config/nvim/plugin_config/coc.vim
-source $HOME/.config/nvim/plugin_config/fzf.vim
-source $HOME/.config/nvim/plugin_config/quick-scope.vim
-source $HOME/.config/nvim/plugin_config/ale.vim
-source $HOME/.config/nvim/plugin_config/gitgutter.vim
-source $HOME/.config/nvim/plugin_config/slime.vim
-source $HOME/.config/nvim/plugin_config/sneak.vim
-source $HOME/.config/nvim/plugin_config/terraform.vim
-source $HOME/.config/nvim/plugin_config/markdown-preview.vim
-source $HOME/.config/nvim/plugin_config/doge.vim
-source $HOME/.config/nvim/plugin_config/lightline.vim
-source $HOME/.config/nvim/plugin_config/indentline.vim
-source $HOME/.config/nvim/plugin_config/maximizer.vim
-
-" true color
-set termguicolors
-" run colorscheme last for quick-scope
-colorscheme gruvbox-material
