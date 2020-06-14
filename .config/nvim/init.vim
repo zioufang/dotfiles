@@ -14,7 +14,6 @@
 " t   : Toggle 'default' terminal
 " d   : 'blackhold' delete
 " v   : vsplit
-" u   : undo
 " o   : DogeGenerate
 " h   : GitGutter Ops
 
@@ -52,7 +51,6 @@ noremap <leader>p "+p
 noremap <leader>d "_d
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
-noremap <leader>u :undo<Cr>
 " toggle tabline, used for bufferline
 nnoremap <expr><silent> <leader>, &showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"
 
@@ -80,6 +78,9 @@ nnoremap Y y$
 nnoremap Q @q
 nnoremap gh ^
 nnoremap gl $
+" c to blackhole
+nnoremap c "_c
+nnoremap C "_C
 nnoremap ZZ :q<Cr>
 
 " insert blank line, :set paste to disable auto indent
