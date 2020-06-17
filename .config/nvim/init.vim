@@ -1,4 +1,5 @@
 " Leaders
+" b   : switching buffers
 " f   : FZF Files
 " g   : FZF GFiles
 " ?   : FZF Rg
@@ -13,7 +14,6 @@
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
 " d   : 'blackhold' delete
-" v   : vsplit
 " o   : DogeGenerate
 " h   : GitGutter Ops
 
@@ -51,8 +51,9 @@ noremap <leader>p "+p
 noremap <leader>d "_d
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
-" toggle tabline, used for bufferline
-nnoremap <expr><silent> <leader>, &showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"
+nnoremap <leader>b :buffers<CR>:
+" split buffer to vertical
+cabbrev sb vert sb
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -97,6 +98,7 @@ inoremap <C-D> <Del>
 vnoremap > ^o^><Esc>gv
 vnoremap < 0o0<<Esc>gv
 
+
 :command! Vs so ~/.config/nvim/init.vim
 
 function! s:SourceConfigFilesIn(directory)
@@ -139,6 +141,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 " non essential
+Plug 'stefandtw/quickfix-reflector.vim'         " modify quickfix, together with FzfRg for refactoring
 Plug 'kkoomen/vim-doge'							" documentation generator
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
@@ -146,7 +149,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
 Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
 Plug 'yggdroot/indentline'
 
 call plug#end()

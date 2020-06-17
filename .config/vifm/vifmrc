@@ -72,7 +72,7 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
 " fzf find
-command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fd | fzf --height 10 2>/dev/tty'))
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('fzf 2>/dev/tty'))
 nnoremap <c-f> :FZFfind<cr>
 
 " Open file in the background using its default program

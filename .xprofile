@@ -4,6 +4,8 @@ export VISUAL=$EDITOR
 export BROWSER=firefox
 export TERM=xterm-256color # only for remote session
 
+feh --randomize --bg-scale ~/.config/wallpapers/* &
+
 setxkbmap -option ctrl:nocaps
 
 # tap caps as ctrl using xcape

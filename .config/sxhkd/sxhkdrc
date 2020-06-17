@@ -28,7 +28,7 @@ super + b
 
 # program launcher
 super + d
-	exec rofi -lines 8 -padding 8 -width 16 -location 0 -show drun -sidebar-mode -columns 1 -font 'Noto Sans 10'
+	exec rofi -lines 8 -padding 8 -width 16 -location 0 -show drun -show-icons -columns 1 -font 'Noto Sans 10'
 
 # file explorer
 # -ic flag to force reading rc file

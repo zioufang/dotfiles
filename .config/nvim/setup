@@ -11,16 +11,11 @@ mkdir -p ~/.config/nvim/undodir
 ## add this to .bashrc for git to work in vim term
 export GIT_TERMINAL_PROMPT=1
 
-## for deoplete
-pip3 install --user --upgrade pynvim
-
 ## for ale
 # python and cloudformation
 pip3 install flake8 cfn-lint
 
 ## for fzf
-# file finder
-https://github.com/sharkdp/fd
 # ripgrep
 https://github.com/BurntSushi/ripgrep
 # ctags
@@ -34,7 +29,4 @@ go: (install gopls if not already)
 terraform (install terraform-lsp)
 dockerfile (dockerfile-language-server-nodejs)
 bash (bash-language-server)
-
-
-
 

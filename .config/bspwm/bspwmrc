@@ -3,7 +3,6 @@
 sxhkd &
 
 # autostart
-feh --randomize --bg-scale ~/.config/wallpapers/* &
 redshift -g 0.9 -m randr -t 4500:3000 &
 killall picom 2>dev/null; picom -b &
 killall dunst 2>/dev/null; dunst &
@@ -28,3 +27,7 @@ bspc rule -a Alacritty:vifm state=floating center=on rectangle=720x588+0+0
 # Joplin
 bspc rule -a Joplin desktop='0'
 bspc rule -a Alacritty:joplin desktop='0'
+# Zathura
+bspc rule -a Zathura state=tiled
+# Swallowing
+pidof ~/.config/bspwm/bspswallow || ~/.config/bspwm/bspswallow &

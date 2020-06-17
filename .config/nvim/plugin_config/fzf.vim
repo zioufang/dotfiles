@@ -1,14 +1,17 @@
 " install fd-find and ripgrep
 " use bat for syntax hightlight in preview
-noremap <leader>f :FzfFiles<Cr>
+noremap <leader>f :FzfProjectFiles<Cr>
 noremap <leader>g :FzfGFiles<Cr>
-" noremap <leader>? :let g:fzf_layout = { 'down': '~90%' } <bar> FzfRg<Cr>
-noremap <leader>? :FzfRg<Cr>
-noremap <leader>/ :FzfBLines<Cr>
+" alt-a<cr> save to quickfix list
+" ' for exact match
+noremap <leader>? :FzfRg<Cr>'
+noremap <leader>/ :FzfBLines<Cr>'
 
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'down': '~70%' }
+
+command! -bang FzfProjectFiles call fzf#vim#files('~/projects', <bang>0)
 
 " customized Rg
 command! -bang -nargs=* FzfRg

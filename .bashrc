@@ -25,4 +25,3 @@ export HISTFILESIZE=10000
 export HISTCONTROL=erasedups
 export GIT_TERMINAL_PROMPT=1
 export FZF_DEFAULT_COMMAND='fd --type f'
-export TERM=xterm # for remote session without urxvt

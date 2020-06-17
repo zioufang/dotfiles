@@ -24,19 +24,5 @@ let g:lightline = {
       \ 'S' : 'SL',
       \ "\<C-s>": 'SB',
       \ 't': 'T',
-    \ },
-    \ 'tabline': {
-    \   'left': [ ['buffers'] ],
-    \   'right': [ ['close'] ]
-    \ },
-    \ 'component_expand': {
-    \   'buffers': 'lightline#bufferline#buffers'
-    \ },
-    \ 'component_type': {
-    \   'buffers': 'tabsel'
     \ }
 \ }
-
-" lightline-bufferline extension
-let g:lightline#bufferline#show_number = 1
-let g:lightline#bufferline#filename_modifier = ':t'  " show file name with path

@@ -57,8 +57,8 @@ bindkey '\eOA' history-beginning-search-backward-end
 bindkey '\eOB' history-beginning-search-forward-end
 
 # edit line in vim with ctrl+v
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^v' edit-command-line
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey '^v' edit-command-line
 
 export DIRSTACKSIZE=5
 alias d='dirs -v' \
@@ -105,8 +105,7 @@ source ~/.config/shell/funcs.sh
 
 # addon scripts
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hidden --files \"$HOME/projects\""
+export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hidden --files"
 
 source /usr/share/autojump/autojump.zsh
 for file in ~/.config/zsh/completions/*; do source $file; done
-

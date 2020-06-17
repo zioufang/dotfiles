@@ -33,7 +33,7 @@ override-redirect = false
 wm-restack = bspwm
 enable-ipc = true
 fixed-center = false
-bottom = false
+bottom = true
 separator =
 
 width = 100%
