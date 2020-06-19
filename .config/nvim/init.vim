@@ -51,9 +51,8 @@ noremap <leader>p "+p
 noremap <leader>d "_d
 noremap <leader>w :w<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
-nnoremap <leader>b :buffers<CR>:
-" split buffer to vertical
-cabbrev sb vert sb
+nnoremap <leader>b :buffers<CR>:b
+cabbrev bv vert sb
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -156,8 +155,15 @@ call plug#end()
 call s:SourceConfigFilesIn('plugin_config')
 
 " true color
-set termguicolors
+if has('termguicolors')
+    set termguicolors
+endif
 " run colorscheme last for quick-scope
+" gruvbox material settings
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_diagnostic_line_highlight = 1
+let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
 
 

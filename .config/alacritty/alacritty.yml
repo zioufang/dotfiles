@@ -174,7 +174,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#2f2f2f'
+    background: '#212121'
     foreground: '#dcdccc'
 
     # Bright and dim foreground colors
@@ -203,8 +203,9 @@ colors:
   #  background: '#404040'
 
   # Normal colors
+  # normal black is set to something distinguishable for joplin
   normal:
-    black:   '#434a5a'
+    black:   '#ab8d16'
     red:     '#b3555e'
     green:   '#93ae7c'
     yellow:  '#dbbb7b'
