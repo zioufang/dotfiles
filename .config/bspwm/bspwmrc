@@ -29,5 +29,3 @@ bspc rule -a Joplin desktop='0'
 bspc rule -a Alacritty:joplin desktop='0'
 # Zathura
 bspc rule -a Zathura state=tiled
-# Swallowing
-pidof ~/.config/bspwm/bspswallow || ~/.config/bspwm/bspswallow &

@@ -49,7 +49,7 @@ map <Space> <leader>
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>d "_d
-noremap <leader>w :w<Cr>
+noremap <leader>w :update<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 nnoremap <leader>b :buffers<CR>:b
 cabbrev bv vert sb
@@ -81,7 +81,7 @@ nnoremap gl $
 " c to blackhole
 nnoremap c "_c
 nnoremap C "_C
-nnoremap ZZ :q<Cr>
+nnoremap <silent>ZZ :q<Bar>bdelete<Cr>
 
 " insert blank line, :set paste to disable auto indent
 nnoremap <silent><A-o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
@@ -99,6 +99,7 @@ vnoremap < 0o0<<Esc>gv
 
 
 :command! Vs so ~/.config/nvim/init.vim
+:command! Ve e ~/.config/nvim/init.vim
 
 function! s:SourceConfigFilesIn(directory)
   let directory_splat = '~/.config/nvim/' . a:directory . '/*.vim'

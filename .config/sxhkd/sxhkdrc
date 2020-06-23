@@ -99,8 +99,9 @@ super + Tab
 	bspc desktop -f last
 
 # focus or send to the given desktop
+# also 20% chance change the background
 super + {1-9,0}
-	bspc desktop -f ^{1-9,10}
+	bspc desktop -f ^{1-9,10} && if [ $(( $RANDOM % 5 )) = 0 ]; then feh --bg-scale --randomize ~/.config/wallpapers/* &; fi;
 
 # send node to desktop and focus
 super + shift + {1-9,0}
