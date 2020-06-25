@@ -73,7 +73,6 @@ export HISTFILE=~/.cache/zsh/history
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export GIT_TERMINAL_PROMPT=1
-export CODE_DIR=/home/zio/projects/ # used for fzf shortcuts
 
 # beam for insert and block for normal
 # smkx to fix keys like backspace/delete for st
@@ -104,8 +103,15 @@ source ~/.config/shell/aliases.sh
 source ~/.config/shell/funcs.sh
 
 # addon scripts
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.fzf/shell/key-bindings.zsh
 export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hidden --files"
-
+export CODE_DIR=/home/zio/projects/ # used for fzf shortcuts
+# autojump
 source /usr/share/autojump/autojump.zsh
+# auto suggestion
+source ~/sources/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+bindkey '^f' forward-word
+
+
 for file in ~/.config/zsh/completions/*; do source $file; done

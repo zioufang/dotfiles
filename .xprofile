@@ -9,8 +9,16 @@ feh --randomize --bg-scale ~/.config/wallpapers/* &
 setxkbmap -option ctrl:nocaps
 
 # tap caps as ctrl using xcape
-# xcape -e 'Control_L=Escape'
+xcape -e 'Control_L=Escape'
 
 # sync google drive on startup
 # need to run `rclone config` first and create ~/gdrive
 # rclone copy --copy-links ~/gdrive gdrive:sync
+
+# DP = laptop screen
+DP=$(xrandr | grep " connected" | grep DP | awk '{print $1}')
+xrandr --output $DP --primary
+
+# put external HDMI on the right, if exists
+HDMI=$(xrandr | grep " connected" | grep HDMI | awk '{print $1}')
+[[ ! -z $HDMI ]] && xrandr --output $HDMI --right-of $DP

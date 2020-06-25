@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# $1 = type of the monitor
+# e.g. DP for built-in laptop monitor, HDMI etc.
+# $2 = name of the bar
+for m in $(xrandr --query | grep " connected" | grep $1 | cut -d" " -f1); do
+    MONITOR=$m polybar --reload $2 &
+done

@@ -81,7 +81,7 @@ nnoremap gl $
 " c to blackhole
 nnoremap c "_c
 nnoremap C "_C
-nnoremap <silent>ZZ :q<Bar>bdelete<Cr>
+nnoremap <silent>ZZ :q<Cr>
 
 " insert blank line, :set paste to disable auto indent
 nnoremap <silent><A-o> :set paste<CR>m`o<Esc>``:set nopaste<CR>

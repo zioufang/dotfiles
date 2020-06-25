@@ -1,5 +1,5 @@
 #!/bin/sh
-id=$(xdotool search --classname ddterm)
+id=$(xdo id -n ddterm)
 
 if [ -z "$id" ]; then
     alacritty --class ddterm &

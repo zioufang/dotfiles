@@ -24,8 +24,7 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/vb-bar]
-; change Virtual-1 for different display port
-monitor = ${env:MONITOR:Virtual-1}
+monitor = ${env:MONITOR:}
 monitor-fallback =
 monitor-strict = false
 monitor-exact = true
@@ -66,6 +65,92 @@ tray-scale = 1.0
 cursor-click = pointer
 cursor-scroll = default
 
+[bar/main-bar]
+monitor = ${env:MONITOR:}
+monitor-fallback =
+monitor-strict = false
+monitor-exact = true
+override-redirect = false
+wm-restack = bspwm
+enable-ipc = true
+fixed-center = false
+bottom = true
+separator =
+
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+radius = 0.0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+padding = 0
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = JetBrainsMono Nerd Font:pixelsize=12;
+
+modules-left = bspwm xwindow menu-apps
+modules-right = gpu alsa wireless-network battery time
+
+tray-position = right
+tray-padding = 1
+tray-background = ${colors.background-alt}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-scale = 1.0
+
+cursor-click = pointer
+cursor-scroll = default
+
+
+[bar/sec-bar]
+monitor = ${env:MONITOR:}
+monitor-fallback =
+monitor-strict = false
+monitor-exact = true
+override-redirect = false
+wm-restack = bspwm
+enable-ipc = true
+fixed-center = false
+bottom = true
+separator =
+
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+radius = 0.0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+padding = 0
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = JetBrainsMono Nerd Font:pixelsize=12;
+
+modules-left = bspwm xwindow
+modules-right = time
+
+tray-position = right
+tray-padding = 1
+tray-background = ${colors.background-alt}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-scale = 1.0
+
+cursor-click = pointer
+cursor-scroll = default
+
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -103,4 +188,50 @@ type = custom/script
 exec = date '+%H:%M'
 ;click-left = $TERMINAL -e calcurse &
 label = "%output%"
-interval = 5
+interval = 30
+
+[module/battery]
+type = internal/battery
+full-at = 93
+battery = BAT1
+adapter = ADP1
+poll-interval = 120
+label-full = 
+label-charging =  %percentage%%
+label-discharging =  %percentage%%
+
+[module/wireless-network]
+type = internal/network
+interface = wlp62s0
+interval = 10
+label-connected = 直 %signal%
+label-disconnected = 睊
+
+[module/alsa]
+type = internal/alsa
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+master-mixer = Master
+mapped = true
+interval = 36000
+label-muted = 婢
+label-volume = 墳 %percentage%%
+
+[module/gpu]
+type = custom/script
+exec = optimus-manager --print-mode | sed '/^$/d' | cut -d':' -f2 | sed -e 's/^[[:space:]]//'
+interval = 36000
+
+[module/menu-apps]
+type = custom/menu
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
+menu-0-0 = Slack
+menu-0-0-exec = slack &
+menu-0-1 = AWS-WS
+menu-0-1-exec = /opt/workspacesclient/workspacesclient &
+label-open = Launcher
+label-close = x
+label-separator = " | "

@@ -1,25 +1,28 @@
 ### install packages
 ```
-pacman -S bspwm sxhkd zsh grml-zsh-config neovim alacritty termite \
-    picom feh rofi xsel dunst redshift thunar qutebrowser \
-    ffmpeg ttf-font-awesome ripgrep fd wireless_tools autojump ufw rclone bat \
+pacman -S bspwm sxhkd xdo zsh grml-zsh-config neovim alacritty termite \
+    picom feh rofi xsel dunst scrot redshift qutebrowser \
+    ffmpeg ripgrep wireless_tools autojump ufw rclone bat \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 
-# i3 packages
-# i3-gaps i3lock i3blocks 
-
-pip install pynvim flake8 cfn-lint ipython3 yapf --user
 # nerd-fonts patched version is needed for its glyphes for devicon in vifm
-yay -S joplin tflint-bin polybar-git nerd-fonts-jetbrains-mono
+yay -S joplin polybar-git nerd-fonts-jetbrains-mono
 
 # for fzf scripts to work in $term -e mode
 # check go bin path for lnch, default to ~/go/bin/lnch
 go get github.com/zioufang/lnch
 
-# need to rename the monitor in polybar from Virtual-1 to the correct one
+# vim related
+pip install pynvim flake8 cfn-lint ipython3 yapf --user
+yay -S tflint-bin
+go get golang.org/x/tools/gopls@latest
 
 sudo ufw enable
+
+# run this for lock screen
+yay -S betterlockscreen
+betterlockscreen -u ~/.config/wallpapers
 ```
 ### dotfile
 ```

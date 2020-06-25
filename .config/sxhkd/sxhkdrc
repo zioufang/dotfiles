@@ -42,6 +42,18 @@ super + j
 super + shift + j
     joplin-desktop
 
+# volume
+XF86AudioRaiseVolume
+    amixer -q set Master 2dB+ unmute
+XF86AudioLowerVolume
+    amixer -q set Master 2dB- unmute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+# screenshot
+@Print
+    scrot --select '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/ ' && notify-send 'Screenshot captured'
+
 #
 # BSPWM HOTKEYS
 #
@@ -54,6 +66,9 @@ super + shift + c
 super + s
     bspc node @parent -R 90 && bspc node @parent/parent -B
 
+# screen lock
+super + Escape
+    betterlockscreen -l dim -w blur
 # quit bspwm
 super + shift + Escape
     bspc quit
@@ -98,10 +113,12 @@ super + {Left,Down,Up,Right}
 super + Tab
 	bspc desktop -f last
 
-# focus or send to the given desktop
+# focus to the given desktop i3 style
 # also 20% chance change the background
 super + {1-9,0}
-	bspc desktop -f ^{1-9,10} && if [ $(( $RANDOM % 5 )) = 0 ]; then feh --bg-scale --randomize ~/.config/wallpapers/* &; fi;
+    desktop='^{1-9,10}'; \
+    bspc query -D -d "$desktop.focused" && bspc desktop -f last || bspc desktop -f "$desktop"; \
+	if [ $(( $RANDOM % 5 )) = 0 ]; then feh --bg-scale --randomize ~/.config/wallpapers/* &; fi;
 
 # send node to desktop and focus
 super + shift + {1-9,0}

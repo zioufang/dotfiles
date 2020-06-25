@@ -1,7 +1,7 @@
 # based on https://github.com/jackharrisonsherlock/common
 
 # Prompt symbol
-COMMON_PROMPT_SYMBOL="❯"
+COMMON_PROMPT_SYMBOL=">"
 
 # Left Prompt
  PROMPT=' $(common_host)$(common_current_dir)$(common_bg_jobs) $(common_return_status)'
@@ -9,7 +9,7 @@ COMMON_PROMPT_SYMBOL="❯"
 # Right Prompt
  RPROMPT='$(common_git_status)'
 
-# Prompt with current SHAgit 
+# Prompt with current SHAgit
 # PROMPT='$(common_host)$(common_current_dir)$(common_bg_jobs)$(common_return_status)'
 # RPROMPT='$(common_git_status) $(git_prompt_short_sha)'
 
