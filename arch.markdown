@@ -1,22 +1,31 @@
 ### install packages
 ```
-pacman -S bspwm sxhkd xdo zsh grml-zsh-config neovim alacritty termite \
-    picom feh rofi xsel dunst scrot redshift qutebrowser \
+pacman -S bspwm sxhkd xdo zsh grml-zsh-config neovim alacritty termite xcape \
+    picom feh rofi xsel dunst scrot redshift qutebrowser vifm \
     ffmpeg ripgrep wireless_tools autojump ufw rclone bat \
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 
+mkdir ~/.cache/zsh
+mkdir -p ~/sources && git clone https://github.com/zsh-users/zsh-autosuggestions ~/sources/zsh-autosuggestions
+yay -S autojump polybar-git joplin
+pip install awscli
+chsh --shell /bin/zsh
+
 # nerd-fonts patched version is needed for its glyphes for devicon in vifm
-yay -S joplin polybar-git nerd-fonts-jetbrains-mono
+# download from https://github.com/ryanoasis/nerd-fonts/releases
+# move to ~/.local/share/fonts
 
 # for fzf scripts to work in $term -e mode
 # check go bin path for lnch, default to ~/go/bin/lnch
 go get github.com/zioufang/lnch
 
 # vim related
-pip install pynvim flake8 cfn-lint ipython3 yapf --user
+pip install flake8 cfn-lint ipython yapf --user
 yay -S tflint-bin
+go get -u golang.org/x/lint/golint
 go get golang.org/x/tools/gopls@latest
+go get golang.org/x/tools/cmd/goimports
 
 sudo ufw enable
 
@@ -28,7 +37,6 @@ betterlockscreen -u ~/.config/wallpapers
 ```
 git clone https://github.com/zioufang/dotfiles.git
 cd dotfile && ./bootstrap.sh
-ln -sf ~/projects/dotfiles/.config/i3/config ~/.config/i3/config
 ln -sf ~/projects/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 ```
 ### apache-spark specific
