@@ -2,13 +2,13 @@
 ```
 pacman -S bspwm sxhkd xdo zsh grml-zsh-config neovim alacritty termite xcape \
     picom feh rofi xsel dunst scrot redshift qutebrowser vifm \
-    ffmpeg ripgrep wireless_tools autojump ufw rclone bat \
+    ripgrep wireless_tools autojump ufw rclone bat tldr\
     nodejs npm python python-pip go docker kubectl \
     adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts
 
 mkdir ~/.cache/zsh
-mkdir -p ~/sources && git clone https://github.com/zsh-users/zsh-autosuggestions ~/sources/zsh-autosuggestions
-yay -S autojump polybar-git joplin
+mkdir -p ~/sources && git clone https://github.com/zsh-users/zsh-autosuggestions ~/sources/zsh-autosuggestions 
+yay -S autojump polybar-git autojump joplin
 pip install awscli
 chsh --shell /bin/zsh
 
@@ -23,6 +23,7 @@ go get github.com/zioufang/lnch
 # vim related
 pip install flake8 cfn-lint ipython yapf --user
 yay -S tflint-bin
+# go specific
 go get -u golang.org/x/lint/golint
 go get golang.org/x/tools/gopls@latest
 go get golang.org/x/tools/cmd/goimports

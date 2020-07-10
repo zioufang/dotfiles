@@ -4,15 +4,14 @@
 " g   : FZF GFiles
 " ?   : FZF Rg
 " /   : FZF BLines
-" s   : Slime Ops
-" i   : IF 'python' Toggle ipython3 Terminal
-"     : IF 'go' then go-run
-" ,   : toggle tabline for bufferline
+" rt  : IF 'python' Toggle ipython3 Terminal
+" r   : Slime Ops
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
 " w   : Quick Save
 " cd  : cd to current directory
 " t   : Toggle 'default' terminal
+" s   : global replace shortcut
 " d   : 'blackhold' delete
 " o   : DogeGenerate
 " h   : GitGutter Ops
@@ -51,6 +50,7 @@ noremap <leader>p "+p
 noremap <leader>d "_d
 noremap <leader>w :update<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
+nnoremap <leader>s :%s///gc<Left><Left><Left><Left>
 nnoremap <leader>b :buffers<CR>:b
 cabbrev bv vert sb
 
@@ -73,7 +73,6 @@ nnoremap / :set hls<Cr>/
 " bring back the prev buffer, close the current one and keep the split panes
 noremap <C-X> :bp\|bd #<Cr>
 
-nnoremap S :%s///gc<Left><Left><Left><Left>
 nnoremap Y y$
 nnoremap Q @q
 nnoremap gh ^
@@ -127,8 +126,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
 Plug 'sainnhe/gruvbox-material'
-Plug 'vifm/vifm.vim'
-Plug 'unblevable/quick-scope'
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -141,6 +138,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 " non essential
+Plug 'vifm/vifm.vim'
+Plug 'unblevable/quick-scope'
 Plug 'stefandtw/quickfix-reflector.vim'         " modify quickfix, together with FzfRg for refactoring
 Plug 'kkoomen/vim-doge'							" documentation generator
 Plug 'tpope/vim-surround'

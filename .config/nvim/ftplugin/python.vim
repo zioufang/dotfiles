@@ -1,7 +1,7 @@
 " yapf style options:
 " https://github.com/google/yapf/blob/master/yapf/yapflib/style.py#L409
 au! BufWritePost *.py call CodeFormat("yapf --style='{based_on_style: facebook, column_limit=119}'")
-nnoremap <leader>i :call ToggleRepl("ipython3")<Cr>
+nnoremap <leader>rt :call ToggleRepl("ipython3")<Cr>
 
 function! ToggleRepl(repl)
 	let pane = bufwinnr(a:repl)

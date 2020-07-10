@@ -10,7 +10,6 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:coc_global_extensions = [
     \ 'coc-python',
-    \ 'coc-pairs',
     \ 'coc-json'
     \ ]
 

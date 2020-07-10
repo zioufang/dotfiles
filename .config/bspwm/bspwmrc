@@ -36,8 +36,8 @@ bspc rule -a Alacritty:ddterm state=floating sticky=on center=on rectangle=720x2
 bspc rule -a Alacritty:floatterm state=floating sticky=on center=on rectangle=360x220+0+0
 bspc rule -a Alacritty:vifm state=floating center=on rectangle=720x588+0+0
 # Joplin
-bspc rule -a Joplin desktop='0'
-bspc rule -a Alacritty:joplin desktop='0'
+bspc rule -a Joplin desktop='9'
+bspc rule -a Alacritty:joplin desktop='9'
 # Zathura
 bspc rule -a Zathura state=tiled
 # Slack
