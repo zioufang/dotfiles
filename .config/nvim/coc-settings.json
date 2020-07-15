@@ -2,10 +2,13 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": ["go.mod", ".git/"],
+      "disableWorkspaceFolders": true,
       "filetypes": ["go"],
       "initializationOptions": {
-        "usePlaceholders": true
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "completionDocumentation": false
       }
     },
     "bash": {

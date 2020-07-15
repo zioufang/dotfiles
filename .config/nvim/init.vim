@@ -139,6 +139,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 " non essential
 Plug 'vifm/vifm.vim'
