@@ -20,6 +20,11 @@ chsh --shell /bin/zsh
 # check go bin path for lnch, default to ~/go/bin/lnch
 go get github.com/zioufang/lnch
 
+# docker permission
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+# restart to take effect
+
 # vim related
 pip install flake8 cfn-lint ipython yapf --user
 yay -S tflint-bin
@@ -27,6 +32,7 @@ yay -S tflint-bin
 go get -u golang.org/x/lint/golint
 go get golang.org/x/tools/gopls@latest
 go get golang.org/x/tools/cmd/goimports
+go get -u github.com/cweill/gotests
 
 sudo ufw enable
 

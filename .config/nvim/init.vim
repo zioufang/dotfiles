@@ -5,6 +5,7 @@
 " ?   : FZF Rg
 " /   : FZF BLines
 " rt  : IF 'python' Toggle ipython3 Terminal
+" rt  : IF 'go' generate test for selected function with gotests
 " r   : Slime Ops
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
@@ -88,6 +89,8 @@ nnoremap <silent><A-O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 "" movements in insert mode
 inoremap <C-D> <Del>
+inoremap {{ {<Cr>}<Esc>O
+inoremap {} {}<Left>
 
 " tab for completion
 " better implementation in coc
