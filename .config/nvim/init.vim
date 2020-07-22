@@ -19,6 +19,7 @@
 
 "" F# Keys
 " F3  : Toggle search highlight
+" F4  : Toggle breakpoint in debugger
 " F5  : ALE Toggle
 " F6  : MarkdownPreview
 " F7  : Toggle Indentline

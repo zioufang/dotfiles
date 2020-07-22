@@ -44,3 +44,24 @@ function! ToggleRepl(repl)
 		endif
 	endif
 endfunction
+
+"
+" ipdb
+"
+func! s:SetBreakpoint()
+    cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'ipdb.set_trace()')
+endf
+
+" use dd instead to remove single breakpoint
+func! s:RemoveBreakpoint()
+    exe 'silent! . g/^\s*ipdb.set_trace()/d'
+endf
+
+func! s:RemoveAllBreakpoints()
+    exe 'silent! g/^\s*ipdb.set_trace()/d'
+endf
+
+func! s:ToggleBreakpoint()
+    if getline('.')=~#'^\s*ipdb.set_trace' | cal s:RemoveAllBreakpoints() | el | cal s:SetBreakpoint() | en
+endf
+nnoremap <F4> :call <SID>ToggleBreakpoint()<CR>
