@@ -61,7 +61,7 @@ endfunction
 command! -range GoTests <line1>,<line2>call s:Tests()
 command! GoTestsAll call s:AllTests()
 
-noremap <leader>rt :GoTests<Cr>
+noremap <leader>lt :GoTests<Cr>
 " vim-go config
 " let g:go_fmt_command = "goimports"
 " let g:go_term_mode = "split"

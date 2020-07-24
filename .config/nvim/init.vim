@@ -4,9 +4,6 @@
 " g   : FZF GFiles
 " ?   : FZF Rg
 " /   : FZF BLines
-" rt  : IF 'python' Toggle ipython3 Terminal
-" rt  : IF 'go' generate test for selected function with gotests
-" r   : Slime Ops
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
 " w   : Quick Save
@@ -16,6 +13,11 @@
 " d   : 'blackhold' delete
 " o   : DogeGenerate
 " h   : GitGutter Ops
+" language specific
+" go
+" lt  : generate test for selected function with gotests
+" py
+" lr  : ipython3 repl
 
 "" F# Keys
 " F3  : Toggle search highlight
@@ -137,7 +139,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'jpalardy/vim-slime'						" REQUIRES nevim > 0.3
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -154,6 +155,7 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
 Plug 'itchyny/lightline.vim'
 Plug 'yggdroot/indentline'
+" Plug 'jpalardy/vim-slime', {'for': 'python'}	" only used for python for now
 
 call plug#end()
 
