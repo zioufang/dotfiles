@@ -1,5 +1,5 @@
 " Leaders
-" b   : switching buffers
+" b   : FZF Buffers
 " f   : FZF Files
 " g   : FZF GFiles
 " ?   : FZF Rg
@@ -55,8 +55,8 @@ noremap <leader>d "_d
 noremap <leader>w :update<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
 nnoremap <leader>s :%s///gc<Left><Left><Left><Left>
-nnoremap <leader>b :buffers<CR>:b
-cabbrev bv vert sb
+" nnoremap <leader>b :buffers<CR>:b
+" cabbrev bv vert sb
 
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -172,6 +172,16 @@ let g:gruvbox_material_enable_bold = 1
 let g:gruvbox_material_diagnostic_line_highlight = 1
 let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
+" Custom color needs to be placed after the colorscheme
+" https://jonasjacek.github.io/colors/
+highlight CursorLine ctermbg=240 guibg=#585858
+autocmd InsertEnter * highlight CursorLine ctermbg=235 guibg=#282828
+autocmd InsertLeave * highlight CursorLine ctermbg=240 guibg=#585858
+augroup NoCursorLine
+    autocmd!
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
+augroup END
 
 
 

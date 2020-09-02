@@ -35,6 +35,7 @@ set fileformat=unix
 set formatoptions-=tc               " disable auto wrap while typing
 set formatoptions+=j                " Delete comment character when joining commented lines
 set completeopt=menu,noinsert		" autoselect the first entry in autocompletion
+set cursorline
 
 " undo settings
 if !isdirectory($HOME."/.config/nvim/undodir")

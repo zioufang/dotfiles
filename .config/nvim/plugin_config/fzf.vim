@@ -1,7 +1,7 @@
 " install fd-find and ripgrep
 " use bat for syntax hightlight in preview
-noremap <leader>f :FzfProjectFiles<Cr>
-noremap <leader>g :FzfGFiles<Cr>
+noremap <leader><Space> :FzfGFiles<Cr>
+noremap <leader>b :FzfBuffers<Cr>
 " alt-a<cr> save to quickfix list
 " ' for exact match
 noremap <leader>? :FzfRg<Cr>'
@@ -12,11 +12,12 @@ let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'down': '~70%' }
 
 command! -bang FzfProjectFiles call fzf#vim#files('~/projects', <bang>0)
+:command! FF FzfProjectFiles
 
 " customized Rg
 command! -bang -nargs=* FzfRg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!.git/" -g "!venv/" -g "!vendor/" -- '.shellescape(<q-args>),
+  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!.git/" -g "!venv/" -g "!vendor/" -g "!go.sum" -g "!go.mod" -- '.shellescape(<q-args>),
   \   1, s:p(<bang>0), <bang>0)
 
 function! s:p(bang, ...)
