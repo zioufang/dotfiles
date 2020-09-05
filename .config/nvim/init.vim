@@ -174,9 +174,9 @@ let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
 " Custom color needs to be placed after the colorscheme
 " https://jonasjacek.github.io/colors/
-highlight CursorLine ctermbg=240 guibg=#585858
+highlight CursorLine ctermbg=240 guibg=#3a3a3a
 autocmd InsertEnter * highlight CursorLine ctermbg=235 guibg=#282828
-autocmd InsertLeave * highlight CursorLine ctermbg=240 guibg=#585858
+autocmd InsertLeave * highlight CursorLine ctermbg=237 guibg=#3a3a3a
 augroup NoCursorLine
     autocmd!
     autocmd WinEnter * set cursorline
