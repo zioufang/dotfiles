@@ -60,6 +60,12 @@ bindkey '\eOB' history-beginning-search-forward-end
 # autoload edit-command-line; zle -N edit-command-line
 # bindkey '^v' edit-command-line
 
+# auto quoted url
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
 export DIRSTACKSIZE=5
 alias d='dirs -v' \
     0='cd ~0' \

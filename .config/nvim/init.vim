@@ -106,6 +106,10 @@ vnoremap < 0o0<<Esc>gv
 :command! Vs so ~/.config/nvim/init.vim
 :command! Ve e ~/.config/nvim/init.vim
 
+" delete all buffers except the current
+" delete all buffers -> edit the last buffer -> delete the [No Name] buffer
+:command! BufOnly silent! execute ":%bd|e#|bd#"
+
 function! s:SourceConfigFilesIn(directory)
   let directory_splat = '~/.config/nvim/' . a:directory . '/*.vim'
   for config_file in split(glob(directory_splat), '\n')
@@ -130,7 +134,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-Plug 'justinmk/vim-sneak'
+Plug 'zioufang/vim-sneak'
 Plug 'sainnhe/gruvbox-material'
 
 " IDE

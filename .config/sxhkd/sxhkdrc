@@ -30,6 +30,10 @@ super + b
 super + d
 	exec rofi -lines 8 -padding 8 -width 16 -location 0 -show drun -show-icons -columns 1 -font 'Noto Sans 10'
 
+# reset polybar
+super + p
+    killall polybar && ~/.config/polybar/launch_polybar Virtual vb-bar
+
 # file explorer
 # -ic flag to force reading rc file
 super + e
@@ -109,6 +113,8 @@ super + shift + f
 super + {Left,Down,Up,Right}
 	bspc node -f {west,south,north,east}
 
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
 # focus the last node/desktop
 super + Tab
 	bspc desktop -f last

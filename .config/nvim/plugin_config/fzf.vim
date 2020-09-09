@@ -15,10 +15,12 @@ command! -bang FzfProjectFiles call fzf#vim#files('~/projects', <bang>0)
 :command! FF FzfProjectFiles
 
 " customized Rg
+" the options setting is for ignoring searching in filename
+" https://github.com/junegunn/fzf.vim/issues/346
 command! -bang -nargs=* FzfRg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!.git/" -g "!venv/" -g "!vendor/" -g "!go.sum" -g "!go.mod" -- '.shellescape(<q-args>),
-  \   1, s:p(<bang>0), <bang>0)
+  \   1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 function! s:p(bang, ...)
   let preview_window = get(g:, 'fzf_preview_window', a:bang && &columns >= 80 || &columns >= 120 ? 'right': '')
@@ -27,3 +29,4 @@ function! s:p(bang, ...)
   endif
   return {}
 endfunction
+
