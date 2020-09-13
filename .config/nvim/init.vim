@@ -11,7 +11,6 @@
 " s   : global replace shortcut
 " d   : 'blackhold' delete
 " o   : DogeGenerate
-" h   : GitGutter Ops
 
 "" fugitive
 " gs  : :G
@@ -139,6 +138,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
 Plug 'tpope/vim-commentary'
 Plug 'zioufang/vim-sneak'
 Plug 'sainnhe/gruvbox-material'
@@ -148,7 +148,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -159,9 +159,8 @@ Plug 'unblevable/quick-scope'
 Plug 'stefandtw/quickfix-reflector.vim'         " modify quickfix, together with FzfRg for refactoring
 Plug 'kkoomen/vim-doge'							" documentation generator
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
-Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'szw/vim-maximizer'
 Plug 'itchyny/lightline.vim'
 Plug 'yggdroot/indentline'
