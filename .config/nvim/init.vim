@@ -1,8 +1,8 @@
 " Leaders
 " b   : FZF Buffers
 " <s> : FZF GFiles
-" ?   : FZF Rg
 " /   : FZF BLines
+" ?   : CocSearchCustom with cword
 " y   : Yank to system clipboard
 " p   : Paste from system clipboard
 " w   : Quick Save

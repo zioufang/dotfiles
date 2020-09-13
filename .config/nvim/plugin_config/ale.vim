@@ -1,4 +1,4 @@
-let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml', 'j2']}
+" let g:ale_linter_aliases = {'yaml': ['cloudformation', 'yaml', 'j2']}
 let g:ale_linters = {
     \ 'python': ['flake8'],
     \ 'go': ['golint'],

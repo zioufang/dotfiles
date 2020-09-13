@@ -4,7 +4,6 @@ noremap <leader><Space> :GFiles<Cr>
 noremap <leader>b :Buffers<Cr>
 " alt-a<cr> save to quickfix list
 " ' for exact match
-noremap <leader>? :Rg<Cr>'
 noremap <leader>/ :BLines<Cr>'
 
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N

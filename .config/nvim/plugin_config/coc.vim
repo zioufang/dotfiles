@@ -3,10 +3,10 @@
 " nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
 " ProjectWide SearchReplace
-command! -nargs=1 CS call s:CocSearchCustom(<f-args>)
-" s: local to script, only accessible within the script
-function! s:CocSearchCustom(word)
-    silent exe 'CocSearch -g !vendor/ -g !go.* ' . a:word
+nnoremap <leader>? :call CocSearchCustom(expand('<cword>'))<Cr>
+command! -nargs=1 CS call CocSearchCustom(<f-args>)
+function! CocSearchCustom(word)
+    silent exe 'CocSearch -sw -g !vendor/ -g !go.* ' . a:word
 endfunction
 
 " GoTo code navigation.
