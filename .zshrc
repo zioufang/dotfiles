@@ -112,6 +112,7 @@ source ~/.config/shell/funcs.sh
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.fzf/shell/key-bindings.zsh
 export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hidden --files"
+export FZF_DEFAULT_OPTS='--reverse'
 export CODE_DIR=/home/zio/projects/ # used for fzf shortcuts
 # autojump
 source /usr/share/autojump/autojump.zsh

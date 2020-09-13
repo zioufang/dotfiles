@@ -1,23 +1,22 @@
 " install fd-find and ripgrep
 " use bat for syntax hightlight in preview
-noremap <leader><Space> :FzfGFiles<Cr>
-noremap <leader>b :FzfBuffers<Cr>
+noremap <leader><Space> :GFiles<Cr>
+noremap <leader>b :Buffers<Cr>
 " alt-a<cr> save to quickfix list
 " ' for exact match
-noremap <leader>? :FzfRg<Cr>'
-noremap <leader>/ :FzfBLines<Cr>'
+noremap <leader>? :Rg<Cr>'
+noremap <leader>/ :BLines<Cr>'
 
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
-let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'down': '~70%' }
 
-command! -bang FzfProjectFiles call fzf#vim#files('~/projects', <bang>0)
-:command! FF FzfProjectFiles
+command! -bang ProjectFiles call fzf#vim#files('~/projects', <bang>0)
+:command! FF ProjectFiles
 
 " customized Rg
 " the options setting is for ignoring searching in filename
 " https://github.com/junegunn/fzf.vim/issues/346
-command! -bang -nargs=* FzfRg
+command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!.git/" -g "!venv/" -g "!vendor/" -g "!go.sum" -g "!go.mod" -- '.shellescape(<q-args>),
   \   1, {'options': '--delimiter : --nth 4..'}, <bang>0)

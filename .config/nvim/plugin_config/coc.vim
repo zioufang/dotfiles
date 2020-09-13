@@ -2,10 +2,17 @@
 " nmap <silent> [l <Plug>(coc-diagnostic-prev)
 " nmap <silent> ]l <Plug>(coc-diagnostic-next)
 
+" ProjectWide SearchReplace
+command! -nargs=1 CS call s:CocSearchCustom(<f-args>)
+" s: local to script, only accessible within the script
+function! s:CocSearchCustom(word)
+    silent exe 'CocSearch -g !vendor/ -g !go.* ' . a:word
+endfunction
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit')<Cr>
+" nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<Cr>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:coc_global_extensions = [

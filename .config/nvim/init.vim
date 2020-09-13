@@ -1,7 +1,6 @@
 " Leaders
 " b   : FZF Buffers
-" f   : FZF Files
-" g   : FZF GFiles
+" <s> : FZF GFiles
 " ?   : FZF Rg
 " /   : FZF BLines
 " y   : Yank to system clipboard
@@ -13,6 +12,19 @@
 " d   : 'blackhold' delete
 " o   : DogeGenerate
 " h   : GitGutter Ops
+
+"" fugitive
+" gs  : :G
+
+"" Coc
+" gd  : go to definition
+" gr  : go to reference
+" K   : show doc
+
+"" ALE
+" ]l  : Coc next lint warning/error
+" [l  : Coc prev lint warning/error
+
 " language specific
 " go
 " lt  : generate test for selected function with gotests
@@ -29,12 +41,6 @@
 
 ""
 " ZZ  : changed to :q without !
-" gd  : Coc go to definition
-" gs  : Coc go to definition vsplit
-" gr  : Coc go to reference
-" K   : Coc show documentation
-" ]l  : Coc next lint warning/error
-" [l  : Coc prev lint warning/error
 
 "" abolish coersion
 " snake_case (crs)
