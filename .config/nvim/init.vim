@@ -33,7 +33,7 @@
 "" F# Keys
 " F3  : Toggle search highlight
 " F4  : Toggle breakpoint in debugger
-" F5  : ALE Toggle
+" F5  : ALE Reset
 " F6  : MarkdownPreview
 " F7  : Toggle Indentline
 " F12 : Toggle Maximize current window
@@ -98,7 +98,6 @@ nnoremap <silent><A-O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 "" movements in insert mode
 inoremap <C-D> <Del>
 inoremap {{ {<Cr>}<Esc>O
-inoremap {} {}<Left>
 
 " tab for completion
 " better implementation in coc
@@ -136,35 +135,32 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+" essential
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'                       " blame, Gbrowse & Gdiffsplit
 Plug 'tpope/vim-commentary'
 Plug 'zioufang/vim-sneak'
-Plug 'sainnhe/gruvbox-material'
-
-" IDE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'tpope/vim-vinegar'						" better newrw
-Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'dense-analysis/ale'
-" Plug 'airblade/vim-gitgutter'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+Plug 'sainnhe/gruvbox-material'
+Plug 'justinmk/vim-dirvish'
 
-" non essential
-Plug 'vifm/vifm.vim'
+" non-essential
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'hashivim/vim-terraform'
 Plug 'unblevable/quick-scope'
-Plug 'stefandtw/quickfix-reflector.vim'         " modify quickfix, together with FzfRg for refactoring
-Plug 'kkoomen/vim-doge'							" documentation generator
+Plug 'kkoomen/vim-doge', { 'for': 'python' }							" documentation generator
+" Plug 'tpope/vim-vinegar'						" better newrw
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-abolish'                        " for its coersion
 Plug 'szw/vim-maximizer'
 Plug 'itchyny/lightline.vim'
+Plug 'vifm/vifm.vim'
 Plug 'yggdroot/indentline'
 " Plug 'jpalardy/vim-slime', {'for': 'python'}	" only used for python for now
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 call plug#end()
 

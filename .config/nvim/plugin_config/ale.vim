@@ -8,6 +8,6 @@ let g:ale_linters = {
 let g:ale_completion_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'	" ignore 'lines too long' error
 
-map <F5> :ALEToggle<Cr>
+map <F5> :ALEReset<Cr>
 map <silent> ]l <Plug>(ale_next_wrap)
 map <silent> [l <Plug>(ale_previous_wrap)

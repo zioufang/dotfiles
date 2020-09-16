@@ -20,12 +20,14 @@
         c = checkout
         #
         d = diff
+        #
+        p = push
 
         # add and commit
         ac = !git add . && git commit -am
 
         # commit and push
-        cp = "!f() { git add . && git commit -am \"$@\" && git push; }; f"
+        acp = "!f() { git add . && git commit -am \"$@\" && git push; }; f"
 
         # undo last commit
         undo = reset --soft HEAD~1
@@ -37,7 +39,8 @@
         l = graph -n10
 
         # amend the last commit without changing the commit message
-        amend = !git add . && git commit -a --amend --no-edit
+        amend = commit --amend --no-edit
+        amendall = !git add . && git commit -a --amend --no-edit
 
         # pull another branch and back
         pb = "!f() { git checkout $1; git pull --ff-only; git checkout -; }; f"
