@@ -1,4 +1,5 @@
 noremap <leader>gs :G<Cr>
+:command! Gp Gpush
 
 "" Merge Conflict
 " Mine vs Theirs

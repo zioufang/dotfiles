@@ -59,7 +59,7 @@ noremap <leader>p "+p
 noremap <leader>d "_d
 noremap <leader>w :update<Cr>
 noremap <leader>cd :cd %:p:h<Cr>
-nnoremap <leader>s :%s///gc<Left><Left><Left><Left>
+nnoremap <leader>s :.,$s///gc<Left><Left><Left><Left>
 " nnoremap <leader>b :buffers<CR>:b
 " cabbrev bv vert sb
 
@@ -86,9 +86,12 @@ nnoremap Y y$
 nnoremap Q @q
 nnoremap gh ^
 nnoremap gl $
-" c to blackhole
+" c and d to blackhole
 nnoremap c "_c
 nnoremap C "_C
+vnoremap c "_c
+vnoremap C "_C
+
 nnoremap <silent>ZZ :q<Cr>
 
 " insert blank line, :set paste to disable auto indent
@@ -161,6 +164,7 @@ Plug 'vifm/vifm.vim'
 Plug 'yggdroot/indentline'
 " Plug 'jpalardy/vim-slime', {'for': 'python'}	" only used for python for now
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+" Plug 'psliwka/vim-smoothie'
 
 call plug#end()
 
