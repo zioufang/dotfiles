@@ -5,6 +5,7 @@ noremap <leader>b :Buffers<Cr>
 " alt-a<cr> save to quickfix list
 " ' for exact match
 noremap // :BLines<Cr>'
+noremap ?? :Rg<Cr>'
 
 let g:fzf_history_dir = '~/.local/share/fzf-hist'	" enable history browsing with Ctrl+P/N
 let g:fzf_layout = { 'down': '~70%' }

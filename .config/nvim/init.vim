@@ -158,6 +158,7 @@ Plug 'kkoomen/vim-doge', { 'for': 'python' }							" documentation generator
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'                        " for its coersion
+Plug 'tpope/vim-dispatch'                        " for its coersion
 Plug 'szw/vim-maximizer'
 Plug 'itchyny/lightline.vim'
 Plug 'vifm/vifm.vim'
