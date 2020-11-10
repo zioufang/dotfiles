@@ -1,4 +1,4 @@
-noremap <leader>gg :G<Cr>
+noremap <leader><Space> :G<Cr>
 noremap <leader>gp :Gpush<Cr>
 noremap <leader>gl :Glog<Cr><C-^>
 noremap <leader>gr :Grebase --interactive <C-r><C-w><Cr>

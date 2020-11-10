@@ -1,6 +1,6 @@
 " Leaders
 " b   : FZF Buffers
-" <s> : FZF GFiles
+" f : FZF GFiles
 " /   : FZF BLines
 " ?   : CocSearchCustom with cword
 " y   : Yank to system clipboard
@@ -11,9 +11,6 @@
 " s   : global replace shortcut
 " d   : 'blackhold' delete
 " o   : DogeGenerate
-
-"" fugitive
-" gs  : :G
 
 "" Coc
 " gd  : go to definition

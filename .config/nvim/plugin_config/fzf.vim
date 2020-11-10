@@ -1,6 +1,6 @@
 " install fd-find and ripgrep
 " use bat for syntax hightlight in preview
-noremap <leader><Space> :GFiles<Cr>
+noremap <leader>f :GFiles<Cr>
 noremap <leader>b :Buffers<Cr>
 " alt-a<cr> save to quickfix list
 " ' for exact match
