@@ -160,8 +160,8 @@ type = internal/bspwm
 
 enable-scroll = true
 label-focused = %name%
-label-focused-background =
-label-focused-foreground = #b3555e
+label-focused-background = #020202
+label-focused-foreground = #bf616a
 label-focused-underline = #bf616a
 label-focused-padding = 1
 

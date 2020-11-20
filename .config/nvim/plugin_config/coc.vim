@@ -1,3 +1,6 @@
+" get in and out of floating window
+" <C-w><C-p>
+"
 " Use ALE instead
 " nmap <silent> [l <Plug>(coc-diagnostic-prev)
 " nmap <silent> ]l <Plug>(coc-diagnostic-next)
@@ -16,7 +19,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:coc_global_extensions = [
-    \ 'coc-python',
+    \ 'coc-pyright',
     \ 'coc-snippets',
     \ 'coc-json'
     \ ]

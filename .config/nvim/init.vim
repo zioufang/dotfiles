@@ -65,8 +65,8 @@ noremap <C-K> <C-W><C-K>
 noremap <C-L> <C-W><C-L>
 noremap <C-H> <C-W><C-H>
 
-noremap <C-Left> :vertical resize +5<Cr>
-noremap <C-Right> :vertical resize -5<Cr>
+noremap <C-Right> :vertical resize +5<Cr>
+noremap <C-Left> :vertical resize -5<Cr>
 noremap <C-Up> :resize +5<Cr>
 noremap <C-Down> :resize -5<Cr>
 

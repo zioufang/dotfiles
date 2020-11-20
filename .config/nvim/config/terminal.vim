@@ -11,8 +11,8 @@ function! ToggleTerm(termname)
 	if pane > 0
 		exe pane . "wincmd c"
 	elseif buf > 0
-		exe "split"
-		exe "resize 15"
+		exe "botright new"
+		exe "resize 25"
 		exe "buffer " . a:termname
 		exe "normal! i"
 	else
@@ -23,8 +23,8 @@ function! ToggleTerm(termname)
 		catch
 			echo "This is NOT a git repo"
 		endtry
-		exe "split"
-		exe "resize 15"
+		exe "botright new"
+		exe "resize 25"
 		:terminal
 		exe "f " a:termname
 		exe "normal! i"

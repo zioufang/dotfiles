@@ -28,10 +28,7 @@
       "initializationOptions": {}
     }
   },
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
-  "pairs.enableBackspace": true,
   "diagnostic.displayByAle": true,
-  "python.jediEnabled": false,
   "suggest.noselect": false,
   "suggest.minTriggerInputLength": 2,
   "suggest.timeout": 1000
