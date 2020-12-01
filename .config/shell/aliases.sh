@@ -2,17 +2,15 @@
 alias ..="cd .." \
     ...="cd ../.." \
     ....="cd ../../.." \
-    a="apt-get" \
-    p="pacman" \
     g=git \
     vim=nvim \
+    vv="nvim ." \
+    d=docker \
     mkdir="mkdir -pv" \
-    cat="bat --style=plain" \
-    ls="ls --color=auto" \
-    code="code --disable-gpu"
+    cat="bat --paging=never --style=plain" \
+    ls="ls --color=auto"
 
 alias ll="LC_COLLATE=C ls -lh --group-directories-first "     # readable ls, dotfiles first
-alias ld="ll | grep '^d'"   # ls dir only
 
 # search terminal history
 alias hg="history | grep"
