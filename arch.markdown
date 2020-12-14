@@ -25,9 +25,6 @@ sudo groupadd docker
 sudo usermod -aG docker ${USER}
 # restart to take effect
 
-# vim related
-pip install flake8 cfn-lint ipython ipdb isort yapf neovim --user
-yay -S tflint-bin
 # go specific
 go get -u golang.org/x/lint/golint
 go get golang.org/x/tools/gopls@latest

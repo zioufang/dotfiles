@@ -14,7 +14,10 @@
         aliases = config --get-regexp alias
 
         # status
-        s = status -s
+        ss = status -s
+
+        # stash
+        s = stash
 
         # checkout
         c = checkout
