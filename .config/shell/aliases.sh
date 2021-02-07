@@ -16,5 +16,5 @@ alias ll="LC_COLLATE=C ls -lh --group-directories-first "     # readable ls, dot
 alias hg="history | grep"
 
 # python
-alias pyvenv="python3 -m venv venv" \
-    pyv="source venv/bin/activate"
+alias pyvenv="python3 -m venv .venv" \
+    pyv="source .venv/bin/activate"

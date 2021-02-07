@@ -119,6 +119,7 @@ source /usr/share/autojump/autojump.zsh
 # auto suggestion
 source ~/sources/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 bindkey '^f' forward-word
+bindkey '^b' backward-word
 
 
 for file in ~/.config/zsh/completions/*; do source $file; done
