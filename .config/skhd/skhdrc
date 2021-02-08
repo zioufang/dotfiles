@@ -1,7 +1,7 @@
 # open apps
 cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 cmd - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-cmd - e : emacs
+cmd - e : emacsclient --create-frame
 
 # Mission Control is binded with cmd - up in Mac native shortcut
 
@@ -11,12 +11,19 @@ shift + cmd - j : yabai -m window --focus south
 shift + cmd - k : yabai -m window --focus north
 shift + cmd - l : yabai -m window --focus east
 
-# cmd - q : yabai -m window --close
-cmd - q : skhd --key "cmd - w"
+cmd - q : yabai -m window --close
+# cmd - q : skhd --key "cmd - w"
 cmd - f : yabai -m window --toggle zoom-fullscreen
 shift + cmd - p : yabai -m space --toggle padding
 # 0x18 = equal key
 shift + cmd - 0x18 : yabai -m space --balance
+
+# create/destroy space
+# need to install jq
+shift + cmd - n : yabai -m space --create;\
+                  id="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')";\
+                  yabai -m space --focus $id
+shift + cmd - q : yabai -m space --destroy
 
 # focus desktop
 cmd - tab : yabai -m space --focus recent
