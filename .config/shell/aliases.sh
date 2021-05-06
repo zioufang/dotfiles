@@ -8,7 +8,7 @@ alias ..="cd .." \
     d=docker \
     mkdir="mkdir -pv" \
     cat="bat --paging=never --style=plain" \
-    ls="ls --color=auto"
+    ek="emacsclient -e '(kill-emacs)'"
 
 alias ll="LC_COLLATE=C ls -lh --group-directories-first "     # readable ls, dotfiles first
 

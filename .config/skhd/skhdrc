@@ -1,6 +1,10 @@
 # open apps
 cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
-cmd - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+#cmd - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+cmd - b : /Applications/Firefox.app/Contents/MacOS/firefox
+shift + cmd - b : /Applications/Chromium.app/Contents/MacOS/Chromium
+
+shift + cmd - r : rm -rf /Users/ziou.fang/Library/Application\ Support/qutebrowser/webengine/Cookies* 2>/dev/null && /Applications/qutebrowser.app/Contents/MacOS/qutebrowser :restart
 cmd - e : emacsclient --create-frame
 
 # Mission Control is binded with cmd - up in Mac native shortcut
@@ -11,8 +15,14 @@ shift + cmd - j : yabai -m window --focus south
 shift + cmd - k : yabai -m window --focus north
 shift + cmd - l : yabai -m window --focus east
 
-cmd - q : yabai -m window --close
-# cmd - q : skhd --key "cmd - w"
+# workaround for alacritty not honour window close
+cmd - q [
+    "alacritty" : skhd --key "cmd - w"
+    "emacs" : skhd --key "cmd - w" # for no titlebar
+    *           : yabai -m window --close
+
+]
+
 cmd - f : yabai -m window --toggle zoom-fullscreen
 shift + cmd - p : yabai -m space --toggle padding
 # 0x18 = equal key
@@ -26,7 +36,7 @@ shift + cmd - n : yabai -m space --create;\
 shift + cmd - q : yabai -m space --destroy
 
 # focus desktop
-cmd - tab : yabai -m space --focus recent
+shift + cmd - tab : yabai -m space --focus recent
 cmd - 1 : yabai -m space --focus 1
 cmd - 2 : yabai -m space --focus 2
 cmd - 3 : yabai -m space --focus 3

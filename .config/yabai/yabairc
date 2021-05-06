@@ -1,10 +1,3 @@
-# space specific rule
-yabai -m config --space 1 layout float
-yabai -m config --space 2 layout float
-yabai -m config --space 1 focus_follows_mouse off
-yabai -m config --space 2 focus_follows_mouse off
-yabai -m rule --add app=Slack    space=2
-
 # overall setup
 yabai -m config layout bsp
 
@@ -14,8 +7,11 @@ yabai -m config left_padding   5
 yabai -m config right_padding  5
 yabai -m config window_gap     5
 
-yabai -m config mouse_action1 resize
-yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_modifier ctrl
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+# autofocus messes up context menu navigation
+yabai -m config focus_follows_mouse off
 
 
 # cosmetics
@@ -29,3 +25,8 @@ yabai -m rule --add app=Alacritty border=on
 yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xff775759
 yabai -m config normal_window_border_color 0xff555555
+
+# space specific rule
+yabai -m config --space 1 layout float
+yabai -m config --space 2 layout float
+yabai -m rule --add app=Slack    space=2
