@@ -8,9 +8,8 @@ alias ..="cd .." \
     d=docker \
     mkdir="mkdir -pv" \
     cat="bat --paging=never --style=plain" \
-    ek="emacsclient -e '(kill-emacs)'"
-
-alias ll="LC_COLLATE=C ls -lh --group-directories-first "     # readable ls, dotfiles first
+    ek="emacsclient -e '(kill-emacs)'" \
+    er="emacsclient -e '(kill-emacs)' && emacs --daemon"
 
 # search terminal history
 alias hg="history | grep"

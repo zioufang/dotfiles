@@ -1,11 +1,12 @@
 # open apps
 cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 #cmd - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-cmd - b : /Applications/Firefox.app/Contents/MacOS/firefox
-shift + cmd - b : /Applications/Chromium.app/Contents/MacOS/Chromium
+cmd - b : /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox
+shift + cmd - b : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 
 shift + cmd - r : rm -rf /Users/ziou.fang/Library/Application\ Support/qutebrowser/webengine/Cookies* 2>/dev/null && /Applications/qutebrowser.app/Contents/MacOS/qutebrowser :restart
 cmd - e : emacsclient --create-frame
+shift + cmd - f : /Applications/Alacritty.app/Contents/MacOS/alacritty -e $SHELL -ic "vifm"
 
 # Mission Control is binded with cmd - up in Mac native shortcut
 
@@ -18,7 +19,7 @@ shift + cmd - l : yabai -m window --focus east
 # workaround for alacritty not honour window close
 cmd - q [
     "alacritty" : skhd --key "cmd - w"
-    "emacs" : skhd --key "cmd - w" # for no titlebar
+    # "emacs" : skhd --key "cmd - w" # for no titlebar
     *           : yabai -m window --close
 
 ]

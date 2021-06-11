@@ -7,6 +7,16 @@ function jj {
     cd $prefix$output
 }
 
+function ch {
+    curl cht.sh/$1
+}
+
+function chr {
+    args=$(echo $@)
+    params=$(echo ${args// /+})
+    curl cht.sh/rust/$params
+}
+
 # nvim into dir
 function v {
 if [ -z "$1" ]; then
