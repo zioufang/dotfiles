@@ -24,7 +24,7 @@ super + r
     rm -rf ~/.local/share/qutebrowser/webengine/Cookies* 2>/dev/null && qutebrowser :restart
 # fzf
 super + b
-    alacritty --class floatterm -e $SHELL -ic "~/.scripts/fzfcmds/gotobm.sh"
+    brave
 
 # program launcher
 super + d
@@ -37,7 +37,7 @@ super + p
 # file explorer
 # -ic flag to force reading rc file
 super + e
-    alacritty --class vifm -e $SHELL -ic "vifm"
+    emacsclient --create-frame
 
 # joplin
 super + j

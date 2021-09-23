@@ -123,3 +123,5 @@ bindkey '^b' backward-word
 
 
 for file in ~/.config/zsh/completions/*; do source $file; done
+
+. ~/.config/z.sh
