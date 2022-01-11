@@ -1,3 +1,5 @@
+source ~/.config/zsh/zshrc.grml
+
 fpath=("$HOME/.config/zsh/themes" "$fpath[@]")
 
 autoload -Uz compinit promptinit
@@ -110,18 +112,16 @@ source ~/.config/shell/funcs.sh
 
 # addon scripts
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.fzf/shell/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 
 export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hidden --files"
 export FZF_DEFAULT_OPTS='--reverse'
 export CODE_DIR=/home/zio/projects/ # used for fzf shortcuts
-# autojump
-source /usr/share/autojump/autojump.zsh
 # auto suggestion
 source ~/sources/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 bindkey '^f' forward-word
 bindkey '^b' backward-word
 
 
-for file in ~/.config/zsh/completions/*; do source $file; done
+# for file in ~/.config/zsh/completions/*; do source $file; done
 
 . ~/.config/z.sh
