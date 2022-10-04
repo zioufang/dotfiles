@@ -3,8 +3,6 @@ alias ..="cd .." \
     ...="cd ../.." \
     ....="cd ../../.." \
     g=git \
-    vim=nvim \
-    vv="nvim ." \
     d=docker \
     mkdir="mkdir -pv" \
     cat="bat --paging=never --style=plain" \
