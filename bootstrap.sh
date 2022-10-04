@@ -10,7 +10,7 @@ function echo_source {
 }
 
 function dotsync {
-    mv ~/.bashrc ~/.bashrc.old 2>/dev/null
+    # mv ~/.bashrc ~/.bashrc.old 2>/dev/null
     mv ~/.zshrc ~/.zshrc.old 2>/dev/null
 
     # sync the dotfiles to home directory
@@ -20,9 +20,9 @@ function dotsync {
         --exclude "archived/" \
         -avh --no-perms . ~;
 
-    echo_source "~/.bashrc" ~/.bash_profile;
+    # echo_source "~/.bashrc" ~/.bash_profile;
 
-    source ~/.bashrc;
+    # source ~/.bashrc;
     source ~/.zshrc 2>/dev/null;
 
     echo "dotfiles activated"
