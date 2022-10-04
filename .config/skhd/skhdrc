@@ -1,56 +1,57 @@
 # open apps
-cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
-#cmd - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-cmd - b : /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox
-shift + cmd - b : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
+alt - a : /Applications/Alacritty.app/Contents/MacOS/alacritty
+#alt - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+alt - b : /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox
+shift + alt - b : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 
-shift + cmd - r : rm -rf /Users/ziou.fang/Library/Application\ Support/qutebrowser/webengine/Cookies* 2>/dev/null && /Applications/qutebrowser.app/Contents/MacOS/qutebrowser :restart
-cmd - e : emacsclient --create-frame
-shift + cmd - f : /Applications/Alacritty.app/Contents/MacOS/alacritty -e $SHELL -ic "vifm"
+shift + alt - r : rm -rf /Users/ziou.fang/Library/Application\ Support/qutebrowser/webengine/Cookies* 2>/dev/null && /Applications/qutebrowser.app/Contents/MacOS/qutebrowser :restart
+alt - e : emacsclient --create-frame
 
 # Mission Control is binded with cmd - up in Mac native shortcut
 
 # focus window
-shift + cmd - h : yabai -m window --focus west
-shift + cmd - j : yabai -m window --focus south
-shift + cmd - k : yabai -m window --focus north
-shift + cmd - l : yabai -m window --focus east
+shift + alt - h : yabai -m window --focus west
+shift + alt - j : yabai -m window --focus south
+shift + alt - k : yabai -m window --focus north
+shift + alt - l : yabai -m window --focus east
 
 # workaround for alacritty not honour window close
-cmd - q [
+alt - q [
     "alacritty" : skhd --key "cmd - w"
     # "emacs" : skhd --key "cmd - w" # for no titlebar
     *           : yabai -m window --close
 
 ]
 
-cmd - f : yabai -m window --toggle zoom-fullscreen
-shift + cmd - p : yabai -m space --toggle padding
+alt - f : yabai -m window --toggle zoom-fullscreen
+shift + alt - p : yabai -m space --toggle padding
 # 0x18 = equal key
-shift + cmd - 0x18 : yabai -m space --balance
+shift + alt - 0x18 : yabai -m space --balance
+shift + alt - f : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
 
 # create/destroy space
 # need to install jq
-shift + cmd - n : yabai -m space --create;\
+shift + alt - n : yabai -m space --create;\
                   id="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')";\
                   yabai -m space --focus $id
-shift + cmd - q : yabai -m space --destroy
+shift + alt - q : yabai -m space --destroy
 
 # focus desktop
-shift + cmd - tab : yabai -m space --focus recent
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
+shift + alt - tab : yabai -m space --focus recent
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
 
 # send window to desktop and focus
-shift + cmd - 1 : yabai -m window --space 1 && yabai -m space --focus 1
-shift + cmd - 2 : yabai -m window --space 2 && yabai -m space --focus 2
-shift + cmd - 3 : yabai -m window --space 3 && yabai -m space --focus 3
-shift + cmd - 4 : yabai -m window --space 4 && yabai -m space --focus 4
-shift + cmd - 5 : yabai -m window --space 5 && yabai -m space --focus 5
-shift + cmd - 6 : yabai -m window --space 6 && yabai -m space --focus 6
-shift + cmd - 7 : yabai -m window --space 7 && yabai -m space --focus 7
+shift + alt - 1 : yabai -m window --space 1 && yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2 && yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3 && yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4 && yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5 && yabai -m space --focus 5
+shift + alt - 6 : yabai -m window --space 6 && yabai -m space --focus 6
+shift + alt - 7 : yabai -m window --space 7 && yabai -m space --focus 7

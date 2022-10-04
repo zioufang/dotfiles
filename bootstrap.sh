@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/.cache/zsh
+
 git pull origin master;
 
 # source file $1 to file $2, if $1 doesn't already exist in $2
@@ -10,7 +12,7 @@ function echo_source {
 function dotsync {
     mv ~/.bashrc ~/.bashrc.old 2>/dev/null
     mv ~/.zshrc ~/.zshrc.old 2>/dev/null
-    
+
     # sync the dotfiles to home directory
     rsync --exclude "bootstrap.sh" \
         --exclude "README.md" \
@@ -35,4 +37,3 @@ else
         dotsync;
     fi;
 fi;
-
