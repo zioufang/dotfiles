@@ -55,7 +55,8 @@ c.tabs.background = True
 
 # Function
 c.url.searchengines = {
-    'DEFAULT':  'https://google.com/search?hl=en&q={}'
+    'DEFAULT':  'https://google.com/search?hl=en&q={}',
+    'sw': 'https://github.com/search?q=org%3Aswift-nav+{}',
 }
 
 ## enable copy
