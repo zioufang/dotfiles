@@ -1,2 +1,4 @@
 .config/vifm/vifminfo
 **/.DS_Store
+**/work_alias.fish
+**/work_env.fish
