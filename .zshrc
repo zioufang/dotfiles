@@ -1,5 +1,7 @@
 source ~/.config/zsh/zshrc.grml
 
+export TERM=xterm-256color
+
 fpath=("$HOME/.config/zsh/themes" "$fpath[@]")
 
 autoload -Uz compinit promptinit
