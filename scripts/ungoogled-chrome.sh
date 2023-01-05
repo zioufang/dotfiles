@@ -17,3 +17,4 @@ wget -O ${EXTENSION_ID}.crx $URL
 # dark reader:      eimadpbcbfnmbkopoojfekhnkhdbieeh
 # vimium:           dbepggeogbaibhgnhhndojpepiihcmeb
 # refined github:   hlepfoohegkhhmjieoechaddaejaokhf
+# octotree:         bkhaagjahfmjljalopjnoealnfndnagc
