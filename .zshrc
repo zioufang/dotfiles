@@ -30,6 +30,7 @@ setopt share_history
 
 # vi mode
 bindkey -v
+bindkey "^?" backward-delete-char # backspace delete char
 export KEYTIMEOUT=1
 
 # ci"
