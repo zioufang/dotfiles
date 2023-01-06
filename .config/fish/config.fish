@@ -13,6 +13,8 @@ fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin:~/.cargo/bin
 bind --mode insert \cf forward-bigword
 bind --mode insert \cE end-of-line
 bind --mode insert \cA beginning-of-line
+bind L end-of-line
+bind H beginning-of-line
 bind --mode insert --key up history-prefix-search-backward
 bind --mode insert --key down history-prefix-search-forward
 
