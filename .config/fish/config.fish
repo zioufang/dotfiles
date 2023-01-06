@@ -12,7 +12,6 @@ fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin:~/.cargo/bin
 bind --mode insert \cf forward-bigword
 bind --mode insert --key up history-prefix-search-backward
 bind --mode insert --key down history-prefix-search-forward
-bind --mode insert \x7F backward-kill-word ## ctrl+backspace
 
 ## FZF
 export FZF_DEFAULT_OPTS='--reverse'
@@ -44,7 +43,7 @@ set -g fish_vi_force_cursor 1
 set -g fish_cursor_default block
 set -g fish_cursor_insert line
 set -g fish_cursor_replace_one underscore
-set -g fish_cursor_visual line
+# set -g fish_cursor_visual line
 
 ## work stuff
 work_env

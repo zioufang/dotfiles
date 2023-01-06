@@ -6,6 +6,10 @@ function setup_alias
     abbr -a gc 'git clone'
     abbr -a gs 'git status'
 
+    abbr -a cat 'bat -n'
+
+    abbr -a v nvim
+
     abbr -a d docker
     abbr -a m make
 

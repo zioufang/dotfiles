@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fish_abbr_cat:bat\x20\x2dn
 SETUVAR _fish_abbr_ch:clickhouse\x20client\x20\x2dd\x20tern\x20\x2dh\x20tern\x2dprod\x2eswiftnav\x2ealtinity\x2ecloud\x20\x2d\x2dport\x209440\x20\x2ds\x20\x2d\x2duser\x3dadmin\x20\x2d\x2dpassword\x3dtudcab\x2ddijcus\x2dnyNza6
 SETUVAR _fish_abbr_cx:chmod\x20\x2bx
 SETUVAR _fish_abbr_d:docker
@@ -15,6 +16,7 @@ SETUVAR _fish_abbr_m:make
 SETUVAR _fish_abbr_pyv:source\x20\x2evenv/bin/activate\x2efish
 SETUVAR _fish_abbr_pyvenv:python3\x20\x2dm\x20venv\x20\x2evenv
 SETUVAR _fish_abbr_sa:saml2aws\x20login\x20\x2d\x2dskip\x2dprompt\x20\x2d\x2dforce
+SETUVAR _fish_abbr_v:nvim
 SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2d\x2dreverse
 SETUVAR fish_color_command:c397d8
