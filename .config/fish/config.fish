@@ -2,6 +2,7 @@
 
 ## ENV VAR
 export TERM=xterm-256color
+export EDITOR=nvim
 export GIT_TERMINAL_PROMPT=1 ## force git to prompt on terminal (e.g. HTTP cred)
 # export PATH=/opt/homebrew/bin:~/.local/bin:~/go/bin:~/.cargo/bin:$PATH ## this gives error 
 fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin:~/.cargo/bin
@@ -10,8 +11,28 @@ fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin:~/.cargo/bin
 ## use `fish_key_reader` to find out the key sequence
 ## https://fishshell.com/docs/current/cmds/bind.html
 bind --mode insert \cf forward-bigword
+bind --mode insert \cE end-of-line
+bind --mode insert \cA beginning-of-line
 bind --mode insert --key up history-prefix-search-backward
 bind --mode insert --key down history-prefix-search-forward
+
+## HACK until vi motion is implemented
+## or use Alt-v or Alt-e to edit it in nvim
+## https://github.com/fish-shell/fish-shell/issues/4019
+bind d2w kill-word kill-word
+bind d3w kill-word kill-word kill-word
+bind d4w kill-word kill-word kill-word kill-word
+bind d2W kill-bigword kill-bigword
+bind d3W kill-bigword kill-bigword kill-bigword
+bind d4W kill-bigword kill-bigword kill-bigword kill-bigword
+
+# -m means run commands then goes into the new mode insert then repaint (refresh)
+bind -s -m insert c2w kill-word kill-word repaint-mode
+bind -s -m insert c3w kill-word kill-word kill-word repaint-mode
+bind -s -m insert c4w kill-word kill-word kill-word kill-word repaint-mode
+bind -s -m insert c2W kill-bigword kill-bigword repaint-mode
+bind -s -m insert c3W kill-bigword kill-bigword kill-bigword repaint-mode
+bind -s -m insert c4W kill-bigword kill-bigword kill-bigword kill-bigword repaint-mode
 
 ## FZF
 export FZF_DEFAULT_OPTS='--reverse'
