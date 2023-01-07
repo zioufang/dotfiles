@@ -1,5 +1,4 @@
 function tm --wraps tmux --description 'create or attach a session name (default `main`)'
-    echo "$argv[1]"
     if test (count $argv) -eq 1
         set session_name $argv[1]
     else

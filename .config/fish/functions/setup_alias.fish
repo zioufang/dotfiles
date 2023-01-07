@@ -22,3 +22,5 @@ function setup_alias
     abbr -a kc kubectx
     abbr -a kn kubens
 end
+
+## use `ctrl-space` to ignore abbr
