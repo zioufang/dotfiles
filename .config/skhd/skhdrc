@@ -1,8 +1,10 @@
 # open apps
 alt - a : /Applications/Alacritty.app/Contents/MacOS/alacritty
+alt - enter : /Applications/Alacritty.app/Contents/MacOS/alacritty -e tm # tm is a fish func for starting tmux
 shift + alt - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 #shift + alt - b : /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox
-alt - b : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
+alt - b : /Applications/Chromium.app/Contents/MacOS/Chromium
+shift + alt - b : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 alt - e : emacsclient --create-frame
 
 # Mission Control is binded with cmd - up in Mac native shortcut
