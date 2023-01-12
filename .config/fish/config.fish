@@ -10,13 +10,16 @@ fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin:~/.cargo/bin
 ## KEYMAPS
 ## use `fish_key_reader` to find out the key sequence
 ## https://fishshell.com/docs/current/cmds/bind.html
-bind --mode insert \cf forward-bigword
-bind --mode insert \cE end-of-line
+bind --mode insert \cf forward-bigword # C-f
+bind --mode insert \cE end-of-line 
 bind --mode insert \cA beginning-of-line
 bind L end-of-line
 bind H beginning-of-line
 bind --mode insert --key up history-prefix-search-backward
 bind --mode insert --key down history-prefix-search-forward
+bind --mode insert \cN nextd-or-forward-word # A-n
+bind --mode insert \cP prevd-or-backward-word # A-p
+
 
 ## HACK until vi motion is implemented
 ## or use Alt-v or Alt-e to edit it in nvim
