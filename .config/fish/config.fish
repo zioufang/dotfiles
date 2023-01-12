@@ -5,7 +5,7 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export GIT_TERMINAL_PROMPT=1 ## force git to prompt on terminal (e.g. HTTP cred)
 # export PATH=/opt/homebrew/bin:~/.local/bin:~/go/bin:~/.cargo/bin:$PATH ## this gives error 
-fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin:~/.cargo/bin
+fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin ~/.cargo/bin
 
 ## KEYMAPS
 ## use `fish_key_reader` to find out the key sequence
