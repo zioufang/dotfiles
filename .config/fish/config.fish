@@ -4,6 +4,7 @@
 export TERM=xterm-256color
 export EDITOR=nvim
 export GIT_TERMINAL_PROMPT=1 ## force git to prompt on terminal (e.g. HTTP cred)
+export XDG_CONFIG_HOME="$HOME/.config" ## use ~/.config as config home for some app, e.g. lazygit
 # export PATH=/opt/homebrew/bin:~/.local/bin:~/go/bin:~/.cargo/bin:$PATH ## this gives error 
 fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin ~/.cargo/bin
 
@@ -11,7 +12,7 @@ fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/go/bin ~/.cargo/bin
 ## use `fish_key_reader` to find out the key sequence
 ## https://fishshell.com/docs/current/cmds/bind.html
 bind --mode insert \cf forward-bigword # C-f
-bind --mode insert \cE end-of-line 
+bind --mode insert \cE end-of-line
 bind --mode insert \cA beginning-of-line
 bind L end-of-line
 bind H beginning-of-line
@@ -50,8 +51,10 @@ zoxide init fish --cmd j | source
 function fish_prompt
     # echo -n doesn't add new line
     # prompt_pwd: https://fishshell.com/docs/current/cmds/prompt_pwd.html#cmd-prompt-pwd
-    set_color green; echo -n (prompt_pwd --full-length-dirs=2)
-    set_color yellow; echo -n "   "
+    set_color green
+    echo -n (prompt_pwd --full-length-dirs=2)
+    set_color yellow
+    echo -n "   "
 end
 
 # function fish_right_prompt
@@ -61,7 +64,8 @@ end
 ## remove vi indicator
 # function fish_mode_prompt; end
 ## remove welcome message
-function fish_greeting; end
+function fish_greeting
+end
 
 ## default to vi bindings
 fish_vi_key_bindings

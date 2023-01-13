@@ -5,11 +5,14 @@ function setup_alias
     abbr -a gr 'cd $(git rev-parse --show-toplevel)'
     abbr -a gc 'git clone'
     abbr -a gs 'git status'
+    abbr -a gb 'git checkout -b'
 
-    abbr -a cat 'bat -n'
+    abbr -a b 'bat -n'
 
     abbr -a v nvim
+    abbr -a nv nvim .
 
+    abbr -a lg lazygit
     abbr -a d docker
     abbr -a m make
 
