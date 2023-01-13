@@ -1,0 +1,35 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+confirmOnQuit: true
+quitOnTopLevelReturn: true
+disableStartupPopups: true
+notARepository: 'skip'
+promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
+gui:
+  scrollHeight: 20
+  sidePanelWidth: 0.25
+os:
+  editCommand: 'nvim'
+  editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
+  openCommend: 'nvim'
+keybinding:
+  universal:
+    quite-alt1: null
+    return-alt1: '<c-c>'
+    optionMenu: '?'
+    undo: null # hard reset
+    redo: null
+  files:
+    toggleStagedAll: 's'
+    stashAllChanges: 'z'
+    viewStashOptions: 'Z'
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
+customCommands:
+  - key: ''
+    description: 'git reset --soft to selected commit'
+    command: 'git reset --soft {{.SelectedLocalCommit.Sha}}'
+    context: 'commits'
+    prompts:
+      - type: 'confirm'
+        title: 'Confirm:'
+        body: 'Soft reset HEAD to {{.SelectedLocalCommit.Sha}}'
+
