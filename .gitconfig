@@ -5,6 +5,8 @@
     editor = nvim
     excludesfile = ~/.gitignore
     pager = delta
+[init]
+  defaultBranch = main
 [help]
     autocorrect = 1
 [pull]
