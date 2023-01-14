@@ -4,8 +4,8 @@ function setup_alias
     abbr -a g git
     abbr -a gr 'cd $(git rev-parse --show-toplevel)'
     abbr -a gc 'git clone'
-    abbr -a gs 'git status'
-    abbr -a gb 'git checkout -b'
+    abbr -a gs 'git status -s'
+    abbr -a gb 'git pull && git checkout -b'
 
     abbr -a b 'bat -n'
 
@@ -24,6 +24,10 @@ function setup_alias
     abbr -a k kubectl
     abbr -a kc kubectx
     abbr -a kn kubens
+
+    ## WeaTher
+    abbr -a wt 'curl "wttr.in?2q"'
+    abbr -a wtg 'curl "v2.wttr.in"' # graph
 end
 
 ## use `ctrl-space` to ignore abbr
