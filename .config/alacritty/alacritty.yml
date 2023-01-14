@@ -193,7 +193,7 @@ colors:
   # the cursor color will be the inverse of the cell color.
   cursor:
    text: '#000000'
-   cursor: '#b48ead'
+   cursor: '#fffaaa' # gui default yellow
 
   # Selection colors
   #
