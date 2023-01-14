@@ -5,8 +5,13 @@ disableStartupPopups: true
 notARepository: 'skip'
 promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
 gui:
+  theme:
+    activeBorderColor:
+      - magenta
+      - bold
   scrollHeight: 20
-  sidePanelWidth: 0.25
+  sidePanelWidth: 0.2
+  showIcons: false
 os:
   editCommand: 'nvim'
   editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
@@ -18,12 +23,16 @@ keybinding:
     optionMenu: '?'
     prevBlock-alt: 'l' # goto the previous block / panel
     nextBlock-alt: 'h' # goto the next block / panel
+    gotoTop: 'g'
+    gotoBottom: 'G'
     undo: null # hard reset
     redo: null
   files:
     toggleStagedAll: 's'
     stashAllChanges: 'z'
     viewStashOptions: 'Z'
+  stash:
+    popStash: 'Z'
 git:
   paging:
     colorArg: always

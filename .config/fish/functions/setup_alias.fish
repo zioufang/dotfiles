@@ -13,8 +13,10 @@ function setup_alias
     abbr -a nv nvim .
 
     abbr -a lg lazygit
+    abbr -a ld lazydocker
     abbr -a d docker
     abbr -a m make
+    abbr -a md mdbook
 
     abbr -a pyv 'source .venv/bin/activate.fish'
     abbr -a pyvenv 'python3 -m venv .venv'
