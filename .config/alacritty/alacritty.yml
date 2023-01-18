@@ -487,6 +487,7 @@ key_bindings:
 
   # (macOS only)
   - { key: F,   mods: Control|Shift,         action: ToggleSimpleFullscreen    }
+  - { key: C,   mods: Super,         chars: "\x1bC"    } # remap Cmd+C to Alt-Shift-c for copy in nvim
 
   ###########################
   # Manual Keymap to Chars ##
