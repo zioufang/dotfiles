@@ -20,6 +20,8 @@ bind --mode insert --key up history-prefix-search-backward
 bind --mode insert --key down history-prefix-search-forward
 bind --mode insert \cN nextd-or-forward-word # A-n
 bind --mode insert \cP prevd-or-backward-word # A-p
+## TODO: map this to edit command in $EDITOR and run
+bind --mode insert \cX\cE edit_command_buffer
 
 
 ## HACK until vi motion is implemented
