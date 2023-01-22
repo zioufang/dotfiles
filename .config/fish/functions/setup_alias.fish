@@ -18,7 +18,6 @@ function setup_alias
     abbr -a m make
     abbr -a md mdbook
 
-    abbr -a pyv 'source .venv/bin/activate.fish'
     abbr -a pyvenv 'python3 -m venv .venv'
     abbr -a cx 'chmod +x'
 
