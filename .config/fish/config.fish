@@ -49,19 +49,21 @@ export FZF_DEFAULT_COMMAND="rg -g \"!.git/\" -g \"!venv/\" -g \"!vendor/\" --hid
 ## ZOXIDE
 zoxide init fish --cmd j | source
 
-## LOOKS
-function fish_prompt
-    # echo -n doesn't add new line
-    # prompt_pwd: https://fishshell.com/docs/current/cmds/prompt_pwd.html#cmd-prompt-pwd
-    set_color green
-    echo -n (prompt_pwd --full-length-dirs=2)
-    set_color yellow
-    echo -n "   "
+
+function fish_right_prompt
+    # show command duration for 'slow' command
+    if test $CMD_DURATION -gt 1000
+        # Show duration of the last command in seconds
+        set -l duration (echo "$CMD_DURATION 1000" | awk '{printf "%.1fs", $1 / $2}')
+        set_color yellow
+        echo "神"$duration
+    end
 end
 
-# function fish_right_prompt
-#     fish_git_prompt
-# end
+# suppress vi mode indicator
+# reimplemented in fish_prompt.fish
+function fish_mode_prompt
+end
 
 ## remove vi indicator
 # function fish_mode_prompt; end
