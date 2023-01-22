@@ -60,7 +60,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Windowed
 
   # Window title
   #title: Alacritty
@@ -456,6 +456,8 @@ key_bindings:
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
+
+  - { key: Return,   mods: Command,           action: SpawnNewInstance}
 
   # (macOS only)
   - { key: F,   mods: Control|Shift,         action: ToggleSimpleFullscreen    }
