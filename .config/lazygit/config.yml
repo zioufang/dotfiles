@@ -1,6 +1,6 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
-confirmOnQuit: true
-quitOnTopLevelReturn: true
+confirmOnQuit: false
+quitOnTopLevelReturn: false
 disableStartupPopups: true
 notARepository: 'skip'
 promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
