@@ -4,6 +4,37 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
 
 function fish_prompt
+    set -lx prompt_sep ""
+    set -lx bgcolor green
+
+    function __prompt_vi_indicator
+        if [ $fish_key_bindings = fish_vi_key_bindings ]
+            switch $fish_bind_mode
+                case insert
+                    set_color black -b blue
+                    echo -n "[I]"
+                    set_color blue -b $bgcolor
+                    echo -n $prompt_sep
+                case default
+                    set_color black -b magenta
+                    echo -n "[N]"
+                    set_color magenta -b $bgcolor
+                    echo -n $prompt_sep
+                case visual
+                    set_color black -b yellow
+                    echo -n "[S]"
+                    set_color yellow -b $bgcolor
+                    echo -n $prompt_sep
+                case replace
+                    set_color black -b blue
+                    echo -n "[R]"
+                    set_color blue -b $bgcolor
+                    echo -n $prompt_sep
+            end
+            set_color normal -b normal
+        end
+    end
+
     if test -n "$__ZI_PROMPT_STARTED"
         echo ""
     else
