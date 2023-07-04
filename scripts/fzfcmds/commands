@@ -1,5 +1,6 @@
 # PROMPT #              # COMMAND #
 nvim                    nvim
-cht.sh                  cht.sh --shell
+# cht.sh                  cht.sh --shell
+btop                    btop
 # cheatsheets
 cheatsheet_regex        glow --pager ~/projects/zinotes/regex_cheatsheet.md
