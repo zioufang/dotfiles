@@ -1,6 +1,7 @@
-function ls --wraps=exa --description 'alias ls=exa --icons -a --group-directories-first --git-ignore -I **/.git'
+function ls --wraps=exa
     # if which exa &>/dev/null
-    exa --icons -a --group-directories-first --git-ignore -I .git $argv
+    ## --git-ignore -I .git
+    exa --icons -a --group-directories-first $argv
     # else # fallback to normal ls
     #     set wls (which ls)
     #     $wls --color=always

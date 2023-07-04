@@ -53,8 +53,15 @@ zoxide init fish --cmd j | source
 function fish_right_prompt
     # show command duration for 'slow' command
     if test $CMD_DURATION -gt 1000
-        # Show duration of the last command in seconds
-        set -l duration (echo "$CMD_DURATION 1000" | awk '{printf "%.1fs", $1 / $2}')
+        set -l duration ""
+        if test $CMD_DURATION -lt 60000
+            # Show duration of the last command in seconds
+            set duration (echo "$CMD_DURATION 1000" | awk '{printf "%.1fs", $1 / $2}')
+        else if test $CMD_DURATION -lt 3600000
+            set duration (echo "$CMD_DURATION 60000" | awk '{printf "%.1fm", $1 / $2}')
+        else
+            set duration (echo "$CMD_DURATION 3600000" | awk '{printf "%.1fh", $1 / $2}')
+        end
         set_color yellow
         echo "神"$duration
     end
