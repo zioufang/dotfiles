@@ -22,7 +22,7 @@ function pyv
     functions -c fish_right_prompt _old_fish_right_prompt
     function fish_right_prompt
         set_color blue
-        echo -n "[ "$_ZI_RIGHT_PROMPT_PYTHON_VENV"]"
+        echo -n "["$_ZI_RIGHT_PROMPT_PYTHON_VENV"]"
         set_color normal
         _old_fish_right_prompt
     end

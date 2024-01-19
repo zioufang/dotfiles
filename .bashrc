@@ -17,11 +17,9 @@ export PS1="[\u \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\]]$ "
 # change ls dir color to purple
 export LS_COLORS=$LS_COLORS:'di=0;35:'
 
-source ~/.config/shell/aliases.sh
-source ~/.config/shell/funcs.sh
-
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=erasedups
 export GIT_TERMINAL_PROMPT=1
-export FZF_DEFAULT_COMMAND='fd --type f'
+
+fish
