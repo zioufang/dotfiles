@@ -11,6 +11,7 @@ function setup_alias
 
     abbr -a l clear
 
+    abbr -a j 'cd (fd --type d --hidden --max-depth 3 --glob "**/.git" ~/projects | string replace "/.git" "" | fzf)'
     ## so many nvim
     abbr -a v nvim
     abbr -a n nvim
