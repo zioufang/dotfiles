@@ -3,7 +3,7 @@ function setup_alias
     ## git
     abbr -a g git
     abbr -a gr 'cd $(git rev-parse --show-toplevel)'
-    abbr -a gc 'git checkout'
+    abbr -a gc 'git clone'
     abbr -a gs 'git status -s'
     abbr -a gb 'git pull && git checkout -b'
 
