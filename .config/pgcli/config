@@ -1,0 +1,20 @@
+[main]
+vi = True
+row_limit = 100
+multi_line = True
+
+# Postgres prompt
+# \t - Current date and time
+# \u - Username
+# \h - Short hostname of the server (up to first '.')
+# \H - Hostname of the server
+# \d - Database name
+# \p - Database port
+# \i - Postgres PID
+# \# - "@" sign if logged in as superuser, '>' in other case
+# \n - Newline
+# \dsn_alias - name of dsn alias if -D option is used (empty otherwise)
+prompt = '\h:\d> '
+
+[named queries]
+sl = SELECT * FROM $1 LIMIT 10;

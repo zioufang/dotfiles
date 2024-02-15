@@ -4,3 +4,5 @@
 **/work_env.fish
 **/fish_variables
 **/state.yml
+.config/pgcli/history
+.config/pgcli/log
