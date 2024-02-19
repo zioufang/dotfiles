@@ -50,6 +50,9 @@ function fish_prompt
     set_color $bgcolor -b normal
     echo -n $prompt_sep
 
+    set kube_ctx (kubectx -c 2>/dev/null)
+    set kube_ns (kubens -c 2>/dev/null)
+
     if set -l branch (git branch --show-current 2>/dev/null)
         # change branch color based on git status
         set -l g_status (git status -s)
@@ -60,19 +63,15 @@ function fish_prompt
         end
         echo -n "    "$branch
 
-        # check local is behind and ahead of upstream
-        # need to run `git fetch` to get the latest remote info
-        # set -l upstream_diff (git rev-list --count --left-right @{upstream}...HEAD)
-        # set -l behind (echo $upstream_diff | cut -w -f 1)
-        # set -l ahead (echo $upstream_diff | cut -w -f 2)
-        # if test $behind -gt 0
-        #     set_color red
-        #     echo -n " "$behind
-        # end
-        # if test $ahead -gt 0
-        #     set_color yellow
-        #     echo -n " "$ahead
-        # end
+        if test -n "$kube_ctx"
+          set_color $bgcolor -b normal
+          echo -n "  |"
+          set_color magenta -b normal
+          echo -n "  󰰉 "$kube_ctx" - $kube_ns"
+        end
+    else if test -n "$kube_ctx"
+      set_color magenta -b normal
+      echo -n "   󰰉 "$kube_ctx" - $kube_ns"
     end
 
     # new line prompt
