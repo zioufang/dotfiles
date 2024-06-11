@@ -6,7 +6,7 @@ export EDITOR=nvim
 export GIT_TERMINAL_PROMPT=1 ## force git to prompt on terminal (e.g. HTTP cred)
 export XDG_CONFIG_HOME="$HOME/.config" ## use ~/.config as config home for some app, e.g. lazygit
 # export PATH=/opt/homebrew/bin:~/.local/bin:~/go/bin:~/.cargo/bin:$PATH ## this gives error 
-fish_add_path -m /opt/homebrew/bin ~/.local/bin ~/.cargo/bin ~/.local/bin/nvim-linux64/bin /usr/local/go/bin
+fish_add_path /opt/homebrew/bin ~/.local/bin ~/.cargo/bin ~/.local/bin/nvim-linux64/bin /usr/local/go/bin
 
 ## KEYMAPS
 ## use `fish_key_reader` to find out the key sequence
@@ -83,3 +83,9 @@ set -g fish_cursor_replace_one underscore
 # set -g fish_cursor_visual line
 
 setup_alias
+
+if test (uname) = "Darwin"
+  # brew install coreutils
+  fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
+end
+

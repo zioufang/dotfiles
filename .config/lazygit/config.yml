@@ -5,53 +5,53 @@ disableStartupPopups: true
 notARepository: 'skip'
 promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
 gui:
-  theme:
-    activeBorderColor:
-      - magenta
-      - bold
-  scrollHeight: 20
-  sidePanelWidth: 0.2
-  showIcons: false
+    theme:
+        activeBorderColor:
+            - magenta
+            - bold
+    scrollHeight: 20
+    sidePanelWidth: 0.2
+    showIcons: false
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
-  openCommend: 'nvim'
+    editCommand: 'nvim'
+    editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
+    openCommend: 'nvim'
 keybinding:
-  universal:
-    quite-alt1: null
-    return-alt1: '<c-c>'
-    optionMenu: '?'
-    prevBlock-alt: 'l' # goto the previous block / panel
-    nextBlock-alt: 'h' # goto the next block / panel
-    gotoTop: 'g'
-    gotoBottom: 'G'
-    undo: null # hard reset
-    redo: null
-  files:
-    toggleStagedAll: 's'
-    stashAllChanges: 'z'
-    viewStashOptions: 'Z'
-  stash:
-    popStash: 'Z'
+    universal:
+        quite-alt1: <disabled>
+        return-alt1: '<c-c>'
+        optionMenu: '?'
+        prevBlock-alt: 'l' # goto the previous block / panel
+        nextBlock-alt: 'h' # goto the next block / panel
+        gotoTop: 'g'
+        gotoBottom: 'G'
+        undo: <disabled> # hard reset
+        redo: <disabled>
+    files:
+        toggleStagedAll: 's'
+        stashAllChanges: 'z'
+        viewStashOptions: 'Z'
+    stash:
+        popStash: 'Z'
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --side-by-side
+    paging:
+        colorArg: always
+        pager: delta --dark --paging=never --side-by-side
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
 customCommands:
-  - key: '<f1>'
-    description: 'git reset --soft to remote current branch'
-    command: 'git reset --soft {{.CheckedOutBranch.UpstreamRemote}}'
-    context: 'commits'
-    prompts:
-      - type: 'confirm'
-        title: 'Confirm:'
-        body: 'Soft reset HEAD to {{.CheckedOutBranch.UpstreamRemote}}'
-  - key: <f2>
-    description: 'git reset --soft to selected commit'
-    command: 'git reset --soft {{.SelectedLocalCommit.Sha}}'
-    context: 'commits'
-    prompts:
-      - type: 'confirm'
-        title: 'Confirm:'
-        body: 'Soft reset HEAD to {{.SelectedLocalCommit.Sha}}'
+    - key: '<f1>'
+      description: 'git reset --soft to remote current branch'
+      command: 'git reset --soft {{.CheckedOutBranch.UpstreamRemote}}'
+      context: 'commits'
+      prompts:
+        - type: 'confirm'
+          title: 'Confirm:'
+          body: 'Soft reset HEAD to {{.CheckedOutBranch.UpstreamRemote}}'
+    - key: <f2>
+      description: 'git reset --soft to selected commit'
+      command: 'git reset --soft {{.SelectedLocalCommit.Sha}}'
+      context: 'commits'
+      prompts:
+        - type: 'confirm'
+          title: 'Confirm:'
+          body: 'Soft reset HEAD to {{.SelectedLocalCommit.Sha}}'
