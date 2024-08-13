@@ -27,6 +27,8 @@ keybinding:
         gotoBottom: 'G'
         undo: <disabled> # hard reset
         redo: <disabled>
+        openDiffTool: <disabled>
+        copyToClipboard: 'Y'
     files:
         toggleStagedAll: 's'
         stashAllChanges: 'z'
@@ -55,3 +57,6 @@ customCommands:
         - type: 'confirm'
           title: 'Confirm:'
           body: 'Soft reset HEAD to {{.SelectedLocalCommit.Sha}}'
+    - key: '<c-t>'
+      context: 'files'
+      command: 'git checkout --theirs {{.SelectedFile.Name}}'
