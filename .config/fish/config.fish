@@ -16,8 +16,8 @@ bind --mode insert \cE end-of-line
 bind --mode insert \cA beginning-of-line
 bind L end-of-line
 bind H beginning-of-line
-bind --mode insert --key up history-prefix-search-backward
-bind --mode insert --key down history-prefix-search-forward
+bind --mode insert up history-prefix-search-backward
+bind --mode insert down history-prefix-search-forward
 bind --mode insert \cN nextd-or-forward-word # A-n
 bind --mode insert \cP prevd-or-backward-word # A-p
 ## TODO: map this to edit command in $EDITOR and run

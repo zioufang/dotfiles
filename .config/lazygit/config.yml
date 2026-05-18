@@ -5,61 +5,61 @@ disableStartupPopups: true
 notARepository: 'skip'
 promptToReturnFromSubprocess: false # display confirmation when subprocess terminates
 gui:
-    theme:
-        activeBorderColor:
-            - magenta
-            - bold
-    scrollHeight: 20
-    sidePanelWidth: 0.2
-    showIcons: false
+  theme:
+    activeBorderColor:
+      - magenta
+      - bold
+  scrollHeight: 20
+  sidePanelWidth: 0.2
+  showIcons: false
 os:
-    editCommand: 'nvim'
-    editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
-    openCommend: 'nvim'
+  editCommand: 'nvim'
+  editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
+  openCommend: 'nvim'
 keybinding:
-    universal:
-        quite-alt1: <disabled>
-        return-alt1: '<c-c>'
-        optionMenu: '?'
-        prevBlock-alt: 'l' # goto the previous block / panel
-        nextBlock-alt: 'h' # goto the next block / panel
-        gotoTop: 'g'
-        gotoBottom: 'G'
-        undo: <disabled> # hard reset
-        redo: <disabled>
-        openDiffTool: <disabled>
-        copyToClipboard: 'Y'
-    files:
-        toggleStagedAll: 's'
-        stashAllChanges: 'z'
-        viewStashOptions: 'Z'
-    stash:
-        popStash: 'Z'
+  universal:
+    quite-alt1: <disabled>
+    return-alt1: '<c-c>'
+    optionMenu: '?'
+    prevBlock-alt: 'l' # goto the previous block / panel
+    nextBlock-alt: 'h' # goto the next block / panel
+    gotoTop: 'g'
+    gotoBottom: 'G'
+    undo: <disabled> # hard reset
+    redo: <disabled>
+    openDiffTool: <disabled>
+    copyToClipboard: 'Y'
+  files:
+    toggleStagedAll: 's'
+    stashAllChanges: 'z'
+    viewStashOptions: 'Z'
+  stash:
+    popStash: 'Z'
 git:
-    paging:
-        colorArg: always
-        pager: delta --dark --paging=never --side-by-side
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --side-by-side
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
 customCommands:
-    - key: '<f1>'
-      description: 'git reset --soft to remote current branch'
-      command: 'git reset --soft {{.CheckedOutBranch.UpstreamRemote}}'
-      context: 'commits'
-      prompts:
-        - type: 'confirm'
-          title: 'Confirm:'
-          body: 'Soft reset HEAD to {{.CheckedOutBranch.UpstreamRemote}}'
-    - key: <f2>
-      description: 'git reset --soft to selected commit'
-      command: 'git reset --soft {{.SelectedLocalCommit.Sha}}'
-      context: 'commits'
-      prompts:
-        - type: 'confirm'
-          title: 'Confirm:'
-          body: 'Soft reset HEAD to {{.SelectedLocalCommit.Sha}}'
-    - key: '<c-o>'
-      context: 'files'
-      command: 'git checkout --ours {{.SelectedFile.Name}}'
-    - key: '<c-t>'
-      context: 'files'
-      command: 'git checkout --theirs {{.SelectedFile.Name}}'
+  - key: '<f1>'
+    description: 'git reset --soft to remote current branch'
+    command: 'git reset --soft {{.CheckedOutBranch.UpstreamRemote}}'
+    context: 'commits'
+    prompts:
+      - type: 'confirm'
+        title: 'Confirm:'
+        body: 'Soft reset HEAD to {{.CheckedOutBranch.UpstreamRemote}}'
+  - key: <f2>
+    description: 'git reset --soft to selected commit'
+    command: 'git reset --soft {{.SelectedLocalCommit.Sha}}'
+    context: 'commits'
+    prompts:
+      - type: 'confirm'
+        title: 'Confirm:'
+        body: 'Soft reset HEAD to {{.SelectedLocalCommit.Sha}}'
+  - key: '<c-o>'
+    context: 'files'
+    command: 'git checkout --ours {{.SelectedFile.Name}}'
+  - key: '<c-t>'
+    context: 'files'
+    command: 'git checkout --theirs {{.SelectedFile.Name}}'
