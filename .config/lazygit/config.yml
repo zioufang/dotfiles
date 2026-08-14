@@ -13,9 +13,9 @@ gui:
   sidePanelWidth: 0.2
   showIcons: false
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: 'nvim +{{line}} -- {{filename}}'
-  openCommend: 'nvim'
+  editCommand: 'NVIM_APPNAME=nvim-min nvim'
+  editCommandTemplate: 'NVIM_APPNAME=nvim-min nvim +{{line}} -- {{filename}}'
+  openCommend: 'NVIM_APPNAME=nvim-min nvim'
 keybinding:
   universal:
     quite-alt1: <disabled>
@@ -36,9 +36,9 @@ keybinding:
   stash:
     popStash: 'Z'
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --side-by-side
+      command: delta --dark --paging=never --side-by-side
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
 customCommands:
   - key: '<f1>'

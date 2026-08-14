@@ -9,14 +9,14 @@ function setup_alias
 
     abbr -a b 'bat -p'
 
-    abbr -a l clear
+    abbr -a l lazygit
 
     abbr -a j 'cd (fd --type d --hidden --max-depth 3 --glob "**/.git" ~/projects | string replace "/.git" "" | fzf)'
 
     ## so many nvim
-    abbr -a v nvim
-    abbr -a n nvim
-    abbr -a nv nvim .
+    abbr -a v nvim-min
+    abbr -a n nvim-min
+    abbr -a nv nvim-min .
 
     abbr -a lg lazygit
     abbr -a ld lazydocker
